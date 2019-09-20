@@ -1,36 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import userDetails, { techStack, projects } from './data'
 
 class Main extends React.Component {
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+
+    //     }
+    // }
+
     render() {
-        const details = {
-            "Name": "Sai Arun Veneno",
-            "Email": "arunsai63@gmail.com",
-            "projects": [
-                "Handwritten Character Recognition",
-                "Three Tier Architecture",
-                "Image Store API",
-                "..."
-            ],
-            "Frontend": [
-                "HTML", "CSS", "SASS/SCSS", "Bootstrap",
-                "ReactJs"
-            ],
-            "Backend": [
-                "C", "C++", "C#", "Java", "NodeJs", "Php", "Python"
-            ],
-            "frameworks": [
-                "Django", "Bottle",
-                ".NET", ".NET core", "ASP.NET", "Web API", "ADO.NET", "Entity Framework",
-                "Express"
-            ],
-            "Database": [
-                "SQL Server", "PostgreSQL", "Oracle", "MySql",
-                "MongoDb",
-                "SQlite"
-            ]
-        }
-        return <pre>{JSON.stringify(details, null, 4)}</pre>
+        return (<div>
+            <pre>var UserDetails - {JSON.stringify(userDetails, null, 4)}</pre>
+            <pre>var techStack - {JSON.stringify(techStack, null, 4)}</pre>
+            <pre>var projects - {JSON.stringify(projects, null, 4)}</pre>
+        </div>)
     }
 }
 
