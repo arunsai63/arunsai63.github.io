@@ -130,7 +130,7 @@ const App = () => {
                                     <h2 className={`${isDark ? 'text-green-400' : 'text-green-500'} uppercase font-bold text-lg`}>Summary</h2>
                                     <p className="mt-2 text-sm">Currently Leading the Engineering Team @ Echor Tech.</p>
                                     <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                                        <li>Scalable Backend Services</li>
+                                        <li>Scalable & Cost Effective Backend Solutions</li>
                                         <li>Multi Cloud (AWS, Digital Ocean, Azure, Firebase) - DevOps (CI-CD, Docker, Cloudformation, serverless)</li>
                                         <li>Crypto and Blockchain</li>
                                         <li>100% documentation [product | technical | user]</li>
@@ -155,7 +155,11 @@ const App = () => {
                                             <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) Sep 2024 - Present</span>
                                         </div>
                                         <ul className="list-disc list-inside mt-1 text-sm">
-                                            <li>Architect solutions using AWS, Backend.</li>
+                                            <li>Architecting scalable backend solutions on AWS—transforming client ideas into robust realities.</li>
+                                            <li>Overseeing complete product lifecycles: from initial concept and development to deployment, monitoring, and ongoing optimization.</li>
+                                            <li>Leading technical initiatives as the primary go-to expert across frontend, backend, mobile apps, databases, and DevOps.</li>
+                                            <li>Heading all DevOps operations, ensuring smooth deployments and infrastructure efficiency & security.</li>
+                                            <li>Leading technical discussions in client meetings, clearly addressing complex requirements and consistently delivering beyond expectations.</li>
                                         </ul>
                                     </div>
 
@@ -165,9 +169,21 @@ const App = () => {
                                             <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) Jan 2023 - Sep 2024</span>
                                         </div>
                                         <ul className="list-disc list-inside mt-1 text-sm">
-                                            <li><a href="https://www.landwey.in/" target='_blank' rel='noreferrer'
-                                                className={`${isDark ? 'hover:text-green-400' : 'hover:text-green-500'} transition-colors truncate`}>landwey.in</a></li>
-                                            <li>Built and Scaled 3 key projects from ground-up and scaled to thousands of users while keeping cost down.</li>
+                                            <li>
+                                                Built and managed&nbsp;
+                                                <a href="https://www.landwey.in/" target='_blank' rel='noreferrer'
+                                                    className={`${isDark ? 'hover:text-green-400' : 'hover:text-green-500'} transition-colors truncate`}>
+                                                    landwey.in</a>, scaling seamlessly to 30,000+ users and 1,000+ property listings with end-to-end backend and DevOps.
+                                            </li>
+                                            <li>
+                                                Significantly optimized infrastructure for Landwey, achieving monthly server costs under $30, while delivering multiple internal dashboards and maintaining effective client interactions.
+                                            </li>
+                                            <li>
+                                                Successfully launched and scaled three high-impact crypto projects from scratch to thousands of active users, listed on platforms including OpenSea, MEXC, HTX exchanges, and popular decentralized exchanges (DEXs).
+                                            </li>
+                                            <li>
+                                                Built, owned, and managed these crypto projects end-to-end, collectively achieving an estimated market cap of $20M.
+                                            </li>
                                         </ul>
                                     </div>
 
@@ -177,8 +193,11 @@ const App = () => {
                                             <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) Dec 2021 - Jan 2023</span>
                                         </div>
                                         <ul className="list-disc list-inside mt-1 text-sm">
-                                            <li>Built and Owned several crypto projects.</li>
-                                            <li>Most notably built a trading automation platform from scratch.</li>
+                                            <li>Led end-to-end development of a crypto trading automation platform featuring copy trading, priority execution, and complex referral systems.</li>
+                                            <li>Built a media platform with crypto incentives and integrated machine learning, attracting interest from multiple VC firms.</li>
+                                            <li>Architected scalable backend systems and streamlined DevOps for real-time apps involving payment gateways, location services, and queuing mechanisms.</li>
+                                            <li>Established core tech workflows (Jira, GitHub), provided team training, and managed technical hiring—becoming the startup’s go-to tech expert.</li>
+                                            <li>Guided critical technical decisions, ensuring product excellence and timely delivery across multiple high-impact projects.</li>
                                         </ul>
                                     </div>
 
@@ -202,7 +221,7 @@ const App = () => {
 
                                     <div className={`border-l-4 ${isDark ? 'border-green-400' : 'border-green-500'} pl-3`}>
                                         <div className="flex flex-col sm:flex-row sm:justify-between">
-                                            <span className="font-bold">GGK Tech, Software Engineer</span>
+                                            <span className="font-bold">ACS Solutions, Software Engineer</span>
                                             <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) Aug 2020 - Apr 2021</span>
                                         </div>
                                         <ul className="list-disc list-inside mt-1 text-sm">
@@ -234,10 +253,10 @@ const App = () => {
                                                 Worked as a full stack developer using .net core, react, oracle.
                                             </li>
                                             <li>
-                                                Worked on a very large db migration project. migrated sql scripts & several .net projects.
+                                                Worked on a one of the largest migration projects. migrated complete db & several .net projects.
                                             </li>
                                             <li>
-                                                built and owned an internal employee management system involving complex hierarchy having 10k+ users.
+                                                Built and Owned an internal employee management system involving complex hierarchy having 10k+ users.
                                             </li>
                                         </ul>
                                     </div>
@@ -252,7 +271,19 @@ const App = () => {
                                 <div className={`border-l-4 ${isDark ? 'border-green-400' : 'border-green-500'} pl-3`}>
                                     <span className="font-bold block">JNTUH College of Engineering Hyderabad</span>
                                     <span className="text-sm">Bachelor's degree, Computer Science & Engineering</span>
+
+                                    <ul className="list-disc list-inside mt-1 text-sm">
+                                        <li>Member of FOSS Club (<a href='https://swecha.org/' target='_blank'>swecha.org</a>).</li>
+                                        <li>
+                                            Major Project:&nbsp;
+                                            <a href="https://github.com/arunsai63/character-recognition" target='_blank'>
+                                                Handwritten Character Recognition System
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
+
+
                             </div>
                         </div>
                     </div>
