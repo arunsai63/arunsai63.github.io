@@ -280,7 +280,7 @@ const App = () => {
                                         <li>
                                             Major Project:&nbsp;
                                             <a href="https://github.com/arunsai63/character-recognition" target='_blank'>
-                                                Handwritten Character Recognition System
+                                                Handwritten Character Recognition System using Neural Networks
                                             </a>
                                         </li>
                                     </ul>
