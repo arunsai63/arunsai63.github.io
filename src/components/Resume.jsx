@@ -38,7 +38,7 @@ const Resume = () => {
                         <h2 className={`${isDark ? 'text-green-400' : 'text-green-500'} uppercase font-bold text-xl mt-1`}>Solution Architect</h2>
                         <div className="flex items-center mt-2 text-sm">
                             <FaUser className={`${isDark ? 'text-green-400' : 'text-green-500'} mr-2 flex-shrink-0`} />
-                            <span className="uppercase">6+ YOE (FULL STACK | DEVOPS | BLOCKCHAIN)</span>
+                            <span className="uppercase">6+ YOE (FULL STACK | AWS | DEVOPS | BLOCKCHAIN)</span>
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@ const Resume = () => {
                                     <h2 className={`${isDark ? 'text-green-400' : 'text-green-500'} uppercase font-bold text-xl lg:text-2xl mt-1`}>Solution Architect</h2>
                                     <div className="flex items-center mt-2 text-sm">
                                         <FaUser className={`${isDark ? 'text-green-400' : 'text-green-500'} mr-2 flex-shrink-0`} />
-                                        <span className="uppercase">6+ YOE (FULL STACK | DEVOPS | BLOCKCHAIN)</span>
+                                        <span className="uppercase">6+ YOE (FULL STACK | AWS | DEVOPS | BLOCKCHAIN)</span>
                                     </div>
                                 </div>
 
@@ -117,7 +117,7 @@ const Resume = () => {
                                     <h2 className={`${isDark ? 'text-green-400' : 'text-green-500'} uppercase font-bold text-lg`}>Key Skills</h2>
                                     <div className="mt-2 text-sm">
                                         <div className="flex flex-wrap gap-2">
-                                            {['AWS', 'React', 'Devops', 'Python', 'Node', 'Rust', 'Blockchain', 'Quant'].map((skill) => (
+                                            {['Python', 'Node', 'Rust', 'C#', 'AWS', 'Devops', 'React', 'Blockchain', 'Quant', 'LLM'].map((skill) => (
                                                 <span key={skill} className={`${isDark ? 'bg-green-900 text-green-200' : 'bg-green-100 text-green-800'} px-2 py-1 rounded`}>
                                                     {skill}
                                                 </span>
@@ -130,14 +130,34 @@ const Resume = () => {
                                     <h2 className={`${isDark ? 'text-green-400' : 'text-green-500'} uppercase font-bold text-lg`}>Summary</h2>
                                     <p className="mt-2 text-sm">Currently Leading the Engineering Team @ Echor Tech.</p>
                                     <ul className="list-disc list-inside mt-2 text-sm space-y-1">
-                                        <li>Architected scalable AWS backend solutions, managing end-to-end delivery.</li>
-                                        <li>Launched crypto projects achieving ~$20M market cap and thousands of active users.</li>
-                                        <li>Optimized cloud infrastructure, reducing server costs while supporting tens of thousands of users.</li>
+                                        <li><span className="font-bold">AWS Expert.</span> Architected scalable Backend and cloud native solutions, managing end-to-end delivery.</li>
+                                        <li>Launched crypto projects achieving ~$50M market cap and thousands of active users.</li>
+                                        <li>Optimised cloud infrastructure, reducing server costs while supporting tens of thousands of active users.</li>
                                         <li>Successfully scaled platforms from zero to tens of thousands of active users.</li>
-                                        <li>Implemented full DevOps workflows (CI/CD, Docker, IAAC) across AWS and other clouds.</li>
+                                        <li>Implemented full DevOps workflows [CI/CD, Docker, IAAC] across AWS and other clouds.</li>
                                         <li>Managed complete migration from monolithic to microservices architecture.</li>
                                         <li>Established engineering processes, trained teams, and scaled engineering headcount by 10x.</li>
-                                        <li>Led client technical discussions, consistently delivering beyond expectations.</li>
+                                        <li>Led stakeholder technical discussions, consistently delivering beyond expectations.</li>
+                                    </ul>
+                                </div>
+
+                                <div className="mb-6">
+                                    <h2 className={`${isDark ? 'text-green-400' : 'text-green-500'} uppercase font-bold text-lg`}>Key Achievements</h2>
+                                    <p className="mt-2 text-sm">
+                                        <span className="font-bold">Founding team member:</span> Built core workflows and ops from scratch, owning and scaling projects with a combined market cap of multimillion dollars.
+                                    </p>
+                                </div>
+
+                                <div className="mb-6">
+                                    <h2 className={`${isDark ? 'text-green-400' : 'text-green-500'} uppercase font-bold text-lg`}>Courses</h2>
+                                    <p className="mt-2 text-sm">AWS Solution Architect Certification: Worked on AWS SAA-C03 certification.</p>
+                                </div>
+
+                                <div className="mb-6">
+                                    <h2 className={`${isDark ? 'text-green-400' : 'text-green-500'} uppercase font-bold text-lg`}>Volunteering</h2>
+                                    <ul className="list-disc list-inside mt-2 text-sm space-y-1">
+                                        <li>Swecha.org: Python Teacher (2018 - Present): Working as a Volunteer teacher for python.</li>
+                                        <li>Open Source Contributor (2018 - Present): contributed to open source projects and built several open source projects of my own.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -155,52 +175,44 @@ const Resume = () => {
                                         <div className={`pt-1 pb-3`}>
                                             <div className="flex flex-col sm:flex-row sm:justify-between">
                                                 <span className="font-bold">Echor Tech, Solution Architect</span>
-                                                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) Sep 2024 - Present</span>
+                                                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) 09/2024 - Present</span>
                                             </div>
                                             <ul className="list-disc list-inside mt-1 text-sm">
-                                                <li>Architecting scalable backend solutions on AWS—transforming client ideas into robust realities.</li>
-                                                <li>Overseeing complete product lifecycles: from initial concept and development to deployment, monitoring, and ongoing optimization.</li>
-                                                <li>Leading technical initiatives as the primary go-to expert across frontend, backend, mobile apps, databases, and DevOps.</li>
-                                                <li>Heading all DevOps operations, ensuring smooth deployments and infrastructure efficiency & security.</li>
-                                                <li>Leading technical discussions in client meetings, clearly addressing complex requirements and consistently delivering beyond expectations.</li>
+                                                <li><span className="font-bold">A Broad-Scoped Tech Generalist.</span> Architecting Scalable Backend Solutions on primarily on AWS and other cloud services.</li>
+                                                <li>Building and Leading a VC backed Product disrupting a $4B industry with a projected 200k Initial userbase</li>
+                                                <li>Leading technical initiatives as the primary go-to expert across broad range of technologies - frontend, backend, mobile apps, databases, and DevOps.</li>
+                                                <li>Heading all DevOps and Backend operations, ensuring smooth deployments and infrastructure efficiency, security and scalability.</li>
+                                                <li>Leading technical discussions with stakeholders, clearly addressing complex requirements and consistently delivering beyond expectations.</li>
+                                                <li>Tech: Kafka, Python, Nodejs, AWS, ECS, Fargate, FastApi, Cloudformation (IAAC), Docker, Linux, React, Nest JS, New Relic</li>
                                             </ul>
                                         </div>
 
                                         <div className={`py-3 border-t-1`}>
                                             <div className="flex flex-col sm:flex-row sm:justify-between">
                                                 <span className="font-bold">Echor Tech, Software Engineer 3</span>
-                                                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) Jan 2023 - Sep 2024</span>
+                                                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) 01/2023 - 09/2024</span>
                                             </div>
                                             <ul className="list-disc list-inside mt-1 text-sm">
-                                                <li>
-                                                    Built and managed&nbsp;
-                                                    <a href="https://www.landwey.in/" target='_blank' rel='noreferrer'
-                                                        className={`${isDark ? 'hover:text-green-400' : 'hover:text-green-500'} transition-colors truncate`}>
-                                                        landwey.in</a>, scaling seamlessly to 30,000+ users and 1,000+ property listings with end-to-end backend and DevOps.
-                                                </li>
-                                                <li>
-                                                    Significantly optimized infrastructure for Landwey, achieving monthly server costs under $30, while delivering multiple internal dashboards and maintaining effective client interactions.
-                                                </li>
-                                                <li>
-                                                    Successfully launched and scaled three high-impact crypto projects from scratch to thousands of active users, listed on platforms including OpenSea, MEXC, HTX exchanges, and popular decentralized exchanges (DEXs).
-                                                </li>
-                                                <li>
-                                                    Built, owned, and managed these crypto projects end-to-end, collectively achieving an estimated market cap of $20M.
-                                                </li>
+                                                <li>Successfully built and scaled three <span className="font-bold">High-Impact</span> crypto projects from scratch to thousands of active users, listed on platforms including OpenSea, MEXC, HTX exchanges and popular decentralised exchanges (DEXs).</li>
+                                                <li>Built, owned and managed these crypto projects end-to-end, collectively achieving an estimated market cap of $50 Million.</li>
+                                                <li>Built and owned <a href="https://www.landwey.in/" target='_blank' rel='noreferrer' className={`${isDark ? 'hover:text-green-400' : 'hover:text-green-500'} transition-colors truncate`}>landwey.in</a>, scaling seamlessly to 30k+ users and thousands of listed properties and significantly optimised infrastructure achieving very low server costs and also delivering multiple internal dashboards.</li>
+                                                <li>Tech: Solidity, Python, AWS, Node, Redis, Next JS, React, Rust, Github Actions, Linux, Dex, Docker, Web3, Svelte, Monitoring</li>
+                                                <li>AWS Tech: Amplify, S3, Dynamodb, DocumentDb, Aurora, VPC, SQS, ECS, Auto Scaling, IAM, Cloudformation, RDS, CodeBuild, WAF, EC2, Lambda</li>
                                             </ul>
                                         </div>
 
                                         <div className={`py-3 border-t-1`}>
                                             <div className="flex flex-col sm:flex-row sm:justify-between">
                                                 <span className="font-bold">Echor Tech, Lead Developer</span>
-                                                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) Dec 2021 - Jan 2023</span>
+                                                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) 12/2021 - 01/2023</span>
                                             </div>
                                             <ul className="list-disc list-inside mt-1 text-sm">
-                                                <li>Led end-to-end development of a crypto trading automation platform featuring copy trading, priority execution, and complex referral systems.</li>
-                                                <li>Built a media platform with crypto incentives and integrated machine learning, attracting interest from multiple VC firms.</li>
-                                                <li>Architected scalable backend systems and streamlined DevOps for real-time apps involving payment gateways, location services, and queuing mechanisms.</li>
-                                                <li>Established core tech workflows (Jira, GitHub), provided team training, and managed technical hiring—becoming the startup’s go-to tech expert.</li>
+                                                <li>Led end-to-end development of a <span className="font-bold">advanced</span> crypto trading automation platform featuring copy trading, screener, realtime market tracking, backend, and complex referral systems.</li>
+                                                <li>Built a multi-media platform with crypto incentives and integrated machine learning, attracting interest and getting offers from multiple VC firms.</li>
+                                                <li>Architected scalable backend systems and streamlined DevOps for real-time apps involving payment gateways, location services, complex business logic.</li>
+                                                <li>Established core tech workflows (Jira, GitHub) and managed technical hiring and training - becoming the startup's go-to tech expert.</li>
                                                 <li>Guided critical technical decisions, ensuring product excellence and timely delivery across multiple high-impact projects.</li>
+                                                <li>Tech: Rabbit MQ, Python, Flask, Node, Express, Mongodb, Postgres, Linux, Docker, Cloud Native, Serverless, Lambda, AWS, React, Solidity, Web3</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -208,26 +220,27 @@ const Resume = () => {
                                     <div className={`border-l-4 border-t-1 ${isDark ? 'border-green-400' : 'border-green-500'} pl-3`}>
                                         <div className="flex flex-col sm:flex-row sm:justify-between">
                                             <span className="font-bold">Grow Indigo Pvt. Ltd, Software Development Engineer</span>
-                                            <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Mumbai, India) Apr 2021 - Dec 2021</span>
+                                            <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Mumbai, India) 04/2021 - 12/2021</span>
                                         </div>
                                         <ul className="list-disc list-inside mt-1 text-sm">
                                             <li>
                                                 <a href="https://www.growindigo.co.in/" rel='noreferrer' target='_blank'
                                                     className={`${isDark ? 'hover:text-green-400' : 'hover:text-green-500'} transition-colors truncate`}>growindigo.co.in</a>
                                             </li>
-                                            <li>Complete revamp of admin dashboard from asp.net to react and .net core micro services</li>
-                                            <li>Migrated all the services from on prem to AWS along with CI/CD setup and docker</li>
-                                            <li>Completed security audit and implemented IAM micro service</li>
-                                            <li>Implemented brand new referral and offers system</li>
+                                            <li>Complete revamp of internal dashboards from asp.net to react and .net core microservices</li>
+                                            <li>Migrated all the services from on-prem to AWS along with CI/CD setup involving several microservices (10+) with minimal downtime.</li>
+                                            <li>Identified and Fixed critical security vulnerabilities and implemented proper IAM service for all the microservices</li>
+                                            <li>Built and Owned a referral and offers microservice</li>
                                             <li>Scaled the application to tens of thousands of users</li>
+                                            <li>Tech: .Net Core, C#, AWS, Mongodb, Mysql, Microservices, Security, Python, Typescript, React</li>
                                         </ul>
                                     </div>
 
-                                    <div className={`border-l-4  border-t-1 ${isDark ? 'border-green-400' : 'border-green-500'} px-3`}>
+                                    <div className={`border-l-4 border-t-1 ${isDark ? 'border-green-400' : 'border-green-500'} px-3`}>
                                         <div className='py-1'>
                                             <div className="flex flex-col sm:flex-row sm:justify-between">
                                                 <span className="font-bold">GGK Tech, Software Engineer</span>
-                                                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) Aug 2020 - Apr 2021</span>
+                                                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>(Hyderabad, India) 08/2020 - 04/2021</span>
                                             </div>
                                             <ul className="list-disc list-inside mt-1 text-sm">
                                                 <li>
@@ -236,7 +249,8 @@ const Resume = () => {
                                                 </li>
                                                 <li>Worked as a full stack developer using .net core, react, mysql and redis</li>
                                                 <li>Worked on azure. CI/CD, deployments, serverless, multi environment setup</li>
-                                                <li>Improved the application load times significantly (query optimisation, cache, serverless)</li>
+                                                <li>Improved the application load times significantly (query optimisation & cache) handling 100k+ users</li>
+                                                <li>Tech: C#, Azure, Serverless, .Net Core, React, Mysql, Redis, Azure Service Bus, Unit tests, Python, SQL Server</li>
                                             </ul>
                                         </div>
 
@@ -244,25 +258,20 @@ const Resume = () => {
                                             <div className="flex flex-col sm:flex-row sm:justify-between">
                                                 <span className="font-bold">GGK Tech, Associate Software Engineer</span>
                                                 <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                                                    (Hyderabad, India) Jan 2019 - Aug 2020
+                                                    (Hyderabad, India) 01/2019 - 08/2020
                                                 </span>
                                             </div>
                                             <ul className="list-disc list-inside mt-1 text-sm">
                                                 <li>
                                                     <a target='_blank' href="https://www.fideliscare.org/" rel='noreferrer'
-                                                        className={`${isDark ? 'hover:text-green-400' : 'hover:text-green-500'} transition-colors truncate`}>fideliscare.org</a>,&nbsp;
+                                                        className={`${isDark ? 'hover:text-green-400' : 'hover:text-green-500'} transition-colors truncate`}>fideliscare.org</a>,
                                                     <a target='_blank' href="https://www.pronto-delivery.com/" rel='noreferrer'
                                                         className={`${isDark ? 'hover:text-green-400' : 'hover:text-green-500'} transition-colors truncate`}>pronto-delivery.com</a>
                                                 </li>
-                                                <li>
-                                                    Worked as a full stack developer using .net core, react, oracle.
-                                                </li>
-                                                <li>
-                                                    Worked on a one of the largest migration projects. migrated complete db & several .net projects.
-                                                </li>
-                                                <li>
-                                                    Built and Owned an internal employee management system involving complex hierarchy having 10k+ users.
-                                                </li>
+                                                <li>Worked as a full stack developer using .net core, react, oracle.</li>
+                                                <li>Worked on a one of the largest migration projects. migrated complete db & several .net projects.</li>
+                                                <li>Built and Owned an internal employee management system involving complex hierarchy having 10k+ users.</li>
+                                                <li>Tech: React, C#, .Net, Oracle, Sybase, Python</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -281,15 +290,13 @@ const Resume = () => {
                                     <ul className="list-disc list-inside mt-1 text-sm">
                                         <li>Member of FOSS Club (<a href='https://swecha.org/' target='_blank'>swecha.org</a>).</li>
                                         <li>
-                                            Major Project:&nbsp;
+                                            Major Project:
                                             <a href="https://github.com/arunsai63/character-recognition" target='_blank'>
-                                                Handwritten Character Recognition System using Neural Networks
+                                                Handwritten Character Recognition System (KNN, Python)
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
