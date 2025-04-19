@@ -7,7 +7,11 @@
   <title>Sai Arun Munaganti - Portfolio</title>
   <link rel="stylesheet" href="index.css">
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -16,20 +20,40 @@
 
   <main>
     <section id="hero">
-      <h1>SAI ARUN MUNAGANTI</h1>
-      <h2>(SOLUTIONS ARCHITECT)</h2>
-      <p class="max-w-3xl mx-auto text-lg">
-        6+ YOE | Full Stack | AWS | DevOps | Blockchain
-        <br>
-        Broad-Scoped Tech Generalist specializing in scalable Backend solutions and Cloud Architecture.
-        <br>
-        Currently Leading the Engineering Team @ Echor Tech.
-      </p>
-      <p class="mt-4">Scroll down to explore more</p>
-      <div class="mt-8 text-xl">
-        <a href="#experience" class="mx-4">Experience</a>
-        <a href="#skills" class="mx-4">Skills</a>
-        <a href="#contact" class="mx-4">Contact</a>
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-button"></span>
+          <span class="terminal-button"></span>
+          <span class="terminal-button"></span>
+          <span class="terminal-title">portfolio.sh</span>
+        </div>
+        <div class="terminal-content">
+          <div class="terminal-line">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-text" id="typing-text">./introduce.sh</span>
+          </div>
+          <div class="terminal-output">
+            <h1>SAI ARUN MUNAGANTI</h1>
+            <h2>(SOLUTIONS ARCHITECT)</h2>
+            <p class="max-w-3xl mx-auto text-lg">
+              6+ YOE | Full Stack | AWS | DevOps | Blockchain
+              <br>
+              Broad-Scoped Tech Generalist specializing in scalable Backend solutions and Cloud Architecture.
+              <br>
+              Currently Leading the Engineering Team @ Echor Tech.
+            </p>
+          </div>
+          <div class="terminal-line">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-text" id="typing-text-2">./explore.sh</span>
+          </div>
+        </div>
+      </div>
+      <p class="scroll-hint mt-4">Scroll down to explore more</p>
+      <div class="mt-8 text-xl nav-buttons">
+        <a href="#experience" class="nav-button mx-4">Experience</a>
+        <a href="#skills" class="nav-button mx-4">Skills</a>
+        <a href="#contact" class="nav-button mx-4">Contact</a>
       </div>
     </section>
 
@@ -193,7 +217,7 @@
     <section id="contact">
       <h2>Get In Touch</h2>
       <p>Feel free to reach out!</p>
-      <div class="mt-6 text-lg space-y-4">
+      <div class="mt-6 text-lg space-y-4 contact-container">
         <p>
           <a href="mailto:arunsai63@gmail.com" target="_blank" rel="noopener noreferrer">
             <i class="fas fa-envelope mr-2"></i> arunsai63@gmail.com

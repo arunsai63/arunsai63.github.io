@@ -1,15 +1,21 @@
 /* Basic Styling */
 body {
-    font-family: 'Inter', sans-serif;
-    /* Using Inter font from Tailwind */
+    font-family: 'Fira Code', monospace;
     color: #e0e0e0;
-    /* Light gray text */
     background-color: #0a0a0a;
-    /* Very dark background */
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    /* Prevent horizontal scroll */
+}
+
+/* Custom Styles for Coding Theme */
+h1,
+h2,
+h3 {
+    font-family: 'Fira Code', monospace;
+    color: #00ffcc;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 5px #00ffcc;
 }
 
 /* Canvas Styling */
@@ -20,34 +26,27 @@ body {
     width: 100%;
     height: 100%;
     z-index: -1;
-    /* Place canvas behind content */
 }
 
 /* Content Styling */
 main {
     position: relative;
-    /* Needed for z-index stacking */
     z-index: 1;
     width: 100%;
     overflow-y: auto;
-    /* Allow vertical scrolling for content */
     scroll-behavior: smooth;
-    /* Enable smooth scrolling */
 }
 
 /* Section Styling */
 section {
     min-height: 100vh;
-    /* Make each section at least viewport height */
     padding: 10vh 5vw;
-    /* Padding top/bottom and left/right */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     border-bottom: 1px solid #333;
-    /* Separator line */
 }
 
 section:last-child {
@@ -59,12 +58,9 @@ h1,
 h2,
 h3 {
     font-family: 'Courier New', Courier, monospace;
-    /* Monospace font for headers */
     color: #00ffcc;
-    /* Bright cyan color */
     margin-bottom: 1rem;
     text-shadow: 0 0 5px #00ffcc;
-    /* Subtle glow */
 }
 
 h1 {
@@ -80,17 +76,13 @@ h3 {
     color: #00b38f;
 }
 
-/* Slightly darker cyan for sub-headers */
-
 p,
 li {
     font-size: 1.1rem;
     line-height: 1.6;
     max-width: 800px;
-    /* Limit text width for readability */
     margin-bottom: 1rem;
     color: #cccccc;
-    /* Lighter gray for paragraphs */
 }
 
 ul {
@@ -100,7 +92,6 @@ ul {
 
 li::before {
     content: '> ';
-    /* Add a prompt-like character */
     color: #00ffcc;
     margin-right: 0.5em;
 }
@@ -132,15 +123,16 @@ a:hover {
 /* Experience Card Styling */
 .experience-card {
     background-color: rgba(20, 20, 20, 0.8);
-    /* Slightly transparent dark background */
     border: 1px solid #333;
     border-radius: 8px;
     padding: 2rem;
     margin-bottom: 2rem;
     text-align: left;
     backdrop-filter: blur(5px);
-    /* Blur effect for background */
+    width: 100%;
     max-width: 900px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .experience-card h3 {
@@ -169,4 +161,197 @@ a:hover {
     border-radius: 3px;
     font-size: 0.8rem;
     font-family: 'Courier New', Courier, monospace;
+}
+
+/* Terminal Window Styling */
+.terminal-window {
+    background-color: rgba(16, 16, 16, 0.9);
+    border-radius: 8px;
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+    border: 1px solid #444;
+}
+
+.terminal-header {
+    background-color: #333;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.terminal-button:nth-child(1) {
+    background-color: #ff5f56;
+}
+
+.terminal-button:nth-child(2) {
+    background-color: #ffbd2e;
+}
+
+.terminal-button:nth-child(3) {
+    background-color: #27c93f;
+}
+
+.terminal-title {
+    color: #aaa;
+    font-size: 0.9rem;
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 1rem;
+}
+
+.terminal-content {
+    padding: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.terminal-line {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.terminal-prompt {
+    color: #00ff00;
+    margin-right: 0.5rem;
+}
+
+.terminal-text {
+    color: #ffffff;
+}
+
+.terminal-output {
+    padding: 1rem 0 1rem 1.5rem;
+    margin: 1rem 0;
+    border-left: 2px solid #444;
+}
+
+.terminal-output h1,
+.terminal-output h2 {
+    text-shadow: 0 0 5px #00ffcc;
+}
+
+/* Navigation buttons styling */
+.nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.nav-button {
+    background-color: rgba(0, 255, 204, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.2), transparent);
+    transition: left 0.7s;
+}
+
+.nav-button:hover {
+    background-color: rgba(0, 255, 204, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.nav-button:hover:before {
+    left: 100%;
+}
+
+/* Scroll hint */
+.scroll-hint {
+    margin-top: 2rem;
+    opacity: 0.8;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(5px);
+    }
+
+    100% {
+        opacity: 0.5;
+        transform: translateY(0);
+    }
+}
+
+/* Contact section styling */
+.contact-container {
+    background-color: rgba(20, 20, 20, 0.8);
+    border-radius: 8px;
+    padding: 2rem;
+    border: 1px solid #333;
+    backdrop-filter: blur(5px);
+    max-width: 600px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-container a {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.contact-container a:hover {
+    background-color: rgba(0, 255, 204, 0.1);
+    transform: translateX(5px);
+}
+
+.contact-container i {
+    width: 24px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+}
+
+/* For small screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .terminal-window {
+        width: 95%;
+    }
+
+    .experience-card {
+        padding: 1.5rem;
+    }
 }
