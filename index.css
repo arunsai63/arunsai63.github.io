@@ -1,0 +1,172 @@
+/* Basic Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Using Inter font from Tailwind */
+    color: #e0e0e0;
+    /* Light gray text */
+    background-color: #0a0a0a;
+    /* Very dark background */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+/* Canvas Styling */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Place canvas behind content */
+}
+
+/* Content Styling */
+main {
+    position: relative;
+    /* Needed for z-index stacking */
+    z-index: 1;
+    width: 100%;
+    overflow-y: auto;
+    /* Allow vertical scrolling for content */
+    scroll-behavior: smooth;
+    /* Enable smooth scrolling */
+}
+
+/* Section Styling */
+section {
+    min-height: 100vh;
+    /* Make each section at least viewport height */
+    padding: 10vh 5vw;
+    /* Padding top/bottom and left/right */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #333;
+    /* Separator line */
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+/* Custom Styles for Coding Theme */
+h1,
+h2,
+h3 {
+    font-family: 'Courier New', Courier, monospace;
+    /* Monospace font for headers */
+    color: #00ffcc;
+    /* Bright cyan color */
+    margin-bottom: 1rem;
+    text-shadow: 0 0 5px #00ffcc;
+    /* Subtle glow */
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #00b38f;
+}
+
+/* Slightly darker cyan for sub-headers */
+
+p,
+li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    /* Limit text width for readability */
+    margin-bottom: 1rem;
+    color: #cccccc;
+    /* Lighter gray for paragraphs */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li::before {
+    content: '> ';
+    /* Add a prompt-like character */
+    color: #00ffcc;
+    margin-right: 0.5em;
+}
+
+a {
+    color: #00ffcc;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px #00ffcc;
+}
+
+/* Skill Tag Styling */
+.skill-tag {
+    display: inline-block;
+    background-color: #222;
+    color: #00ffcc;
+    padding: 0.3em 0.8em;
+    margin: 0.3em;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-family: 'Courier New', Courier, monospace;
+    border: 1px solid #444;
+}
+
+/* Experience Card Styling */
+.experience-card {
+    background-color: rgba(20, 20, 20, 0.8);
+    /* Slightly transparent dark background */
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    backdrop-filter: blur(5px);
+    /* Blur effect for background */
+    max-width: 900px;
+}
+
+.experience-card h3 {
+    margin-bottom: 0.5rem;
+}
+
+.experience-card .company {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.experience-card .dates {
+    font-style: italic;
+    color: #999;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.experience-card .tech-stack span {
+    display: inline-block;
+    background-color: #333;
+    color: #aaa;
+    padding: 0.2em 0.6em;
+    margin: 0.2em;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-family: 'Courier New', Courier, monospace;
+}
