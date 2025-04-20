@@ -319,7 +319,84 @@ function setupContactTypingEffect() {
     }
 }
 
+function applyTiltEffect(elementId) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
 
+    // Inject CSS for smooth transitions and card styling
+    const style = document.createElement('style');
+    style.textContent = `
+      #${elementId} {
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease-out;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      #${elementId}:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Mouse move event for reverse tilt effect
+    element.addEventListener('mousemove', (e) => {
+        const rect = element.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const mouseX = e.clientX - centerX;
+        const mouseY = e.clientY - centerY;
+
+        // Reverse tilt: multiply by -1 to invert direction
+        const rotateX = (mouseY / rect.height) * 15; // Max 15deg tilt, reversed
+        const rotateY = (mouseX / rect.width) * -15; // Reversed
+
+        element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    // Reset transform on mouse leave
+    element.addEventListener('mouseleave', () => {
+        element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+    });
+}
+function loadglb() {
+    // Load GLB model
+    const loader = new GLTFLoader();
+    loader.load(
+        'chatbot.glb',
+        (gltf) => {
+            const model = gltf.scene;
+            scene.add(model);
+
+            // Center and scale model
+            const box = new THREE.Box3().setFromObject(model);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+            const maxDim = Math.max(size.x, size.y, size.z);
+            const scale = 2 / maxDim;
+            model.scale.set(scale, scale, scale);
+            model.position.sub(center.multiplyScalar(scale));
+
+            // Position camera
+            camera.position.z = 2;
+
+            // Animation loop for 360-degree horizontal rotation
+            function animate() {
+                requestAnimationFrame(animate);
+                // Rotate model around Y-axis (horizontal rotation)
+                model.rotation.y += 0.01; // Adjust speed (0.01 radians per frame)
+                model.rotation.x = Math.sin(Date.now() * 0.001) * 0.2; // Slight vertical bobbing
+                renderer.render(scene, camera);
+            }
+            animate();
+        },
+        undefined,
+        (error) => {
+            console.error('Error loading chatbot.glb:', error);
+        }
+    );
+}
 // --- Handle Window Resize ---
 function onWindowResize() {
     // Update camera and renderer
@@ -351,12 +428,10 @@ window.addEventListener('DOMContentLoaded', () => {
     setupTypingAnimation();
     setupContactTypingEffect();
 
+    applyTiltEffect("intro")
+
+    loadglb()
+
     // Force an initial update of the 3D scene
     requestTick();
 });
-
-// Ensure the animations work when the page is fully loaded
-// window.addEventListener('load', () => {
-//     updateScrollHeight();
-//     requestTick();
-// });
