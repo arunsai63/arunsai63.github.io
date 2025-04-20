@@ -1,8 +1,23 @@
+/* CSS Variables for Theming */
+:root {
+    --primary-color: #00ff00;
+    --secondary-color: #31b831;
+    --text-color: #e0e0e0;
+    --background-color: #0a0a0a;
+    --card-background: rgba(20, 20, 20, 0.8);
+    --accent-color: #ffffff;
+    --border-color: #333;
+    --shadow-color: rgba(0, 255, 110, 0.5);
+    --muted-text-color: #cccccc;
+    --highlight-color: #444;
+    --terminal-green: #00ff00;
+}
+
 /* Basic Styling */
 body {
     font-family: 'Fira Code', monospace;
-    color: #e0e0e0;
-    background-color: #0a0a0a;
+    color: var(--text-color);
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -36,7 +51,7 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-color);
 }
 
 section:last-child {
@@ -48,9 +63,9 @@ h1,
 h2,
 h3 {
     font-family: 'Fira Code', monospace;
-    color: #00ffcc;
+    color: var(--primary-color);
     margin-bottom: 1rem;
-    text-shadow: 0 0 5px #00ffcc;
+    text-shadow: 0 0 5px var(--primary-color);
 }
 
 h1 {
@@ -63,7 +78,7 @@ h2 {
 
 h3 {
     font-size: 1.5rem;
-    color: #00b38f;
+    color: var(--secondary-color);
 }
 
 p,
@@ -72,7 +87,7 @@ li {
     line-height: 1.6;
     max-width: 800px;
     margin-bottom: 1rem;
-    color: #cccccc;
+    color: var(--muted-text-color);
 }
 
 ul {
@@ -82,32 +97,32 @@ ul {
 
 li::before {
     content: '> ';
-    color: #00ffcc;
+    color: var(--primary-color);
     margin-right: 0.5em;
 }
 
 a {
-    color: #00ffcc;
+    color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 a:hover {
-    color: #ffffff;
-    text-shadow: 0 0 8px #00ffcc;
+    color: var(--accent-color);
+    text-shadow: 0 0 8px var(--primary-color);
 }
 
 /* Skill Tag Styling */
 .skill-tag {
     display: inline-block;
-    background-color: #222;
-    color: #00ffcc;
+    background-color: var(--highlight-color);
+    color: var(--primary-color);
     padding: 0.3em 0.8em;
     margin: 0.3em;
     border-radius: 4px;
     font-size: 0.9rem;
     font-family: 'Fira Code', monospace;
-    border: 1px solid #444;
+    border: 1px solid var(--border-color);
 }
 
 /* Roadmap Timeline Styling */
@@ -132,31 +147,31 @@ a:hover {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 255, 204, 0.2), rgba(0, 255, 204, 1), rgba(0, 255, 204, 0.2));
-    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    background: linear-gradient(to bottom, rgba(0, 255, 204, 0.2), var(--primary-color), rgba(0, 255, 204, 0.2));
+    box-shadow: 0 0 10px var(--shadow-color);
 }
 
 .timeline-dot {
     position: absolute;
     width: 16px;
     height: 16px;
-    background-color: #00ffcc;
+    background-color: var(--primary-color);
     border-radius: 50%;
     left: -38px;
     top: 20px;
-    box-shadow: 0 0 10px #00ffcc;
+    box-shadow: 0 0 10px var(--primary-color);
     z-index: 1;
 }
 
 .timeline-year {
     position: absolute;
     font-family: 'Fira Code', monospace;
-    color: #00ffcc;
+    color: var(--primary-color);
     font-weight: bold;
     font-size: 1.2rem;
     left: -90px;
     top: 16px;
-    text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+    text-shadow: 0 0 5px var(--shadow-color);
     z-index: 1;
 }
 
@@ -169,8 +184,8 @@ a:hover {
 
 /* Experience Card Styling */
 .experience-card {
-    background-color: rgba(20, 20, 20, 0.8);
-    border: 1px solid #333;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 2rem;
     text-align: left;
@@ -193,21 +208,21 @@ a:hover {
 
 .experience-card .company {
     font-weight: bold;
-    color: #ffffff;
+    color: var(--accent-color);
     font-size: 1.2rem;
 }
 
 .experience-card .dates {
     font-style: italic;
-    color: #999;
+    color: var(--muted-text-color);
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
 
 .experience-card .tech-stack span {
     display: inline-block;
-    background-color: #333;
-    color: #aaa;
+    background-color: var(--border-color);
+    color: var(--muted-text-color);
     padding: 0.2em 0.6em;
     margin: 0.2em;
     border-radius: 3px;
@@ -226,13 +241,13 @@ a:hover {
     margin: 1rem 0;
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 4px;
-    border-left: 2px solid #00ffcc;
+    border-left: 2px solid var(--primary-color);
 }
 
 .ascii-art {
     font-family: monospace;
     line-height: 1.2;
-    color: #00ffcc;
+    color: var(--primary-color);
     margin: 0;
     white-space: pre;
     font-size: 0.7rem;
@@ -263,7 +278,7 @@ a:hover {
     overflow: hidden;
     transition: all 0.3s ease;
     position: relative;
-    border: 1px solid #333;
+    border: 1px solid var(--border-color);
 }
 
 .contact-item::before {
@@ -273,7 +288,7 @@ a:hover {
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    color: var(--accent-color);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     opacity: 0;
@@ -290,15 +305,15 @@ a:hover {
 
 .contact-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0, 255, 204, 0.2);
-    border-color: #00ffcc;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    border-color: var(--primary-color);
 }
 
 .contact-item a {
     display: flex;
     align-items: center;
     padding: 1rem;
-    color: #e0e0e0;
+    color: var(--text-color);
     text-decoration: none;
 }
 
@@ -316,7 +331,7 @@ a:hover {
 
 .contact-icon i {
     font-size: 1.5rem;
-    color: #00ffcc;
+    color: var(--primary-color);
 }
 
 .contact-info {
@@ -325,13 +340,13 @@ a:hover {
 
 .contact-label {
     font-size: 0.8rem;
-    color: #999;
+    color: var(--muted-text-color);
     margin-bottom: 0.25rem;
 }
 
 .contact-value {
     font-family: 'Fira Code', monospace;
-    color: #fff;
+    color: var(--accent-color);
     word-break: break-all;
 }
 
@@ -339,7 +354,7 @@ a:hover {
     display: inline-flex;
     align-items: center;
     background-color: rgba(0, 255, 204, 0.1);
-    color: #00ffcc;
+    color: var(--primary-color);
     padding: 0.75rem 1.5rem;
     border-radius: 4px;
     border: 1px solid rgba(0, 255, 204, 0.3);
@@ -368,7 +383,7 @@ a:hover {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     margin-bottom: 2rem;
-    border: 1px solid #444;
+    border: 1px solid var(--highlight-color);
 }
 
 /* iOS-style blur effect */
@@ -380,7 +395,7 @@ a:hover {
 }
 
 .terminal-header {
-    background-color: #333;
+    background-color: var(--border-color);
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
@@ -407,7 +422,7 @@ a:hover {
 }
 
 .terminal-title {
-    color: #aaa;
+    color: var(--muted-text-color);
     font-size: 0.9rem;
     font-family: 'Fira Code', monospace;
     margin-left: 1rem;
@@ -425,23 +440,23 @@ a:hover {
 }
 
 .terminal-prompt {
-    color: #00ff00;
+    color: var(--terminal-green);
     margin-right: 0.5rem;
 }
 
 .terminal-text {
-    color: #ffffff;
+    color: var(--accent-color);
 }
 
 .terminal-output {
     padding: 1rem 0 1rem 1.5rem;
     margin: 1rem 0;
-    border-left: 2px solid #444;
+    border-left: 2px solid var(--highlight-color);
 }
 
 .terminal-output h1,
 .terminal-output h2 {
-    text-shadow: 0 0 5px #00ffcc;
+    text-shadow: 0 0 5px var(--primary-color);
 }
 
 /* Navigation buttons styling */
@@ -527,6 +542,13 @@ a:hover {
 
 .mt-4 {
     margin-top: 1rem;
+}
+
+.workexp {
+    font-size: 2rem !important;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 2%;
 }
 
 /* Mobile responsive adjustments */
