@@ -33,7 +33,7 @@ async function main() {
   initFirebase().then((result) => {
     if (result) {
       initCursors(result.db, result.userId)
-      notify('🌐 Connected', `Multiplayer enabled. Other visitors can see your cursor!`, 4000)
+      notify('Connected', `Multiplayer enabled. Other visitors can see your cursor.`, 4000)
     }
   }).catch(() => {
     // Offline mode — no multiplayer, no problem

@@ -19,7 +19,7 @@ export function open() {
       el.style.cssText = 'padding:0;display:flex;flex-direction:column;font-size:13px;'
 
       el.innerHTML = `
-        <div style="padding:8px 12px;background:#12122a;border-bottom:1px solid #222;display:flex;align-items:center;gap:8px;">
+        <div style="padding:8px 12px;background:#111;border-bottom:1px solid #222;display:flex;align-items:center;gap:8px;">
           <span style="font-size:16px;">💬</span>
           <span style="color:#888;font-size:12px;">ArunOS Global Chat</span>
           <span style="margin-left:auto;color:#555;font-size:11px;" id="chat-status">Connecting...</span>
@@ -27,13 +27,13 @@ export function open() {
 
         <div id="chat-messages" style="flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;"></div>
 
-        <div style="padding:8px 12px;background:#12122a;border-top:1px solid #222;">
+        <div style="padding:8px 12px;background:#111;border-top:1px solid #222;">
           <div style="margin-bottom:6px;display:flex;gap:6px;align-items:center;">
-            <input id="chat-name" type="text" value="${myName}" placeholder="Your name" style="width:140px;padding:4px 8px;background:#1a1a30;border:1px solid #333;border-radius:4px;color:#ccc;font-size:11px;font-family:inherit;outline:none;" />
+            <input id="chat-name" type="text" value="${myName}" placeholder="Your name" style="width:140px;padding:4px 8px;background:#1a1a1a;border:1px solid #333;border-radius:4px;color:#ccc;font-size:11px;font-family:inherit;outline:none;" />
             <span style="color:#444;font-size:10px;">← your display name</span>
           </div>
           <div style="display:flex;gap:6px;">
-            <input id="chat-input" type="text" placeholder="Type a message..." maxlength="200" style="flex:1;padding:8px 12px;background:#1a1a30;border:1px solid #333;border-radius:6px;color:#ccc;font-family:inherit;font-size:13px;outline:none;" />
+            <input id="chat-input" type="text" placeholder="Type a message..." maxlength="200" style="flex:1;padding:8px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;color:#ccc;font-family:inherit;font-size:13px;outline:none;" />
             <button id="chat-send" style="padding:8px 14px;background:#10b981;color:#000;border-radius:6px;font-weight:600;font-size:13px;font-family:inherit;cursor:pointer;border:none;">Send</button>
           </div>
           <div style="color:#444;font-size:10px;margin-top:4px;">Messages are ephemeral. Be nice. Or don't. I'm not your mom.</div>
@@ -122,7 +122,7 @@ function addChatMessage(container, msg, isMine) {
     <span style="font-size:10px;color:${msg.color || '#888'};margin-bottom:2px;">${escapeHtml(msg.name)}</span>
     <div style="max-width:75%;padding:8px 12px;border-radius:12px;${isMine
       ? 'background:#10b981;color:#000;border-bottom-right-radius:4px;'
-      : 'background:#1a1a30;color:#ccc;border-bottom-left-radius:4px;'
+      : 'background:#1a1a1a;color:#ccc;border-bottom-left-radius:4px;'
     }font-size:13px;line-height:1.4;word-break:break-word;">${escapeHtml(msg.text)}</div>
     <span style="font-size:9px;color:#444;margin-top:2px;">${formatTime(msg.timestamp)}</span>
   `

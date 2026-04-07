@@ -14,7 +14,7 @@ export function open() {
 
       el.innerHTML = `
         <div id="term-output" style="flex:1;overflow-y:auto;padding:12px;line-height:1.7;"></div>
-        <div style="display:flex;align-items:center;padding:8px 12px;border-top:1px solid #1a1a30;flex-shrink:0;">
+        <div style="display:flex;align-items:center;padding:8px 12px;border-top:1px solid #1a1a1a;flex-shrink:0;">
           <span style="color:#10b981;margin-right:8px;white-space:nowrap;">arun@portfolio:~$</span>
           <input id="term-input" type="text" autocomplete="off" spellcheck="false" style="flex:1;background:none;border:none;color:#ccc;font-family:inherit;font-size:13px;outline:none;" />
         </div>

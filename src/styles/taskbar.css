@@ -1,9 +1,9 @@
 /* ===== Taskbar ===== */
 .taskbar {
   height: 48px;
-  background: rgba(16, 16, 32, 0.95);
+  background: rgba(12, 12, 12, 0.95);
   backdrop-filter: blur(20px);
-  border-top: 1px solid #2a2a3e;
+  border-top: 1px solid #222;
   display: flex;
   align-items: center;
   padding: 0 8px;
@@ -13,19 +13,22 @@
 
 /* Start Button */
 .start-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: #10b981;
   transition: background 0.15s;
   flex-shrink: 0;
 }
 
 .start-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* Taskbar apps (middle) */
@@ -46,7 +49,7 @@
   align-items: center;
   gap: 6px;
   font-size: 12px;
-  color: #aaa;
+  color: #888;
   cursor: pointer;
   transition: background 0.15s;
   white-space: nowrap;
@@ -54,12 +57,12 @@
 }
 
 .taskbar-app:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .taskbar-app.active {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ddd;
   border-bottom: 2px solid #10b981;
 }
 
@@ -79,7 +82,7 @@
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 12px;
-  color: #999;
+  color: #666;
   cursor: pointer;
   transition: all 0.15s;
   display: flex;
@@ -89,20 +92,20 @@
 }
 
 .tray-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ccc;
+  background: rgba(255, 255, 255, 0.06);
+  color: #999;
 }
 
 .tray-clock {
   font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
-  color: #bbb;
+  color: #888;
   padding: 4px 10px;
   font-variant-numeric: tabular-nums;
 }
 
 .tray-visitors {
-  background: rgba(16, 185, 129, 0.15);
+  background: rgba(16, 185, 129, 0.1);
   color: #10b981;
   border-radius: 12px;
   padding: 2px 8px;
@@ -116,11 +119,11 @@
   bottom: 56px;
   left: 8px;
   width: 320px;
-  background: rgba(22, 22, 42, 0.97);
+  background: rgba(18, 18, 18, 0.97);
   backdrop-filter: blur(30px);
-  border: 1px solid #2a2a3e;
+  border: 1px solid #262626;
   border-radius: 12px;
-  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.7);
   z-index: 9500;
   overflow: hidden;
   display: none;
@@ -132,14 +135,14 @@
 
 .start-menu-search {
   padding: 12px;
-  border-bottom: 1px solid #2a2a3e;
+  border-bottom: 1px solid #262626;
 }
 
 .start-menu-search input {
   width: 100%;
   padding: 8px 12px;
-  background: #1a1a30;
-  border: 1px solid #333;
+  background: #111;
+  border: 1px solid #2a2a2a;
   border-radius: 6px;
   color: #ccc;
   font-size: 13px;
@@ -151,7 +154,7 @@
 }
 
 .start-menu-search input::placeholder {
-  color: #666;
+  color: #555;
 }
 
 .start-menu-apps {
@@ -171,13 +174,13 @@
   cursor: pointer;
   transition: background 0.15s;
   font-size: 11px;
-  color: #aaa;
+  color: #888;
   text-align: center;
 }
 
 .start-menu-app:hover {
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+  color: #ccc;
 }
 
 .start-menu-app-icon {
@@ -187,12 +190,12 @@
 
 .start-menu-footer {
   padding: 8px 12px;
-  border-top: 1px solid #2a2a3e;
+  border-top: 1px solid #262626;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 11px;
-  color: #666;
+  color: #555;
 }
 
 /* ===== Notification Toast ===== */
@@ -207,14 +210,14 @@
 }
 
 .notification-toast {
-  background: rgba(22, 22, 42, 0.95);
+  background: rgba(18, 18, 18, 0.95);
   backdrop-filter: blur(20px);
-  border: 1px solid #2a2a3e;
+  border: 1px solid #262626;
   border-radius: 10px;
   padding: 12px 16px;
   min-width: 280px;
   max-width: 360px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   animation: slideIn 0.3s ease;
   cursor: pointer;
   transition: opacity 0.3s;
@@ -227,13 +230,13 @@
 .notification-title {
   font-size: 12px;
   font-weight: 600;
-  color: #fff;
+  color: #ddd;
   margin-bottom: 4px;
 }
 
 .notification-body {
   font-size: 12px;
-  color: #999;
+  color: #777;
   line-height: 1.4;
 }
 

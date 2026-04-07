@@ -1,4 +1,4 @@
-// Boot sequence — GitHub README → "Run" button → Terminal boot → Desktop
+// Boot sequence — Terminal boot with user-agent & location detection → Desktop
 import { getBootMessages, getYOE } from '../shared/data.js'
 
 export function bootSequence(container) {
@@ -10,12 +10,8 @@ export function bootSequence(container) {
 
     container.appendChild(overlay)
 
-    // PHASE 1: GitHub README
-    showReadme(overlay).then(() => {
-      if (skipped) return
-      // PHASE 2: Terminal boot
-      return showTerminalBoot(overlay)
-    }).then(() => {
+    // Go straight to terminal boot (no README gate)
+    showTerminalBoot(overlay).then(() => {
       if (!skipped) {
         overlay.style.transition = 'opacity 0.5s'
         overlay.style.opacity = '0'
@@ -23,7 +19,7 @@ export function bootSequence(container) {
       }
     })
 
-    // Skip handler (click skip button only)
+    // Skip handler
     function skip() {
       skipped = true
       overlay.style.transition = 'opacity 0.3s'
@@ -35,92 +31,61 @@ export function bootSequence(container) {
   })
 }
 
-function showReadme(overlay) {
-  return new Promise((resolve) => {
-    overlay.style.background = '#0d1117'
+function detectEnvironment() {
+  const ua = navigator.userAgent
+  const lines = []
 
-    overlay.innerHTML = `
-      <div style="max-width:900px;margin:0 auto;padding:24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;">
-        <!-- GitHub-style header -->
-        <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#161b22;border:1px solid #30363d;border-radius:6px 6px 0 0;margin-bottom:0;">
-          <span style="color:#8b949e;font-size:14px;">📄</span>
-          <span style="color:#c9d1d9;font-size:14px;font-weight:600;">README.md</span>
-          <span style="color:#484f58;font-size:12px;margin-left:auto;">Raw</span>
-          <span style="color:#484f58;font-size:12px;">Blame</span>
-          <span style="color:#484f58;font-size:12px;">History</span>
-        </div>
+  // Browser detection
+  if (ua.includes('Firefox')) {
+    lines.push({ text: 'Browser: Firefox detected. A developer of culture.', type: 'ok' })
+  } else if (ua.includes('Edg')) {
+    lines.push({ text: 'Browser: Edge? Bold. Microsoft would be proud.', type: 'ok' })
+  } else if (ua.includes('OPR') || ua.includes('Opera')) {
+    lines.push({ text: 'Browser: Opera? You are a rare breed.', type: 'ok' })
+  } else if (ua.includes('Chrome')) {
+    lines.push({ text: 'Browser: Chrome detected. RIP your RAM.', type: 'ok' })
+  } else if (ua.includes('Safari')) {
+    lines.push({ text: 'Browser: Safari. Fancy Apple user detected.', type: 'ok' })
+  } else {
+    lines.push({ text: 'Browser: Unknown... respect for the obscure choice.', type: 'ok' })
+  }
 
-        <!-- README content -->
-        <div style="background:#0d1117;border:1px solid #30363d;border-top:none;border-radius:0 0 6px 6px;padding:32px;color:#c9d1d9;font-size:15px;line-height:1.7;">
-          <h1 style="font-size:28px;border-bottom:1px solid #21262d;padding-bottom:12px;margin-bottom:16px;color:#f0f6fc;">Arun Munaganti</h1>
+  // OS detection
+  if (/iPhone|iPad|iPod/.test(ua)) {
+    lines.push({ text: 'Host OS: iOS — browsing portfolios on the go', type: 'ok' })
+  } else if (ua.includes('Android')) {
+    lines.push({ text: 'Host OS: Android — a person of the people', type: 'ok' })
+  } else if (ua.includes('Mac')) {
+    lines.push({ text: 'Host OS: macOS — good taste, expensive taste', type: 'ok' })
+  } else if (ua.includes('Windows')) {
+    lines.push({ text: 'Host OS: Windows — a fellow sufferer', type: 'ok' })
+  } else if (ua.includes('Linux')) {
+    lines.push({ text: 'Host OS: Linux — bet you compile your own kernels', type: 'ok' })
+  } else {
+    lines.push({ text: 'Host OS: Unknown — running ArunOS inside a mystery', type: 'ok' })
+  }
 
-          <blockquote style="border-left:3px solid #3b82f6;padding-left:16px;color:#8b949e;margin:16px 0;">
-            Solutions Architect | ${getYOE()}+ YOE | Full Stack | AWS | Blockchain
-          </blockquote>
+  // Screen
+  const w = window.screen.width
+  const h = window.screen.height
+  const dpr = window.devicePixelRatio || 1
+  lines.push({ text: `Display: ${w}x${h} @ ${dpr}x DPI`, type: 'ok' })
 
-          <p style="margin:12px 0;">I'm a solutions architect who thinks in systems, not just code. Currently leading the engineering team at <strong style="color:#f0f6fc;">EchorTech</strong>.</p>
+  return lines
+}
 
-          <h2 style="font-size:20px;border-bottom:1px solid #21262d;padding-bottom:8px;margin:24px 0 12px;color:#f0f6fc;">Quick Start</h2>
-
-          <!-- The magic code block -->
-          <div style="background:#161b22;border:1px solid #30363d;border-radius:6px;overflow:hidden;margin:16px 0;">
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 16px;border-bottom:1px solid #30363d;">
-              <span style="color:#8b949e;font-size:12px;">bash</span>
-              <button id="readme-run-btn" style="padding:4px 12px;background:#238636;color:#fff;border:none;border-radius:4px;font-size:12px;cursor:pointer;font-weight:600;transition:all 0.2s;">
-                ▶ Run
-              </button>
-            </div>
-            <pre style="padding:16px;margin:0;color:#c9d1d9;font-family:'JetBrains Mono',monospace;font-size:14px;"><code id="readme-code">$ npx arun-os --boot</code></pre>
-          </div>
-
-          <p style="color:#484f58;font-size:13px;margin-top:20px;" id="readme-hint"></p>
-        </div>
-
-        <!-- Skip -->
-        <div style="text-align:center;margin-top:16px;">
-          <button id="readme-skip" style="color:#484f58;font-size:12px;background:none;border:none;cursor:pointer;font-family:inherit;">Skip intro →</button>
-        </div>
-      </div>
-    `
-
-    const runBtn = overlay.querySelector('#readme-run-btn')
-    const hint = overlay.querySelector('#readme-hint')
-    const skip = overlay.querySelector('#readme-skip')
-
-    skip.addEventListener('click', () => overlay.__skip())
-
-    // Auto-hint after 3s
-    const hintTimer = setTimeout(() => {
-      hint.textContent = "↑ Click 'Run' to boot ArunOS. Or don't. I'm a README, not a cop."
-      hint.style.transition = 'opacity 0.5s'
-    }, 3000)
-
-    // Auto-run after 8s
-    const autoTimer = setTimeout(() => {
-      hint.textContent = "Oh come on, you weren't going to click it? Fine, I'll do it myself."
-      setTimeout(() => clickRun(), 1500)
-    }, 8000)
-
-    function clickRun() {
-      clearTimeout(hintTimer)
-      clearTimeout(autoTimer)
-      runBtn.textContent = '⏳ Running...'
-      runBtn.style.background = '#1a7f37'
-
-      // Glitch transition
-      setTimeout(() => {
-        const readmeContent = overlay.querySelector('div')
-        readmeContent.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
-        readmeContent.style.transform = 'scale(0.95)'
-        readmeContent.style.opacity = '0'
-        readmeContent.style.filter = 'blur(4px)'
-
-        setTimeout(resolve, 600)
-      }, 500)
-    }
-
-    runBtn.addEventListener('click', clickRun)
-  })
+async function fetchLocation() {
+  try {
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 3000)
+    const res = await fetch('https://ipapi.co/json/', { signal: controller.signal })
+    clearTimeout(timeout)
+    if (!res.ok) return null
+    const data = await res.json()
+    return { city: data.city, region: data.region, country: data.country_name, ip: data.ip }
+  } catch {
+    return null
+  }
 }
 
 function showTerminalBoot(overlay) {
@@ -139,8 +104,23 @@ function showTerminalBoot(overlay) {
 
     skipBtn.addEventListener('click', () => { skipped = true; resolve() })
 
+    // Start location fetch in parallel (non-blocking)
+    const locationPromise = fetchLocation()
+
+    // Phase 1: Hardware detection (static boot messages)
     const bootMessages = getBootMessages()
-    for (const msg of bootMessages) {
+    const envLines = detectEnvironment()
+
+    // Insert environment lines after the hardware detection section
+    const insertIdx = bootMessages.findIndex(m => m.type === 'blank')
+    const allMessages = [
+      ...bootMessages.slice(0, insertIdx >= 0 ? insertIdx : 6),
+      ...envLines,
+      { text: '', type: 'blank' },
+      ...bootMessages.slice(insertIdx >= 0 ? insertIdx + 1 : 6),
+    ]
+
+    for (const msg of allMessages) {
       if (skipped) { resolve(); return }
 
       if (msg.type === 'blank') {
@@ -168,6 +148,20 @@ function showTerminalBoot(overlay) {
         : msg.type === 'success' ? 400
         : Math.random() * 120 + 60
       await sleep(delay)
+    }
+
+    // Add location line if it resolved
+    if (!skipped) {
+      const loc = await locationPromise
+      if (loc && loc.city) {
+        const locLine = document.createElement('div')
+        locLine.innerHTML = `<span style="color:#10b981;">[OK]</span> <span style="color:#888;">Visitor location: ${loc.city}, ${loc.country} — welcome!</span>`
+        // Insert before the last success line
+        const lastChild = log.lastElementChild
+        log.insertBefore(locLine, lastChild)
+        log.scrollTop = log.scrollHeight
+        await sleep(300)
+      }
     }
 
     if (!skipped) {

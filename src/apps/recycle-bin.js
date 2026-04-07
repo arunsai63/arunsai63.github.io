@@ -22,7 +22,7 @@ export function open() {
       el.style.cssText = 'padding:0;font-family:"JetBrains Mono",monospace;font-size:12px;'
 
       el.innerHTML = `
-        <div style="padding:8px 16px;background:#12122a;border-bottom:1px solid #222;color:#666;font-size:11px;">
+        <div style="padding:8px 16px;background:#111;border-bottom:1px solid #222;color:#666;font-size:11px;">
           ⚠️ WARNING: Contents of this bin may cause secondhand embarrassment. Viewer discretion advised.
         </div>
         <div style="overflow-y:auto;flex:1;">
@@ -40,9 +40,9 @@ export function open() {
             </div>
           `).join('')}
         </div>
-        <div style="padding:8px 16px;background:#12122a;border-top:1px solid #222;display:flex;justify-content:space-between;align-items:center;">
+        <div style="padding:8px 16px;background:#111;border-top:1px solid #222;display:flex;justify-content:space-between;align-items:center;">
           <span style="color:#555;font-size:11px;">${trash.length} items | Total size: mass amounts</span>
-          <button id="empty-trash" style="padding:4px 12px;background:#1a1a30;border:1px solid #ef444444;border-radius:4px;color:#ef4444;font-size:11px;cursor:pointer;font-family:inherit;">Empty Trash</button>
+          <button id="empty-trash" style="padding:4px 12px;background:#1a1a1a;border:1px solid #ef444444;border-radius:4px;color:#ef4444;font-size:11px;cursor:pointer;font-family:inherit;">Empty Trash</button>
         </div>
       `
 

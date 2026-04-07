@@ -2,16 +2,16 @@
 import { createWindow } from '../os/window-manager.js'
 
 const apps = {
-  about: { id: 'about', label: 'About Me', icon: '👤', module: () => import('./about.js') },
-  experience: { id: 'experience', label: 'Experience', icon: '📊', module: () => import('./experience.js') },
-  skills: { id: 'skills', label: 'Skills.txt', icon: '⚡', module: () => import('./skills.js') },
-  terminal: { id: 'terminal', label: 'Terminal', icon: '🖥️', module: () => import('./terminal.js') },
-  projects: { id: 'projects', label: 'Projects', icon: '📁', module: () => import('./file-explorer.js') },
-  contact: { id: 'contact', label: 'Contact', icon: '📧', module: () => import('./contact.js') },
-  chat: { id: 'chat', label: 'Chat', icon: '💬', module: () => import('./chat.js') },
-  calculator: { id: 'calculator', label: 'Calculator', icon: '🔢', module: () => import('./calculator.js') },
-  settings: { id: 'settings', label: 'Settings', icon: '⚙️', module: () => import('./settings.js') },
-  'recycle-bin': { id: 'recycle-bin', label: 'Recycle Bin', icon: '🗑️', module: () => import('./recycle-bin.js') },
+  about: { id: 'about', label: 'About Me', icon: 'i', module: () => import('./about.js') },
+  experience: { id: 'experience', label: 'Experience', icon: '%', module: () => import('./experience.js') },
+  skills: { id: 'skills', label: 'Skills.txt', icon: '#', module: () => import('./skills.js') },
+  terminal: { id: 'terminal', label: 'Terminal', icon: '>', module: () => import('./terminal.js') },
+  projects: { id: 'projects', label: 'Projects', icon: '~', module: () => import('./file-explorer.js') },
+  contact: { id: 'contact', label: 'Contact', icon: '@', module: () => import('./contact.js') },
+  chat: { id: 'chat', label: 'Chat', icon: '&', module: () => import('./chat.js') },
+  calculator: { id: 'calculator', label: 'Calculator', icon: '+', module: () => import('./calculator.js') },
+  settings: { id: 'settings', label: 'Settings', icon: '*', module: () => import('./settings.js') },
+  'recycle-bin': { id: 'recycle-bin', label: 'Recycle Bin', icon: 'x', module: () => import('./recycle-bin.js') },
 }
 
 export function appList() {

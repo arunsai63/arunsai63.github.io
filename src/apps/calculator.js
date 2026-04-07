@@ -22,7 +22,7 @@ export function open() {
               const isOp = '÷×-+%='.includes(btn)
               const isC = btn === 'C' || btn === '±'
               return `<button class="calc-btn" data-val="${btn}" style="padding:14px;border-radius:8px;font-size:18px;font-family:'JetBrains Mono',monospace;cursor:pointer;border:none;
-                background:${isOp ? '#10b981' : isC ? '#333' : '#1a1a30'};
+                background:${isOp ? '#10b981' : isC ? '#333' : '#1a1a1a'};
                 color:${isOp ? '#000' : '#ccc'};">${btn}</button>`
             }).join('')}
           </div>

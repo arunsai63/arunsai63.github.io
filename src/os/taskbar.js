@@ -9,12 +9,12 @@ export function renderTaskbar(desktopEl) {
   const taskbar = document.createElement('div')
   taskbar.className = 'taskbar'
   taskbar.innerHTML = `
-    <button class="start-btn" title="Start Menu">🚀</button>
+    <button class="start-btn" title="Start Menu">A:</button>
     <div class="taskbar-apps"></div>
     <div class="system-tray">
-      <span class="tray-item tray-visitors" title="Visitors online">👥 1</span>
-      <span class="tray-item" title="WiFi: FBI_Surveillance_Van_7 | Signal: vibes">📶</span>
-      <span class="tray-item" title="Battery: 99% (it's been 99% since 2019)">🔋 99%</span>
+      <span class="tray-item tray-visitors" title="Visitors online">1 online</span>
+      <span class="tray-item" title="WiFi: FBI_Surveillance_Van_7 | Signal: vibes">wifi</span>
+      <span class="tray-item" title="Battery: 99% (it's been 99% since 2019)">99%</span>
       <span class="tray-item tray-clock"></span>
     </div>
   `
@@ -97,7 +97,7 @@ function openStartMenu(desktopEl) {
     </div>
     <div class="start-menu-footer">
       <span>ArunOS v${getYOE()}</span>
-      <span>⏻ Shut Down</span>
+      <span style="cursor:pointer;">Shut Down</span>
     </div>
   `
 
@@ -134,13 +134,13 @@ function handleStartSearch(query, menu) {
 
   // Easter egg searches
   const easterEggs = {
-    'salary': '💰 Nice try, HR.',
-    'password': '🔐 It\'s "password123". Just kidding. Or am I?',
-    'bugs': '🐛 We don\'t have those here. Only undocumented features.',
-    'fired': '🔥 Error 403: This search is above your pay grade.',
-    'coffee': '☕ Now we\'re talking. Essential system resource.',
-    'girlfriend': '💔 404: Not Found (insufficient time allocated)',
-    'sleep': '😴 Module not found. Have you tried coffee instead?',
+    'salary': 'Nice try, HR.',
+    'password': 'It\'s "password123". Just kidding. Or am I?',
+    'bugs': 'We don\'t have those here. Only undocumented features.',
+    'fired': 'Error 403: This search is above your pay grade.',
+    'coffee': 'Now we\'re talking. Essential system resource.',
+    'girlfriend': '404: Not Found (insufficient time allocated)',
+    'sleep': 'Module not found. Have you tried coffee instead?',
   }
 
   if (easterEggs[query]) {

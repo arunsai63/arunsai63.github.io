@@ -23,7 +23,7 @@ export function open() {
         }).join(' <span style="color:#555;">/</span> ')
 
         el.innerHTML = `
-          <div style="padding:8px 16px;background:#12122a;border-bottom:1px solid #222;display:flex;align-items:center;gap:8px;">
+          <div style="padding:8px 16px;background:#111;border-bottom:1px solid #222;display:flex;align-items:center;gap:8px;">
             <button class="nav-back" style="color:#666;font-size:16px;cursor:pointer;background:none;border:none;font-family:inherit;" ${path === '~' ? 'disabled' : ''}>←</button>
             <div style="flex:1;color:#888;font-size:12px;">📁 ${breadcrumbs}</div>
           </div>
@@ -39,7 +39,7 @@ export function open() {
               </div>
             `).join('')}
           </div>
-          <div style="padding:6px 16px;background:#12122a;border-top:1px solid #222;font-size:11px;color:#555;">
+          <div style="padding:6px 16px;background:#111;border-top:1px solid #222;font-size:11px;color:#555;">
             ${Object.keys(node.children).length} items | Path: ${path.replace('~', '/home/arun')}
           </div>
         `

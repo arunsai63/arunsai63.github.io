@@ -50,7 +50,7 @@ export function initCursors(database, uid) {
     // Update visitor count in taskbar
     const visitorCount = Object.keys(data).filter(uid => Date.now() - (data[uid]?.t || 0) < 10000).length
     const trayEl = document.querySelector('.tray-visitors')
-    if (trayEl) trayEl.textContent = `👥 ${visitorCount}`
+    if (trayEl) trayEl.textContent = `${visitorCount} online`
   })
 
   // Set up presence cleanup

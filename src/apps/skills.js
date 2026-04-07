@@ -13,7 +13,7 @@ export function open() {
 
       // Notepad-style toolbar
       el.innerHTML = `
-        <div style="padding:4px 12px;background:#16162a;border-bottom:1px solid #222;font-size:11px;color:#666;display:flex;gap:16px;">
+        <div style="padding:4px 12px;background:#121212;border-bottom:1px solid #222;font-size:11px;color:#666;display:flex;gap:16px;">
           <span>File</span><span>Edit</span><span>Format</span><span style="cursor:pointer;color:#10b981;" id="skills-view-toggle">View: 📝 Text → 📊 Visual</span>
         </div>
         <div id="skills-content" style="flex:1;overflow-y:auto;padding:16px;font-size:13px;line-height:1.7;"></div>
@@ -61,7 +61,7 @@ function renderVisual(el) {
               const level = getSkillLevel(skill)
               const color = level > 85 ? '#10b981' : level > 70 ? '#3b82f6' : level > 55 ? '#f59e0b' : '#8b5cf6'
               return `
-                <div style="background:#12122a;border:1px solid #2a2a3e;border-radius:6px;padding:8px 12px;position:relative;overflow:hidden;cursor:default;" title="${skill}: ${level}% proficiency">
+                <div style="background:#111;border:1px solid #262626;border-radius:6px;padding:8px 12px;position:relative;overflow:hidden;cursor:default;" title="${skill}: ${level}% proficiency">
                   <div style="position:absolute;bottom:0;left:0;height:3px;background:${color};width:${level}%;border-radius:0 2px 0 0;transition:width 1s;"></div>
                   <span style="color:#ccc;font-size:12px;">${skill}</span>
                 </div>`
