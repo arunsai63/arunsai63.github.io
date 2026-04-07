@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArunOS — FATAL ERROR</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0037DA;
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 40px;
+      overflow: hidden;
+    }
+    .bsod {
+      max-width: 700px;
+      text-align: left;
+    }
+    .bsod h1 {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+    .bsod p {
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      color: #ccc;
+    }
+    .bsod .sad { font-size: 80px; margin-bottom: 24px; }
+    .bsod .error-code { color: #888; font-size: 12px; margin-top: 24px; }
+    .bsod a {
+      color: #fff;
+      background: rgba(255,255,255,0.15);
+      padding: 10px 24px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    .bsod a:hover { background: rgba(255,255,255,0.25); }
+  </style>
+</head>
+<body>
+  <div class="bsod">
+    <div class="sad">:(</div>
+    <h1>ARUN_PORTFOLIO_NOT_FOUND</h1>
+    <p>
+      Your PC ran into a page it couldn't handle, and now it needs to rethink its life choices.
+    </p>
+    <p>
+      What you were looking for: doesn't exist.<br>
+      What you should look at instead: the homepage.
+    </p>
+    <p>
+      If you'd like to know more, you can search online for this error:<br>
+      <strong>STOP CODE: 0xDEADBEEF</strong>
+    </p>
+    <a href="/">⏻ Reboot ArunOS</a>
+    <div class="error-code">
+      Error code: PAGE_NOT_IN_FILESYSTEM<br>
+      If this keeps happening, try closing some Chrome tabs. You have too many open. We both know it.
+    </div>
+  </div>
+</body>
+</html>
