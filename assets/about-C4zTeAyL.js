@@ -1,4 +1,4 @@
-import{c as s,p as i,g as l}from"./index-CeLzqF6v.js";function g(){s({id:"about",title:"About Me — README.md",icon:"👤",width:620,height:520,content:e=>{e.innerHTML=`
+import{c as s,p as i,g as l}from"./index-BwLrzomA.js";function g(){s({id:"about",title:"About Me — README.md",icon:"👤",width:620,height:520,content:e=>{e.innerHTML=`
         <div style="font-family:'JetBrains Mono',monospace;">
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
             <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#10b981,#3b82f6);display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0;">🧑‍💻</div>

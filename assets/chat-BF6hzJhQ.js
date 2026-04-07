@@ -1,4 +1,4 @@
-import{c as C,q as S,l as E,r as x,a as k,o as z,b as T,d as w}from"./index-CeLzqF6v.js";const f=["#10b981","#3b82f6","#f59e0b","#ef4444","#8b5cf6","#ec4899"];function O(){const o=f[Math.floor(Math.random()*f.length)],n=localStorage.getItem("arunos-chat-name")||"Anonymous Visitor";C({id:"chat",title:"ArunOS Messenger",icon:"💬",width:420,height:500,content:e=>{e.style.cssText="padding:0;display:flex;flex-direction:column;font-size:13px;",e.innerHTML=`
+import{c as C,q as S,l as E,r as x,a as k,o as z,b as T,d as w}from"./index-BwLrzomA.js";const f=["#10b981","#3b82f6","#f59e0b","#ef4444","#8b5cf6","#ec4899"];function O(){const o=f[Math.floor(Math.random()*f.length)],n=localStorage.getItem("arunos-chat-name")||"Anonymous Visitor";C({id:"chat",title:"ArunOS Messenger",icon:"💬",width:420,height:500,content:e=>{e.style.cssText="padding:0;display:flex;flex-direction:column;font-size:13px;",e.innerHTML=`
         <div style="padding:8px 12px;background:rgba(0,0,0,0.25);border-bottom:1px solid #222;display:flex;align-items:center;gap:8px;">
           <span style="font-size:16px;">💬</span>
           <span style="color:#888;font-size:12px;">ArunOS Global Chat</span>

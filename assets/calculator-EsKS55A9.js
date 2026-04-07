@@ -1,4 +1,4 @@
-import{c as d}from"./index-CeLzqF6v.js";function p(){d({id:"calculator",title:"Calculator (totally accurate)",icon:"🔢",width:300,height:400,content:a=>{a.style.cssText="padding:16px;display:flex;flex-direction:column;gap:8px;";let l="0",t=null,i=null,o=!0;function s(){a.innerHTML=`
+import{c as d}from"./index-BwLrzomA.js";function p(){d({id:"calculator",title:"Calculator (totally accurate)",icon:"🔢",width:300,height:400,content:a=>{a.style.cssText="padding:16px;display:flex;flex-direction:column;gap:8px;";let l="0",t=null,i=null,o=!0;function s(){a.innerHTML=`
           <div style="background:#0d0d1a;padding:16px;border-radius:8px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:28px;color:#fff;overflow:hidden;min-height:50px;">${l}</div>
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">
             ${["C","±","%","÷","7","8","9","×","4","5","6","-","1","2","3","+","0","0",".","="].map(e=>{const n="÷×-+%=".includes(e);return`<button class="calc-btn" data-val="${e}" style="padding:14px;border-radius:8px;font-size:18px;font-family:'JetBrains Mono',monospace;cursor:pointer;border:none;

@@ -1,4 +1,4 @@
-import{c as i,p as o}from"./index-CeLzqF6v.js";function r(){i({id:"contact",title:"Mail — New Message",icon:"📧",width:550,height:420,content:e=>{e.style.cssText="padding:0;font-size:13px;display:flex;flex-direction:column;",e.innerHTML=`
+import{c as i,p as o}from"./index-BwLrzomA.js";function r(){i({id:"contact",title:"Mail — New Message",icon:"📧",width:550,height:420,content:e=>{e.style.cssText="padding:0;font-size:13px;display:flex;flex-direction:column;",e.innerHTML=`
         <div style="padding:12px 16px;background:rgba(0,0,0,0.25);border-bottom:1px solid #222;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
             <span style="color:#666;width:40px;">To:</span>

@@ -1,4 +1,4 @@
-import{c as g,g as d,p as c,e as u,s as v,f as w}from"./index-CeLzqF6v.js";function S(){g({id:"terminal",title:"Terminal",icon:"🖥️",width:700,height:480,content:s=>{s.style.cssText='padding:0;background:#0d0d1a;font-family:"JetBrains Mono",monospace;font-size:13px;display:flex;flex-direction:column;',s.innerHTML=`
+import{c as g,g as d,p as c,e as u,s as v,f as w}from"./index-BwLrzomA.js";function S(){g({id:"terminal",title:"Terminal",icon:"🖥️",width:700,height:480,content:s=>{s.style.cssText='padding:0;background:#0d0d1a;font-family:"JetBrains Mono",monospace;font-size:13px;display:flex;flex-direction:column;',s.innerHTML=`
         <div id="term-output" style="flex:1;overflow-y:auto;padding:12px;line-height:1.7;"></div>
         <div style="display:flex;align-items:center;padding:8px 12px;border-top:1px solid #1a1a1a;flex-shrink:0;">
           <span style="color:#10b981;margin-right:8px;white-space:nowrap;">arun@portfolio:~$</span>

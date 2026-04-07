@@ -1,4 +1,4 @@
-import{c as p,s as l}from"./index-CeLzqF6v.js";function u(){p({id:"skills",title:"Skills.txt — Notepad",icon:"⚡",width:600,height:480,content:e=>{e.style.cssText='padding:0;display:flex;flex-direction:column;font-family:"JetBrains Mono",monospace;',e.innerHTML=`
+import{c as p,s as l}from"./index-BwLrzomA.js";function u(){p({id:"skills",title:"Skills.txt — Notepad",icon:"⚡",width:600,height:480,content:e=>{e.style.cssText='padding:0;display:flex;flex-direction:column;font-family:"JetBrains Mono",monospace;',e.innerHTML=`
         <div style="padding:4px 12px;background:#121212;border-bottom:1px solid #222;font-size:11px;color:#666;display:flex;gap:16px;">
           <span>File</span><span>Edit</span><span>Format</span><span style="cursor:pointer;color:#10b981;" id="skills-view-toggle">View: 📝 Text → 📊 Visual</span>
         </div>

@@ -1,4 +1,4 @@
-import{c as d,e as n}from"./index-CeLzqF6v.js";function r(){d({id:"experience",title:"System Monitor — Experience.exe",icon:"📊",width:750,height:550,content:s=>{s.style.padding="0",s.innerHTML=`
+import{c as d,e as n}from"./index-BwLrzomA.js";function r(){d({id:"experience",title:"System Monitor — Experience.exe",icon:"📊",width:750,height:550,content:s=>{s.style.padding="0",s.innerHTML=`
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;">
           <!-- Header bars -->
           <div style="padding:12px 16px;background:#0d0d1a;border-bottom:1px solid #222;">
