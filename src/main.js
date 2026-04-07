@@ -16,6 +16,7 @@ import { initScreensaver } from './os/screensaver.js'
 import { initConsoleEasterEggs } from './shared/console-easter-egg.js'
 import { initEasterEggs } from './os/easter-eggs.js'
 import { showFirstRunWizard } from './os/first-run.js'
+import { initLiveWallpaper } from './os/wallpaper.js'
 
 async function main() {
   const root = document.getElementById('arun-os')
@@ -26,7 +27,10 @@ async function main() {
   // Phase 2: Render desktop
   const desktop = renderDesktop(root)
 
-  // Phase 3: Render taskbar
+  // Phase 3: Live wallpaper
+  initLiveWallpaper(desktop)
+
+  // Phase 4: Render taskbar
   renderTaskbar(desktop)
 
   // Phase 4: Firebase multiplayer (non-blocking)
