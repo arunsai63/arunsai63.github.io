@@ -3,7 +3,7 @@
 let idleTimer = null
 let screensaverEl = null
 let animFrame = null
-const IDLE_TIMEOUT = 60000 // 60 seconds
+const IDLE_TIMEOUT = 120000 // 2 minutes
 
 export function initScreensaver() {
   resetTimer()
