@@ -357,6 +357,90 @@ Just kidding. Use whatever makes you mass happy.
       appendOutput(output, `<span style="color:#ef4444;">No manual entry for ${escapeHtml(args[0])}. Try 'man arun'.</span>`)
     }
   },
+
+  cowsay: (args, output) => {
+    const msg = args.join(' ') || 'hire me'
+    const border = '-'.repeat(msg.length + 2)
+    appendOutput(output, `<pre style="color:#888;">
+ ${border}
+< ${escapeHtml(msg)} >
+ ${border}
+        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\\
+                ||----w |
+                ||     ||
+</pre>`)
+  },
+
+  fortune: (args, output) => {
+    const fortunes = [
+      '"The best code is no code." — Every architect who deleted a service',
+      '"It works on my machine." — The last words before a production incident',
+      '"We\'ll fix it in the next sprint." — Said every sprint, every team, everywhere',
+      '"This should be a quick fix." — Narrator: It was not a quick fix.',
+      '"Let\'s not over-engineer this." — Proceeds to build a microservice mesh',
+      '"The documentation is self-explanatory." — The documentation:',
+      '"Premature optimization is the root of all evil." — But mass-cached Redis is just... chef\'s kiss',
+      '"I\'ll add tests later." — Narrator: Tests were never added.',
+      '"Works on my machine" is technically a valid deployment strategy if your machine IS the server.',
+    ]
+    appendOutput(output, `<span style="color:#f59e0b;">${fortunes[Math.floor(Math.random() * fortunes.length)]}</span>`)
+  },
+
+  date: (args, output) => {
+    appendOutput(output, `<span style="color:#888;">${new Date().toString()}</span>
+<span style="color:#555;">Fun fact: it's always mass deploy o'clock somewhere.</span>`)
+  },
+
+  echo: (args, output) => {
+    appendOutput(output, `<span style="color:#888;">${escapeHtml(args.join(' '))}</span>`)
+  },
+
+  konami: (args, output) => {
+    appendOutput(output, `<span style="color:#10b981;">🎮 ↑↑↓↓←→←→BA — Konami code activated!</span>
+<span style="color:#888;">Achievement unlocked: "knows the classics"
+You've earned... absolutely nothing. But the nostalgia is priceless.</span>`)
+  },
+
+  docker: (args, output) => {
+    if (args[0] === 'ps') {
+      appendOutput(output, `<span style="color:#888;">CONTAINER ID   IMAGE                STATUS         PORTS                  NAMES
+a1b2c3d4e5f6   arun/portfolio:v${getYOE()}   Up 24/7        0.0.0.0:443->443/tcp   this-website
+f6e5d4c3b2a1   arun/brain:latest     Up ${getYOE()}y        0.0.0.0:*->*/tcp       always-thinking
+1234abcd5678   arun/coffee:∞         Up forever     0.0.0.0:☕->☕/tcp    essential-service</span>`)
+    } else {
+      appendOutput(output, `<span style="color:#888;">docker: '${escapeHtml(args[0] || '')}' try 'docker ps' to see running containers.</span>`)
+    }
+  },
+
+  htop: (args, output) => {
+    appendOutput(output, `<pre style="color:#888;">
+<span style="color:#10b981;">  CPU[||||||||||||||||||||    87%]</span>  Tasks: 47, running
+<span style="color:#3b82f6;">  MEM[||||||||||||||         65%]</span>  Load avg: too high
+
+  PID  PROCESS              CPU%   MEM    STATUS
+  001  <span style="color:#10b981;">solutions-architect</span>  110%   ALL    <span style="color:#10b981;">RUNNING</span>
+  002  <span style="color:#f59e0b;">overthinking</span>          89%   4.2G   <span style="color:#f59e0b;">RUNNING</span>
+  003  <span style="color:#ef4444;">imposter-syndrome</span>     67%   3.1G   <span style="color:#ef4444;">RUNNING</span>
+  004  <span style="color:#3b82f6;">coffee-intake</span>         99%   ∞      <span style="color:#3b82f6;">CRITICAL</span>
+  005  actual-work           12%   1.0G   SLEEPING
+  006  stackoverflow         45%   2.0G   RUNNING (always)
+  007  debugging             78%   3.5G   RUNNING
+  008  meetings              95%   0.1G   WASTING RESOURCES
+</pre>`)
+  },
+
+  npm: (args, output) => {
+    if (args[0] === 'install') {
+      appendOutput(output, `<span style="color:#888;">Installing ${args.slice(1).join(' ') || 'everything'}...
+added 847 packages in 47s
+<span style="color:#f59e0b;">23 vulnerabilities (2 moderate, 21 "it's fine")</span>
+node_modules size: ∞</span>`)
+    } else {
+      appendOutput(output, `<span style="color:#888;">npm: try 'npm install' for the full experience</span>`)
+    }
+  },
 }
 
 function processCommand(cmd, output, cwd, setCwd) {

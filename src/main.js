@@ -13,6 +13,7 @@ import { initFirebase } from './multiplayer/firebase-config.js'
 import { initCursors } from './multiplayer/cursors.js'
 import { initScreensaver } from './os/screensaver.js'
 import { initConsoleEasterEggs } from './shared/console-easter-egg.js'
+import { initEasterEggs } from './os/easter-eggs.js'
 import { showFirstRunWizard } from './os/first-run.js'
 
 async function main() {
@@ -46,8 +47,9 @@ async function main() {
   // Phase 7: Screensaver (60s idle)
   initScreensaver()
 
-  // Phase 8: Console easter eggs for DevTools users
+  // Phase 8: Easter eggs
   initConsoleEasterEggs()
+  initEasterEggs()
 
   // Keyboard shortcuts
   document.addEventListener('keydown', (e) => {
