@@ -23,7 +23,7 @@ export function initEasterEggs() {
   const observer = new MutationObserver(() => {
     const wins = document.querySelectorAll('.os-window:not(.minimized)')
     if (wins.length >= 8 && wins.length > windowCount) {
-      notify('Memory Warning', "You have " + wins.length + " windows open. Your RAM is fine. Your screen real estate is not.")
+      notify('Memory Warning', "You have " + wins.length + " windows open. Your RAM is fine. Your screen real estate is not.", 4000, 'alertTriangle')
     }
     windowCount = wins.length
   })
@@ -35,8 +35,7 @@ export function initEasterEggs() {
 }
 
 function activateKonamiCode() {
-  // Brief party mode
-  notify('Konami Code Activated', 'You found the secret. Achievement unlocked: "retro gamer"')
+  notify('Konami Code Activated', 'You found the secret. Achievement unlocked: "retro gamer"', 4000, 'gamepad')
 
   const desktop = document.querySelector('.desktop')
   if (!desktop) return

@@ -3,17 +3,19 @@ import { createWindow } from './window-manager.js'
 import { openApp } from '../apps/registry.js'
 import { notify } from './notifications.js'
 import { getYOE } from '../shared/data.js'
+import { icon } from '../shared/icons.js'
 
+// Each icon has a gradient background + white SVG icon — like macOS app icons
 const desktopIcons = [
-  { id: 'about', icon: 'i', label: 'About Me' },
-  { id: 'experience', icon: '%', label: 'Experience' },
-  { id: 'skills', icon: '#', label: 'Skills.txt' },
-  { id: 'terminal', icon: '>', label: 'Terminal' },
-  { id: 'projects', icon: '~', label: 'Projects' },
-  { id: 'contact', icon: '@', label: 'Contact' },
-  { id: 'chat', icon: '&', label: 'Chat' },
-  { id: 'calculator', icon: '+', label: 'Calculator' },
-  { id: 'recycle-bin', icon: 'x', label: 'Recycle Bin' },
+  { id: 'about', svg: 'user', label: 'About Me', bg: 'linear-gradient(135deg, #3b82f6, #2563eb)' },
+  { id: 'experience', svg: 'briefcase', label: 'Experience', bg: 'linear-gradient(135deg, #f59e0b, #d97706)' },
+  { id: 'skills', svg: 'fileText', label: 'Skills.txt', bg: 'linear-gradient(135deg, #10b981, #059669)' },
+  { id: 'terminal', svg: 'terminal', label: 'Terminal', bg: 'linear-gradient(135deg, #1e1e1e, #333)' },
+  { id: 'projects', svg: 'folder', label: 'Projects', bg: 'linear-gradient(135deg, #6366f1, #4f46e5)' },
+  { id: 'contact', svg: 'mail', label: 'Contact', bg: 'linear-gradient(135deg, #3b82f6, #1d4ed8)' },
+  { id: 'chat', svg: 'messageCircle', label: 'Chat', bg: 'linear-gradient(135deg, #22c55e, #16a34a)' },
+  { id: 'calculator', svg: 'calculator', label: 'Calculator', bg: 'linear-gradient(135deg, #f97316, #ea580c)' },
+  { id: 'recycle-bin', svg: 'trash', label: 'Recycle Bin', bg: 'linear-gradient(135deg, #64748b, #475569)' },
 ]
 
 export function renderDesktop(container) {
@@ -27,14 +29,14 @@ export function renderDesktop(container) {
 
   const iconsContainer = container.querySelector('.desktop-icons')
 
-  desktopIcons.forEach(icon => {
+  desktopIcons.forEach(ic => {
     const el = document.createElement('div')
     el.className = 'desktop-icon'
     el.innerHTML = `
-      <div class="desktop-icon-img">${icon.icon}</div>
-      <div class="desktop-icon-label">${icon.label}</div>
+      <div class="desktop-icon-img" style="background:${ic.bg};box-shadow:0 4px 12px rgba(0,0,0,0.3);">${icon(ic.svg, 26, '#fff')}</div>
+      <div class="desktop-icon-label">${ic.label}</div>
     `
-    el.addEventListener('click', () => openApp(icon.id))
+    el.addEventListener('click', () => openApp(ic.id))
     iconsContainer.appendChild(el)
   })
 
@@ -42,7 +44,6 @@ export function renderDesktop(container) {
   const desktop = container.querySelector('.desktop')
   desktop.addEventListener('contextmenu', (e) => {
     e.preventDefault()
-    // Only show on desktop-area, not on windows
     if (!e.target.closest('.os-window')) {
       showContextMenu(e.clientX, e.clientY)
     }
@@ -65,15 +66,15 @@ function showContextMenu(x, y) {
   menu.style.top = y + 'px'
 
   const items = [
-    { icon: '>', label: 'Open Terminal', shortcut: 'Ctrl+T', action: () => openApp('terminal') },
-    { icon: '~', label: 'Open File Explorer', action: () => openApp('projects') },
+    { svg: 'terminal', label: 'Open Terminal', shortcut: 'Ctrl+T', action: () => openApp('terminal') },
+    { svg: 'folder', label: 'Open File Explorer', action: () => openApp('projects') },
     { separator: true },
-    { icon: '#', label: 'Refresh My Career', action: () => notify('Career Refresh', 'Still a Solutions Architect. Still awesome.') },
-    { icon: '^', label: 'Paste (from Stack Overflow)', action: () => notify('Clipboard', 'Nothing to paste. But we both know that\'s where your code comes from.') },
+    { svg: 'refresh', label: 'Refresh My Career', action: () => notify('Career Refresh', 'Still a Solutions Architect. Still awesome.') },
+    { svg: 'clipboard', label: 'Paste (from Stack Overflow)', action: () => notify('Clipboard', 'Nothing to paste. But we both know that\'s where your code comes from.') },
     { separator: true },
-    { icon: '*', label: 'Change Wallpaper', action: () => openApp('settings') },
-    { icon: '/', label: 'View Source', action: () => window.open('https://github.com/arunsai63/arunsai63.github.io', '_blank') },
-    { icon: '?', label: 'About ArunOS', action: () => showAboutOS() },
+    { svg: 'palette', label: 'Change Wallpaper', action: () => openApp('settings') },
+    { svg: 'externalLink', label: 'View Source', action: () => window.open('https://github.com/arunsai63/arunsai63.github.io', '_blank') },
+    { svg: 'info', label: 'About ArunOS', action: () => showAboutOS() },
   ]
 
   items.forEach(item => {
@@ -85,7 +86,7 @@ function showContextMenu(x, y) {
     }
     const el = document.createElement('div')
     el.className = 'context-menu-item'
-    el.innerHTML = `<span>${item.icon}</span> ${item.label}${item.shortcut ? `<span class="context-menu-shortcut">${item.shortcut}</span>` : ''}`
+    el.innerHTML = `<span class="context-menu-icon">${icon(item.svg, 16, '#888')}</span> ${item.label}${item.shortcut ? `<span class="context-menu-shortcut">${item.shortcut}</span>` : ''}`
     el.addEventListener('click', (e) => {
       e.stopPropagation()
       closeContextMenu()
@@ -111,15 +112,15 @@ function showAboutOS() {
   createWindow({
     id: 'about-os',
     title: 'About ArunOS',
-    icon: '?',
+    icon: icon('monitor', 16),
     width: 420,
-    height: 350,
+    height: 380,
     content: `
       <div style="text-align:center;padding:20px;">
-        <div style="font-size:48px;margin-bottom:12px;font-family:'JetBrains Mono',monospace;color:#10b981;">A:</div>
+        <div style="margin-bottom:16px;">${icon('monitor', 56, '#10b981')}</div>
         <h2 style="color:#ddd;margin-bottom:4px;font-size:18px;">ArunOS v${getYOE()}</h2>
         <p style="color:#666;margin-bottom:16px;font-size:13px;">"Stable" Build (debatable)</p>
-        <div style="text-align:left;background:#111;padding:14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#888;">
+        <div style="text-align:left;background:rgba(0,0,0,0.3);padding:14px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:rgba(255,255,255,0.6);">
           <div><span style="color:#10b981;">Processor:</span> 1x Overclocked Brain (thermal throttles under deadlines)</div>
           <div><span style="color:#10b981;">RAM:</span> Not enough. Never enough.</div>
           <div><span style="color:#10b981;">Storage:</span> 90% Stack Overflow bookmarks</div>

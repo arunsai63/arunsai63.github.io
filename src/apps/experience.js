@@ -18,14 +18,14 @@ export function open() {
               <div>
                 <span style="color:#666;">CPU:</span>
                 <span style="color:#10b981;">Solutions Architecture</span>
-                <div style="height:4px;background:#1a1a1a;border-radius:2px;margin-top:4px;width:200px;overflow:hidden;">
+                <div style="height:4px;background:rgba(255,255,255,0.04);border-radius:2px;margin-top:4px;width:200px;overflow:hidden;">
                   <div style="height:100%;width:87%;background:linear-gradient(90deg,#10b981,#3b82f6);border-radius:2px;"></div>
                 </div>
               </div>
               <div>
                 <span style="color:#666;">MEM:</span>
                 <span style="color:#3b82f6;">Experience Cache</span>
-                <div style="height:4px;background:#1a1a1a;border-radius:2px;margin-top:4px;width:200px;overflow:hidden;">
+                <div style="height:4px;background:rgba(255,255,255,0.04);border-radius:2px;margin-top:4px;width:200px;overflow:hidden;">
                   <div style="height:100%;width:65%;background:linear-gradient(90deg,#3b82f6,#8b5cf6);border-radius:2px;"></div>
                 </div>
               </div>
@@ -34,7 +34,7 @@ export function open() {
           </div>
 
           <!-- Process table header -->
-          <div style="display:grid;grid-template-columns:40px 1fr 180px 100px 70px 70px 120px;padding:8px 16px;background:#111128;color:#666;font-size:11px;border-bottom:1px solid #1a1a1a;position:sticky;top:0;">
+          <div style="display:grid;grid-template-columns:40px 1fr 180px 100px 70px 70px 120px;padding:8px 16px;background:rgba(0,0,0,0.25)128;color:#666;font-size:11px;border-bottom:1px solid #1a1a1a;position:sticky;top:0;">
             <span>PID</span>
             <span>PROCESS</span>
             <span>COMPANY</span>
@@ -88,7 +88,7 @@ export function open() {
               ${exp.bullets.map(b => `<li>${b}</li>`).join('')}
             </ul>
             <div style="display:flex;flex-wrap:wrap;gap:6px;">
-              ${exp.tech.map(t => `<span style="padding:2px 8px;background:#1a1a1a;border:1px solid #262626;border-radius:4px;font-size:11px;color:#888;">${t}</span>`).join('')}
+              ${exp.tech.map(t => `<span style="padding:2px 8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;font-size:11px;color:#888;">${t}</span>`).join('')}
             </div>
             <div style="margin-top:12px;color:#555;font-size:11px;">
               <button style="color:#ef4444;border:1px solid #ef444444;border-radius:4px;padding:3px 10px;font-size:11px;cursor:pointer;background:none;font-family:inherit;" onclick="this.textContent='Nice try. I\\'m still employed. 😏';">Kill Process</button>

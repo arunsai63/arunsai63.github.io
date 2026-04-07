@@ -20,7 +20,7 @@ export function open() {
             </div>
           </div>
 
-          <div style="background:#111;padding:14px;border-radius:8px;margin-bottom:16px;font-size:13px;line-height:1.7;color:#aaa;">
+          <div style="background:rgba(0,0,0,0.25);padding:14px;border-radius:8px;margin-bottom:16px;font-size:13px;line-height:1.7;color:#aaa;">
             <p>I'm a solutions architect who thinks in systems, not just code.</p>
             <p style="margin-top:8px;">Currently leading the engineering team at EchorTech, where I've built crypto projects worth ~$50M, migrated more microservices than I can count, and mass-consumed enough coffee to concern medical professionals.</p>
             <p style="margin-top:8px;">When I'm not architecting solutions, I'm probably:</p>
@@ -38,14 +38,14 @@ export function open() {
             ${makeTab('📊 Stats')}
           </div>
 
-          <div id="about-tab-content" style="background:#111;padding:14px;border-radius:8px;font-size:13px;line-height:1.7;color:#aaa;">
+          <div id="about-tab-content" style="background:rgba(0,0,0,0.25);padding:14px;border-radius:8px;font-size:13px;line-height:1.7;color:#aaa;">
             ${hotTakes()}
           </div>
 
           <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
-            <a href="${profile.github}" target="_blank" style="padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">🐙 GitHub</a>
-            <a href="${profile.linkedin}" target="_blank" style="padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">💼 LinkedIn</a>
-            <a href="${profile.blog}" target="_blank" style="padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">📝 Blog</a>
+            <a href="${profile.github}" target="_blank" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">🐙 GitHub</a>
+            <a href="${profile.linkedin}" target="_blank" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">💼 LinkedIn</a>
+            <a href="${profile.blog}" target="_blank" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">📝 Blog</a>
           </div>
         </div>
       `
@@ -69,7 +69,7 @@ export function open() {
 
 function makeTab(label) {
   const id = label.replace(/[^a-z]/gi, '-').toLowerCase().replace(/-+/g, '-').replace(/^-|-$/g, '')
-  return `<button class="about-tab" data-tab="${id}" style="padding:6px 12px;background:#1a1a1a;border:1px solid #333;border-radius:6px;font-size:12px;color:#ccc;cursor:pointer;">${label}</button>`
+  return `<button class="about-tab" data-tab="${id}" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#ccc;cursor:pointer;">${label}</button>`
 }
 
 function hotTakes() {
@@ -101,27 +101,27 @@ function unpopularOpinions() {
 function stats() {
   return `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-      <div style="text-align:center;padding:12px;background:#1a1a1a;border-radius:8px;">
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.04);border-radius:8px;">
         <div style="font-size:28px;color:#10b981;font-weight:700;">${getYOE()}+</div>
         <div style="font-size:11px;color:#666;">Years of Experience</div>
       </div>
-      <div style="text-align:center;padding:12px;background:#1a1a1a;border-radius:8px;">
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.04);border-radius:8px;">
         <div style="font-size:28px;color:#3b82f6;font-weight:700;">~$50M</div>
         <div style="font-size:11px;color:#666;">Crypto Market Cap Built</div>
       </div>
-      <div style="text-align:center;padding:12px;background:#1a1a1a;border-radius:8px;">
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.04);border-radius:8px;">
         <div style="font-size:28px;color:#f59e0b;font-weight:700;">30k+</div>
         <div style="font-size:11px;color:#666;">Users Scaled To</div>
       </div>
-      <div style="text-align:center;padding:12px;background:#1a1a1a;border-radius:8px;">
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.04);border-radius:8px;">
         <div style="font-size:28px;color:#ef4444;font-weight:700;">∞</div>
         <div style="font-size:11px;color:#666;">Coffee Consumed</div>
       </div>
-      <div style="text-align:center;padding:12px;background:#1a1a1a;border-radius:8px;">
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.04);border-radius:8px;">
         <div style="font-size:28px;color:#8b5cf6;font-weight:700;">30+</div>
         <div style="font-size:11px;color:#666;">Technologies</div>
       </div>
-      <div style="text-align:center;padding:12px;background:#1a1a1a;border-radius:8px;">
+      <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.04);border-radius:8px;">
         <div style="font-size:28px;color:#ec4899;font-weight:700;">0</div>
         <div style="font-size:11px;color:#666;">Bugs (allegedly)</div>
       </div>
