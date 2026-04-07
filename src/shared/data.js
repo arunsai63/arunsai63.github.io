@@ -185,7 +185,7 @@ export const filesys = {
   '~': {
     type: 'dir',
     children: {
-      'README.md': { type: 'file', content: `# Arun Munaganti\n\n> Solutions Architect | 6.5+ YOE | Full Stack | AWS | Blockchain\n\nI'm a solutions architect who thinks in systems, not just code.\nCurrently leading the engineering team at EchorTech.\n\nI've mass-deployed crypto projects worth ~$50M, mass-migrated\nmore microservices than I can count, and mass-consumed enough\ncoffee to concern medical professionals.\n\nWhen I'm not architecting solutions, I'm probably:\n- Arguing about tabs vs spaces (spaces, fight me)\n- Over-engineering my personal projects\n- Pretending to understand Kubernetes` },
+      'README.md': { type: 'file', content: `# Arun Munaganti\n\n> Solutions Architect | ${getYOE()}+ YOE | Full Stack | AWS | Blockchain\n\nI'm a solutions architect who thinks in systems, not just code.\nCurrently leading the engineering team at EchorTech.\n\nI've mass-deployed crypto projects worth ~$50M, mass-migrated\nmore microservices than I can count, and mass-consumed enough\ncoffee to concern medical professionals.\n\nWhen I'm not architecting solutions, I'm probably:\n- Arguing about tabs vs spaces (spaces, fight me)\n- Over-engineering my personal projects\n- Pretending to understand Kubernetes` },
       'resume.pdf': { type: 'file', content: '[binary - use "resume" command to download]' },
       'projects': {
         type: 'dir',

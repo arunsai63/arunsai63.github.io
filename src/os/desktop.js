@@ -15,30 +15,42 @@ const desktopIcons = [
   { id: 'contact', svg: 'mail', label: 'Contact', bg: 'linear-gradient(135deg, #3b82f6, #1d4ed8)' },
   { id: 'chat', svg: 'messageCircle', label: 'Chat', bg: 'linear-gradient(135deg, #22c55e, #16a34a)' },
   { id: 'calculator', svg: 'calculator', label: 'Calculator', bg: 'linear-gradient(135deg, #f97316, #ea580c)' },
+  { id: 'portfolio', svg: 'layout', label: 'Portfolio', bg: 'linear-gradient(135deg, #8b5cf6, #7c3aed)' },
+  { id: 'blog', svg: 'book', label: 'Blog', bg: 'linear-gradient(135deg, #ec4899, #db2777)' },
   { id: 'recycle-bin', svg: 'trash', label: 'Recycle Bin', bg: 'linear-gradient(135deg, #64748b, #475569)' },
 ]
 
 export function renderDesktop(container) {
   container.innerHTML = `
     <div class="desktop">
-      <div class="desktop-area">
-        <div class="desktop-icons"></div>
+      <div class="desktop-area"></div>
+      <div class="dock-wrapper">
+        <div class="dock"></div>
       </div>
     </div>
   `
 
-  const iconsContainer = container.querySelector('.desktop-icons')
+  const dock = container.querySelector('.dock')
 
   desktopIcons.forEach(ic => {
     const el = document.createElement('div')
-    el.className = 'desktop-icon'
+    el.className = 'dock-item'
+    el.dataset.label = ic.label
     el.innerHTML = `
-      <div class="desktop-icon-img" style="background:${ic.bg};box-shadow:0 4px 12px rgba(0,0,0,0.3);">${icon(ic.svg, 26, '#fff')}</div>
-      <div class="desktop-icon-label">${ic.label}</div>
+      <div class="dock-icon" style="background:${ic.bg};">${icon(ic.svg, 26, '#fff')}</div>
+      <div class="dock-tooltip">${ic.label}</div>
+      <div class="dock-dot"></div>
     `
-    el.addEventListener('click', () => openApp(ic.id))
-    iconsContainer.appendChild(el)
+    el.addEventListener('click', () => {
+      el.classList.add('bouncing')
+      el.addEventListener('animationend', () => el.classList.remove('bouncing'), { once: true })
+      openApp(ic.id)
+    })
+    dock.appendChild(el)
   })
+
+  // macOS-style magnification effect
+  initDockMagnification(dock)
 
   // Right-click context menu
   const desktop = container.querySelector('.desktop')
@@ -106,6 +118,83 @@ function showContextMenu(x, y) {
 function closeContextMenu() {
   const existing = document.getElementById('desktop-context-menu')
   if (existing) existing.remove()
+}
+
+function initDockMagnification(dock) {
+  const items = [...dock.querySelectorAll('.dock-item')]
+  const BASE = 48
+  const MAX = 72
+  const RANGE = 140
+
+  // Track current sizes for smooth interpolation
+  const sizes = items.map(() => BASE)
+  let hovering = false
+  let mouseX = 0
+  let rafId = null
+
+  function getTargets() {
+    return items.map((item, i) => {
+      if (!hovering) return BASE
+      const iconEl = item.querySelector('.dock-icon')
+      const rect = iconEl.getBoundingClientRect()
+      const centerX = rect.left + rect.width / 2
+      const dist = Math.abs(mouseX - centerX)
+      const t = Math.max(0, 1 - dist / RANGE)
+      // smooth cosine curve like real macOS
+      return BASE + (MAX - BASE) * (0.5 + 0.5 * Math.cos(Math.PI * (1 - t)))
+    })
+  }
+
+  function tick() {
+    const targets = getTargets()
+    let needsUpdate = false
+
+    items.forEach((item, i) => {
+      // Lerp toward target — instant when hovering, smooth ease-out when leaving
+      const speed = hovering ? 0.45 : 0.2
+      sizes[i] += (targets[i] - sizes[i]) * speed
+
+      // Snap if close enough
+      if (Math.abs(sizes[i] - targets[i]) < 0.3) {
+        sizes[i] = targets[i]
+      } else {
+        needsUpdate = true
+      }
+
+      const s = sizes[i]
+      const iconEl = item.querySelector('.dock-icon')
+      iconEl.style.width = s + 'px'
+      iconEl.style.height = s + 'px'
+    })
+
+    if (needsUpdate || hovering) {
+      rafId = requestAnimationFrame(tick)
+    } else {
+      rafId = null
+    }
+  }
+
+  function startLoop() {
+    if (!rafId) rafId = requestAnimationFrame(tick)
+  }
+
+  dock.addEventListener('mouseenter', () => {
+    hovering = true
+    startLoop()
+  })
+
+  dock.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX
+    if (!hovering) {
+      hovering = true
+      startLoop()
+    }
+  })
+
+  dock.addEventListener('mouseleave', () => {
+    hovering = false
+    startLoop() // keep loop going to animate back to rest
+  })
 }
 
 function showAboutOS() {

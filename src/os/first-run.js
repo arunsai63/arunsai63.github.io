@@ -5,7 +5,7 @@ import { icon } from '../shared/icons.js'
 
 export function showFirstRunWizard() {
   // Only show once per session
-  if (sessionStorage.getItem('arunos-wizard-done')) return
+  if (localStorage.getItem('arunos-wizard-done')) return
 
   setTimeout(() => {
     createWindow({
@@ -63,7 +63,7 @@ export function showFirstRunWizard() {
           const selected = el.querySelector('input[name="reason"]:checked')
           const reason = selected ? selected.value : 'browsing'
 
-          sessionStorage.setItem('arunos-wizard-done', '1')
+          localStorage.setItem('arunos-wizard-done', '1')
 
           const responses = {
             hiring: { title: 'Welcome, Recruiter', body: "Resume is on the desktop. I promise my code is better than my interview skills.", icon: 'briefcase' },

@@ -14,10 +14,17 @@
   }
 }
 
-/* ===== Desktop Icon Double-Click Feedback ===== */
-.desktop-icon:active .desktop-icon-img {
-  transform: scale(0.9);
-  transition: transform 0.1s;
+/* ===== Dock bounce on open ===== */
+@keyframes dockBounce {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-16px); }
+  50%  { transform: translateY(0); }
+  70%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.dock-item.bouncing .dock-icon {
+  animation: dockBounce 0.5s cubic-bezier(0.2, 0, 0, 1);
 }
 
 /* ===== Taskbar App Hover ===== */

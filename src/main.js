@@ -1,4 +1,4 @@
-// ArunOS v6.5.0 — Main entry point
+// ArunOS — Main entry point
 import './styles/reset.css'
 import './styles/desktop.css'
 import './styles/windows.css'
@@ -48,6 +48,9 @@ async function main() {
   }).catch(() => {
     // Offline mode — no multiplayer, no problem
   })
+
+  // Open About Me by default
+  import('./apps/registry.js').then(({ openApp }) => openApp('about'))
 
   // Phase 5: First run wizard or welcome
   showFirstRunWizard()

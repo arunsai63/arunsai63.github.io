@@ -1,7 +1,7 @@
 {
   "name": "arun-os",
   "private": true,
-  "version": "6.5.0",
+  "version": "7.4.0",
   "type": "module",
   "homepage": "https://arunsai63.github.io",
   "scripts": {

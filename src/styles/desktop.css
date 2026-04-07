@@ -15,70 +15,107 @@
   padding: 16px;
 }
 
-/* ===== Desktop Icons ===== */
-.desktop-icons {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 90px);
-  grid-template-rows: repeat(auto-fill, 100px);
-  gap: 4px;
-  align-content: start;
-  height: 100%;
+/* ===== macOS Dock ===== */
+.dock-wrapper {
+  position: absolute;
+  bottom: 54px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8000;
+  padding: 0 0 4px;
 }
 
-.desktop-icon {
+.dock {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  padding: 3px 8px 4px;
+  background: rgba(50, 50, 58, 0.35);
+  backdrop-filter: blur(40px) saturate(170%);
+  -webkit-backdrop-filter: blur(40px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 0.5px rgba(0, 0, 0, 0.3),
+    0 4px 20px rgba(0, 0, 0, 0.25),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.12);
+}
+
+.dock-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 6px;
-  padding: 8px 4px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.15s;
-  width: 90px;
+  cursor: default;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  padding: 2px 1px 0;
 }
 
-.desktop-icon:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-.desktop-icon:active {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.desktop-icon-img {
-  width: 52px;
-  height: 52px;
+.dock-icon {
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 1;
-  border-radius: 14px;
-  transition: transform 0.15s;
+  border-radius: 12px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  /* NO transition on width/height — JS drives magnification instantly */
+  will-change: width, height;
 }
 
-.desktop-icon:hover .desktop-icon-img {
-  transform: scale(1.05);
+.dock-item:active .dock-icon {
+  filter: brightness(0.85);
 }
 
-.desktop-icon:active .desktop-icon-img {
-  transform: scale(0.95);
+/* Tooltip — macOS style pill above icon */
+.dock-tooltip {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: rgba(40, 40, 45, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 5px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.dock-item:hover .dock-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Active app indicator dot */
+.dock-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.dock-item.running .dock-dot {
+  background: rgba(255, 255, 255, 0.65);
 }
 
 .context-menu-icon {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-}
-
-.desktop-icon-label {
-  font-size: 11px;
-  text-align: center;
-  color: #fff;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.7), 0 0 8px rgba(0,0,0,0.3);
-  word-break: break-word;
-  line-height: 1.2;
-  max-width: 80px;
 }
 
 /* ===== Context Menu ===== */

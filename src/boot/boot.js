@@ -13,18 +13,18 @@ export function bootSequence(container) {
     // Go straight to terminal boot (no README gate)
     showTerminalBoot(overlay).then(() => {
       if (!skipped) {
-        overlay.style.transition = 'opacity 0.5s'
+        overlay.style.transition = 'opacity 0.375s'
         overlay.style.opacity = '0'
-        setTimeout(() => { overlay.remove(); resolve() }, 500)
+        setTimeout(() => { overlay.remove(); resolve() }, 375)
       }
     })
 
     // Skip handler
     function skip() {
       skipped = true
-      overlay.style.transition = 'opacity 0.3s'
+      overlay.style.transition = 'opacity 0.225s'
       overlay.style.opacity = '0'
-      setTimeout(() => { overlay.remove(); resolve() }, 300)
+      setTimeout(() => { overlay.remove(); resolve() }, 225)
     }
 
     overlay.__skip = skip
@@ -143,10 +143,10 @@ function showTerminalBoot(overlay) {
 
       log.scrollTop = log.scrollHeight
 
-      const delay = msg.type === 'blank' ? 200
-        : msg.type === 'fail' ? 600
-        : msg.type === 'success' ? 400
-        : Math.random() * 120 + 60
+      const delay = msg.type === 'blank' ? 150
+        : msg.type === 'fail' ? 450
+        : msg.type === 'success' ? 300
+        : Math.random() * 90 + 45
       await sleep(delay)
     }
 
@@ -160,12 +160,12 @@ function showTerminalBoot(overlay) {
         const lastChild = log.lastElementChild
         log.insertBefore(locLine, lastChild)
         log.scrollTop = log.scrollHeight
-        await sleep(300)
+        await sleep(225)
       }
     }
 
     if (!skipped) {
-      await sleep(600)
+      await sleep(450)
       resolve()
     }
   })

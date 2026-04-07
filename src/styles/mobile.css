@@ -1,25 +1,32 @@
 /* ===== Mobile: ArunOS Mobile Edition ===== */
 @media (max-width: 768px) {
-  .desktop-icons {
-    grid-template-columns: repeat(auto-fill, 80px);
-    grid-template-rows: repeat(auto-fill, 90px);
+  /* Dock scales down on mobile */
+  .dock-wrapper {
+    bottom: 60px;
+    max-width: 100vw;
+    padding: 0 8px 6px;
+  }
+
+  .dock {
     gap: 2px;
-    padding: 8px;
+    padding: 4px 8px 4px;
+    border-radius: 14px;
+    overflow-x: auto;
+    max-width: calc(100vw - 16px);
   }
 
-  .desktop-icon {
-    width: 80px;
-    padding: 6px 2px;
-  }
-
-  .desktop-icon-img {
+  .dock-icon {
     width: 40px;
     height: 40px;
-    font-size: 28px;
+    border-radius: 10px;
   }
 
-  .desktop-icon-label {
-    font-size: 10px;
+  .dock-tooltip {
+    display: none;
+  }
+
+  .dock-dot {
+    display: none;
   }
 
   /* Windows go full-screen on mobile */
@@ -95,12 +102,10 @@
 
 /* Small phones */
 @media (max-width: 380px) {
-  .desktop-icons {
-    grid-template-columns: repeat(auto-fill, 70px);
-  }
-
-  .desktop-icon {
-    width: 70px;
+  .dock-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
   }
 
   .start-menu-apps {
