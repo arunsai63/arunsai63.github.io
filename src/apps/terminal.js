@@ -1,5 +1,5 @@
 import { createWindow } from '../os/window-manager.js'
-import { profile, experience, skills, filesys } from '../shared/data.js'
+import { profile, experience, skills, filesys, getYOE } from '../shared/data.js'
 import { openApp } from './registry.js'
 
 export function open() {
@@ -27,7 +27,7 @@ export function open() {
       let cwd = '~'
 
       // Welcome message
-      appendOutput(output, `<span style="color:#10b981;">Welcome to ArunOS Terminal v6.5.0</span>
+      appendOutput(output, `<span style="color:#10b981;">Welcome to ArunOS Terminal v${getYOE()}</span>
 <span style="color:#666;">Type 'help' to see commands, or just start typing random stuff. I won't judge.</span>
 `)
 
@@ -117,10 +117,10 @@ and mass-consumed mass amounts of coffee.</span>`)
     appendOutput(output, `<pre style="color:#888;">
   <span style="color:#10b981;">       .---.        </span>  <span style="color:#fff;">arun</span>@<span style="color:#fff;">portfolio</span>
   <span style="color:#10b981;">      /     \\       </span>  ──────────────────
-  <span style="color:#10b981;">      \\.@-@./       </span>  <span style="color:#10b981;">OS:</span>       Solutions Architect v6.5
+  <span style="color:#10b981;">      \\.@-@./       </span>  <span style="color:#10b981;">OS:</span>       Solutions Architect v${getYOE()}
   <span style="color:#10b981;">      /\`\\_/\`\\       </span>  <span style="color:#10b981;">Host:</span>     Echor Tech
   <span style="color:#10b981;">     //  _  \\\\      </span>  <span style="color:#10b981;">Kernel:</span>   Full Stack Engineering
-  <span style="color:#10b981;">    | \\     )|_     </span>  <span style="color:#10b981;">Uptime:</span>   6.5 years (and mass counting)
+  <span style="color:#10b981;">    | \\     )|_     </span>  <span style="color:#10b981;">Uptime:</span>   ${getYOE()} years (and mass counting)
   <span style="color:#10b981;">   /\`\\_\`>  <_/ \\    </span>  <span style="color:#10b981;">Packages:</span> 30+ technologies installed
   <span style="color:#10b981;">   \\__/'---'\\__/    </span>  <span style="color:#10b981;">Shell:</span>    coffee-driven-dev
                        <span style="color:#10b981;">Editor:</span>   VS Code (with mass extensions)
@@ -177,7 +177,7 @@ Or just yell into the void. I'll probably hear you.</span>`)
   },
 
   uptime: (args, output) => {
-    appendOutput(output, `<span style="color:#888;">6.5 years, mass counting.
+    appendOutput(output, `<span style="color:#888;">${getYOE()} years, mass counting.
 Last mass reboot: never (I don't believe in work-life balance)
 Load average: high, higher, highest</span>`)
   },
@@ -240,7 +240,7 @@ Permission granted. ✅
 Sending offer letter to ${profile.email}...
 Just kidding. But seriously, you should.</span>`)
     } else if (rest.startsWith('rm')) {
-      appendOutput(output, `<span style="color:#ef4444;">Permission denied: You cannot delete 6.5 years of experience.
+      appendOutput(output, `<span style="color:#ef4444;">Permission denied: You cannot delete ${getYOE()} years of experience.
 Also, I have mass backups. Unlike your last client. 😏</span>`)
     } else {
       appendOutput(output, `<span style="color:#ef4444;">[sudo] You're not in the sudoers file. This incident will be reported.

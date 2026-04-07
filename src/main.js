@@ -12,6 +12,7 @@ import { bootSequence } from './boot/boot.js'
 import { initFirebase } from './multiplayer/firebase-config.js'
 import { initCursors } from './multiplayer/cursors.js'
 import { initScreensaver } from './os/screensaver.js'
+import { showFirstRunWizard } from './os/first-run.js'
 
 async function main() {
   const root = document.getElementById('arun-os')
@@ -35,10 +36,8 @@ async function main() {
     // Offline mode — no multiplayer, no problem
   })
 
-  // Phase 5: Welcome notification
-  setTimeout(() => {
-    notify('👋 Welcome to ArunOS', 'Double-click icons to open apps. Right-click the desktop for more options. Try the Terminal!', 6000)
-  }, 1000)
+  // Phase 5: First run wizard or welcome
+  showFirstRunWizard()
 
   // Phase 6: Fun notifications on a timer
   startNotificationLoop()

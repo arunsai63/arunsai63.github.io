@@ -1,10 +1,18 @@
 // All portfolio content lives here — the single source of truth
 
+// Dynamic YOE calculation — started Jan 2019
+const CAREER_START = new Date(2019, 0, 1) // Jan 1, 2019
+export function getYOE() {
+  const now = new Date()
+  const diff = (now - CAREER_START) / (1000 * 60 * 60 * 24 * 365.25)
+  return diff.toFixed(1)
+}
+
 export const profile = {
   name: 'Arun Munaganti',
   title: 'Solutions Architect',
   company: 'Echor Tech',
-  yoe: '6.5+',
+  get yoe() { return getYOE() },
   email: 'arunsai63@gmail.com',
   github: 'https://github.com/arunsai63',
   linkedin: 'https://linkedin.com/in/arunmunaganti',
@@ -130,25 +138,28 @@ export const skills = {
   other: ['Quant', 'LLM', 'Git'],
 }
 
-export const bootMessages = [
-  { text: 'ArunOS BIOS v6.5.0', type: 'info' },
-  { text: 'Detecting hardware...', type: 'info' },
-  { text: 'CPU: Solutions Architect @ 3.2GHz (4.5GHz with coffee boost)', type: 'ok' },
-  { text: 'RAM: 6.5 Years Experience (non-refundable)', type: 'ok' },
-  { text: 'DISK: 30+ repositories (mostly node_modules)', type: 'ok' },
-  { text: 'GPU: Problem Solving v3.8', type: 'ok' },
-  { text: '', type: 'blank' },
-  { text: 'Loading personality module... (warning: unfiltered)', type: 'ok' },
-  { text: 'Mounting /dev/humor...', type: 'ok' },
-  { text: 'Calibrating imposter syndrome... levels nominal', type: 'ok' },
-  { text: 'Loading 6.5 years of mass caffeine dependency...', type: 'ok' },
-  { text: 'Loading work-life-balance... module not found', type: 'fail' },
-  { text: 'Falling back to coffee-driven-development...', type: 'ok' },
-  { text: 'Starting cursor-surveillance daemon...', type: 'ok' },
-  { text: 'Initializing ArunOS desktop...', type: 'ok' },
-  { text: '', type: 'blank' },
-  { text: 'Welcome to ArunOS v6.5.0 (Stable Build)', type: 'success' },
-]
+export function getBootMessages() {
+  const yoe = getYOE()
+  return [
+    { text: `ArunOS BIOS v${yoe}`, type: 'info' },
+    { text: 'Detecting hardware...', type: 'info' },
+    { text: 'CPU: Solutions Architect @ 3.2GHz (4.5GHz with coffee boost)', type: 'ok' },
+    { text: `RAM: ${yoe} Years Experience (non-refundable)`, type: 'ok' },
+    { text: 'DISK: 30+ repositories (mostly node_modules)', type: 'ok' },
+    { text: 'GPU: Problem Solving v3.8', type: 'ok' },
+    { text: '', type: 'blank' },
+    { text: 'Loading personality module... (warning: unfiltered)', type: 'ok' },
+    { text: 'Mounting /dev/humor...', type: 'ok' },
+    { text: 'Calibrating imposter syndrome... levels nominal', type: 'ok' },
+    { text: `Loading ${yoe} years of mass caffeine dependency...`, type: 'ok' },
+    { text: 'Loading work-life-balance... module not found', type: 'fail' },
+    { text: 'Falling back to coffee-driven-development...', type: 'ok' },
+    { text: 'Starting cursor-surveillance daemon...', type: 'ok' },
+    { text: 'Initializing ArunOS desktop...', type: 'ok' },
+    { text: '', type: 'blank' },
+    { text: `Welcome to ArunOS v${yoe} (Stable Build)`, type: 'success' },
+  ]
+}
 
 export const terminalCommands = {
   help: `Available commands:

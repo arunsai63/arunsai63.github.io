@@ -1,5 +1,5 @@
 // Boot sequence — GitHub README → "Run" button → Terminal boot → Desktop
-import { bootMessages } from '../shared/data.js'
+import { getBootMessages, getYOE } from '../shared/data.js'
 
 export function bootSequence(container) {
   return new Promise((resolve) => {
@@ -55,7 +55,7 @@ function showReadme(overlay) {
           <h1 style="font-size:28px;border-bottom:1px solid #21262d;padding-bottom:12px;margin-bottom:16px;color:#f0f6fc;">Arun Munaganti</h1>
 
           <blockquote style="border-left:3px solid #3b82f6;padding-left:16px;color:#8b949e;margin:16px 0;">
-            Solutions Architect | 6.5+ YOE | Full Stack | AWS | Blockchain
+            Solutions Architect | ${getYOE()}+ YOE | Full Stack | AWS | Blockchain
           </blockquote>
 
           <p style="margin:12px 0;">I'm a solutions architect who thinks in systems, not just code. Currently leading the engineering team at <strong style="color:#f0f6fc;">EchorTech</strong>.</p>
@@ -139,6 +139,7 @@ function showTerminalBoot(overlay) {
 
     skipBtn.addEventListener('click', () => { skipped = true; resolve() })
 
+    const bootMessages = getBootMessages()
     for (const msg of bootMessages) {
       if (skipped) { resolve(); return }
 

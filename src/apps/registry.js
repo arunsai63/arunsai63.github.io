@@ -8,6 +8,7 @@ const apps = {
   terminal: { id: 'terminal', label: 'Terminal', icon: '🖥️', module: () => import('./terminal.js') },
   projects: { id: 'projects', label: 'Projects', icon: '📁', module: () => import('./file-explorer.js') },
   contact: { id: 'contact', label: 'Contact', icon: '📧', module: () => import('./contact.js') },
+  chat: { id: 'chat', label: 'Chat', icon: '💬', module: () => import('./chat.js') },
   calculator: { id: 'calculator', label: 'Calculator', icon: '🔢', module: () => import('./calculator.js') },
   settings: { id: 'settings', label: 'Settings', icon: '⚙️', module: () => import('./settings.js') },
   'recycle-bin': { id: 'recycle-bin', label: 'Recycle Bin', icon: '🗑️', module: () => import('./recycle-bin.js') },

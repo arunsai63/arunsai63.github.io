@@ -2,6 +2,7 @@
 import { createWindow } from './window-manager.js'
 import { openApp } from '../apps/registry.js'
 import { notify } from './notifications.js'
+import { getYOE } from '../shared/data.js'
 
 const desktopIcons = [
   { id: 'about', icon: '👤', label: 'About Me' },
@@ -10,6 +11,8 @@ const desktopIcons = [
   { id: 'terminal', icon: '🖥️', label: 'Terminal' },
   { id: 'projects', icon: '📁', label: 'Projects' },
   { id: 'contact', icon: '📧', label: 'Contact' },
+  { id: 'chat', icon: '💬', label: 'Chat' },
+  { id: 'calculator', icon: '🔢', label: 'Calculator' },
   { id: 'recycle-bin', icon: '🗑️', label: 'Recycle Bin' },
 ]
 
@@ -114,13 +117,13 @@ function showAboutOS() {
     content: `
       <div style="text-align:center;padding:20px;">
         <div style="font-size:64px;margin-bottom:12px;">💻</div>
-        <h2 style="color:#fff;margin-bottom:4px;font-size:18px;">ArunOS v6.5.0</h2>
+        <h2 style="color:#fff;margin-bottom:4px;font-size:18px;">ArunOS v${getYOE()}</h2>
         <p style="color:#888;margin-bottom:16px;font-size:13px;">"Stable" Build (debatable)</p>
         <div style="text-align:left;background:#12122a;padding:14px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;color:#aaa;">
           <div><span style="color:#10b981;">Processor:</span> 1x Overclocked Brain (thermal throttles under deadlines)</div>
           <div><span style="color:#10b981;">RAM:</span> Not enough. Never enough.</div>
           <div><span style="color:#10b981;">Storage:</span> 90% Stack Overflow bookmarks</div>
-          <div><span style="color:#10b981;">Uptime:</span> 6.5 years (and mass counting)</div>
+          <div><span style="color:#10b981;">Uptime:</span> ${getYOE()} years (and mass counting)</div>
           <div><span style="color:#10b981;">Kernel:</span> Full Stack Engineering</div>
           <div><span style="color:#10b981;">Shell:</span> coffee-driven-development</div>
         </div>

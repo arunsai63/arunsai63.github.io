@@ -1,5 +1,5 @@
 import { createWindow } from '../os/window-manager.js'
-import { profile } from '../shared/data.js'
+import { profile, getYOE } from '../shared/data.js'
 
 export function open() {
   createWindow({
@@ -102,7 +102,7 @@ function stats() {
   return `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
       <div style="text-align:center;padding:12px;background:#1a1a30;border-radius:8px;">
-        <div style="font-size:28px;color:#10b981;font-weight:700;">6.5+</div>
+        <div style="font-size:28px;color:#10b981;font-weight:700;">${getYOE()}+</div>
         <div style="font-size:11px;color:#666;">Years of Experience</div>
       </div>
       <div style="text-align:center;padding:12px;background:#1a1a30;border-radius:8px;">
