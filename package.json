@@ -1,7 +1,7 @@
 {
-  "name": "threed",
+  "name": "arun-os",
   "private": true,
-  "version": "0.0.0",
+  "version": "6.5.0",
   "type": "module",
   "homepage": "https://arunsai63.github.io",
   "scripts": {
@@ -16,6 +16,6 @@
     "vite": "^6.3.1"
   },
   "dependencies": {
-    "three": "^0.175.0"
+    "firebase": "^12.11.0"
   }
 }
