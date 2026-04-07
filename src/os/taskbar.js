@@ -1,6 +1,7 @@
 // Taskbar — start menu, running apps, system tray
 import { getWindows, getActiveWindowId, toggleWindowFromTaskbar } from './window-manager.js'
 import { openApp, appList } from '../apps/registry.js'
+import { getYOE } from '../shared/data.js'
 
 let startMenuOpen = false
 
@@ -95,7 +96,7 @@ function openStartMenu(desktopEl) {
       `).join('')}
     </div>
     <div class="start-menu-footer">
-      <span>ArunOS v6.5.0</span>
+      <span>ArunOS v${getYOE()}</span>
       <span>⏻ Shut Down</span>
     </div>
   `

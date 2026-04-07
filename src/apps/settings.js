@@ -1,4 +1,5 @@
 import { createWindow } from '../os/window-manager.js'
+import { getYOE } from '../shared/data.js'
 
 const wallpapers = [
   { name: 'Default', bg: '#1a1a2e', gradient: 'radial-gradient(ellipse at 20% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%)' },
@@ -32,7 +33,7 @@ export function open() {
 
         <h3 style="color:#fff;font-size:15px;margin-bottom:12px;">ℹ️ System Info</h3>
         <div style="background:#12122a;padding:12px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#666;line-height:1.8;">
-          ArunOS v6.5.0 (Stable)<br>
+          ArunOS v${getYOE()} (Stable)<br>
           Built with: mass amounts of caffeine, Vite, vanilla JS<br>
           Frameworks used: exactly zero (flex)<br>
           Bundle size: smaller than your node_modules<br>
