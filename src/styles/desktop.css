@@ -1,0 +1,114 @@
+/* ===== Desktop ===== */
+.desktop {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #1a1a2e;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.desktop-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  padding: 16px;
+}
+
+/* ===== Desktop Icons ===== */
+.desktop-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 90px);
+  grid-template-rows: repeat(auto-fill, 100px);
+  gap: 4px;
+  align-content: start;
+  height: 100%;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 8px 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+  width: 90px;
+}
+
+.desktop-icon:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.desktop-icon:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.desktop-icon-img {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.desktop-icon-label {
+  font-size: 11px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  word-break: break-word;
+  line-height: 1.2;
+  max-width: 80px;
+}
+
+/* ===== Context Menu ===== */
+.context-menu {
+  position: fixed;
+  background: #1e1e2e;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 4px 0;
+  min-width: 200px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  z-index: 99999;
+  font-size: 13px;
+  backdrop-filter: blur(20px);
+}
+
+.context-menu-item {
+  padding: 6px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.1s;
+}
+
+.context-menu-item:hover {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+.context-menu-separator {
+  height: 1px;
+  background: #333;
+  margin: 4px 0;
+}
+
+.context-menu-item-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.context-menu-shortcut {
+  margin-left: auto;
+  opacity: 0.5;
+  font-size: 11px;
+}

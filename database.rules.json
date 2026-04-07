@@ -1,0 +1,33 @@
+{
+  "rules": {
+    "cursors": {
+      "$uid": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['x', 'y', 'c', 'n', 't']) && newData.child('x').isNumber() && newData.child('y').isNumber() && newData.child('t').isNumber() && newData.child('n').isString() && newData.child('n').val().length < 30 && newData.child('c').isString() && newData.child('c').val().length < 10"
+      }
+    },
+    "chat": {
+      "messages": {
+        ".read": true,
+        "$msgId": {
+          ".write": "auth != null",
+          ".validate": "newData.hasChildren(['text', 'name', 'color', 'timestamp']) && newData.child('text').isString() && newData.child('text').val().length > 0 && newData.child('text').val().length < 200"
+        }
+      }
+    },
+    "reactions": {
+      "$reactionId": {
+        ".read": true,
+        ".write": "auth != null",
+        ".validate": "newData.hasChildren(['emoji', 'x', 'y', 'timestamp'])"
+      }
+    },
+    "stats": {
+      "totalVisitors": {
+        ".read": true,
+        ".write": "auth != null"
+      }
+    }
+  }
+}

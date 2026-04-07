@@ -1,0 +1,120 @@
+/* ===== Window ===== */
+.os-window {
+  position: absolute;
+  background: #1e1e2e;
+  border: 1px solid #2a2a3e;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  min-height: 200px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.os-window.focused {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+  border-color: #3a3a5e;
+}
+
+.os-window.minimized {
+  display: none;
+}
+
+.os-window.maximized {
+  border-radius: 0;
+}
+
+/* ===== Title Bar ===== */
+.window-titlebar {
+  display: flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 12px;
+  background: #16162a;
+  cursor: default;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.window-titlebar:active {
+  cursor: grabbing;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.window-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.window-btn:hover {
+  filter: brightness(1.3);
+}
+
+.window-btn-close { background: #ff5f57; }
+.window-btn-minimize { background: #febc2e; }
+.window-btn-maximize { background: #28c840; }
+
+.window-title {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.window-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* ===== Window Content ===== */
+.window-content {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.window-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.window-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+.window-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ===== Resize Handles ===== */
+.resize-handle {
+  position: absolute;
+  z-index: 2;
+}
+
+.resize-handle-e { right: 0; top: 0; bottom: 0; width: 6px; cursor: e-resize; }
+.resize-handle-s { bottom: 0; left: 0; right: 0; height: 6px; cursor: s-resize; }
+.resize-handle-se { right: 0; bottom: 0; width: 12px; height: 12px; cursor: se-resize; }
+.resize-handle-w { left: 0; top: 0; bottom: 0; width: 6px; cursor: w-resize; }
+.resize-handle-n { top: 0; left: 0; right: 0; height: 6px; cursor: n-resize; }
