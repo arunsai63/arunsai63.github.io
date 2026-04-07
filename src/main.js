@@ -17,6 +17,8 @@ import { initConsoleEasterEggs } from './shared/console-easter-egg.js'
 import { initEasterEggs } from './os/easter-eggs.js'
 import { showFirstRunWizard } from './os/first-run.js'
 import { initLiveWallpaper } from './os/wallpaper.js'
+import { initWidgets } from './os/widgets.js'
+import './styles/widgets.css'
 
 async function main() {
   const root = document.getElementById('arun-os')
@@ -32,6 +34,10 @@ async function main() {
 
   // Phase 4: Render taskbar
   renderTaskbar(desktop)
+
+  // Phase 5: Desktop widgets
+  const desktopArea = desktop.querySelector('.desktop-area')
+  if (desktopArea) initWidgets(desktopArea)
 
   // Phase 4: Firebase multiplayer (non-blocking)
   initFirebase().then((result) => {
