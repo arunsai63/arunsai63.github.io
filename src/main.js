@@ -3,6 +3,7 @@ import './styles/reset.css'
 import './styles/desktop.css'
 import './styles/windows.css'
 import './styles/taskbar.css'
+import './styles/mobile.css'
 
 import { renderDesktop } from './os/desktop.js'
 import { renderTaskbar } from './os/taskbar.js'

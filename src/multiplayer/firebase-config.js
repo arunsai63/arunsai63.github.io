@@ -5,16 +5,13 @@ import { getDatabase } from 'firebase/database'
 import { getAuth, signInAnonymously } from 'firebase/auth'
 
 const firebaseConfig = {
-  // TODO: Replace with actual Firebase web app config
-  // Go to Firebase Console > Project Settings > Your apps > Web app
-  // Copy the config object here
-  apiKey: "REPLACE_ME",
+  apiKey: "AIzaSyB76jyOWvklhhg28CbKGridktq2sC7eXpI",
   authDomain: "arun-os-fc275.firebaseapp.com",
   databaseURL: "https://arun-os-fc275-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "arun-os-fc275",
   storageBucket: "arun-os-fc275.firebasestorage.app",
   messagingSenderId: "120774503513",
-  appId: "REPLACE_ME",
+  appId: "1:120774503513:web:5ff5c09915e850a1079548",
 }
 
 let app = null
