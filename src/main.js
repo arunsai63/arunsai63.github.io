@@ -10,6 +10,7 @@ import { notify, startNotificationLoop } from './os/notifications.js'
 import { bootSequence } from './boot/boot.js'
 import { initFirebase } from './multiplayer/firebase-config.js'
 import { initCursors } from './multiplayer/cursors.js'
+import { initScreensaver } from './os/screensaver.js'
 
 async function main() {
   const root = document.getElementById('arun-os')
@@ -41,7 +42,10 @@ async function main() {
   // Phase 6: Fun notifications on a timer
   startNotificationLoop()
 
-  // Keyboard shortcut: Ctrl+T opens terminal
+  // Phase 7: Screensaver (60s idle)
+  initScreensaver()
+
+  // Keyboard shortcuts
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key === 't') {
       e.preventDefault()
