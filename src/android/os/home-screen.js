@@ -1,6 +1,7 @@
 // Android Home Screen — hyper-realistic Android 14 Material You
 import { getAppsForPlatform } from '../../shared/app-manifest.js'
 import { icon } from '../../shared/icons.js'
+import { androidIcon } from './android-icons.js'
 import { onSwipe, onLongPress } from '../../shared/gestures.js'
 
 let onAppOpen = null
@@ -47,7 +48,7 @@ export function renderHomeScreen(container) {
               ${pageApps.map(app => `
                 <div class="home-app-icon" data-app-id="${app.id}">
                   <div class="home-icon-bg" style="background:${app.iconBg}">
-                    ${icon(app.iconName, 28, '#fff')}
+                    ${androidIcon(app.iconName, 28)}
                   </div>
                   <span class="home-app-label">${app.label}</span>
                 </div>

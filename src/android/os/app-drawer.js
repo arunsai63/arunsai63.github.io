@@ -1,6 +1,7 @@
 // Android App Drawer — swipe up alphabetical app list
 import { getAppsForPlatform } from '../../shared/app-manifest.js'
 import { icon } from '../../shared/icons.js'
+import { androidIcon } from './android-icons.js'
 import { onSwipe } from '../../shared/gestures.js'
 
 const SEARCH_EASTER_EGGS = {
@@ -87,7 +88,7 @@ function renderAppList(apps) {
       ${groupApps.map(app => `
         <div class="drawer-app-item" data-app-id="${app.id}">
           <div class="drawer-app-icon" style="background:${app.iconBg}">
-            ${icon(app.iconName, 24, '#fff')}
+            ${androidIcon(app.iconName, 24)}
           </div>
           <span class="drawer-app-name">${app.label}</span>
         </div>

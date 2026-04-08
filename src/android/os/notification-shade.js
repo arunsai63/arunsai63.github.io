@@ -29,9 +29,11 @@ export function initNotificationShade(container) {
   shadeEl.className = 'android-notification-shade'
   shadeEl.innerHTML = buildShadeHTML(false)
 
-  // Close on tap outside content
+  // Close on tap on backdrop or outside content
   shadeEl.addEventListener('click', (e) => {
-    if (e.target === shadeEl) hideShade()
+    if (e.target === shadeEl || e.target.classList.contains('shade-backdrop')) {
+      hideShade()
+    }
   })
 
   container.appendChild(shadeEl)
