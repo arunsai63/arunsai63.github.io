@@ -151,22 +151,43 @@
   color: #fff;
 }
 
-/* === Navigation Bar === */
+/* === Navigation Bar — 3-button === */
 .android-nav-bar {
-  height: 20px;
+  height: 48px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  padding-bottom: 8px;
+  gap: 0;
   z-index: 9000;
   flex-shrink: 0;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.android-nav-pill {
-  width: 134px;
-  height: 5px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 100px;
+.android-nav-btn {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.android-nav-btn:active {
+  background: rgba(255,255,255,0.08);
+}
+
+.android-nav-btn svg {
+  transition: opacity 0.15s;
+}
+
+.android-nav-btn:active svg {
+  opacity: 1;
 }
 
 /* === Lock Screen === */

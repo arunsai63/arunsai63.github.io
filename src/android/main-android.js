@@ -72,6 +72,15 @@ export async function boot(root) {
 
   // Phase 8: Navigation callbacks
   setNavCallbacks({
+    onBack: () => {
+      if (isShadeVisible()) {
+        hideShade()
+      } else if (isDrawerVisible()) {
+        hideDrawer()
+      } else if (hasActiveActivity()) {
+        closeActivity()
+      }
+    },
     onHome: () => {
       if (isShadeVisible()) {
         hideShade()
