@@ -72,52 +72,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: #0a0e1a;
-  overflow: hidden;
-}
-
-/* Material You dynamic color mesh — animated gradient blobs */
-.android-wallpaper::before {
-  content: '';
-  position: absolute;
-  width: 150%;
-  height: 150%;
-  top: -25%;
-  left: -25%;
-  background:
-    radial-gradient(ellipse 40% 50% at 20% 30%, rgba(128, 203, 196, 0.25) 0%, transparent 70%),
-    radial-gradient(ellipse 35% 45% at 75% 25%, rgba(100, 130, 240, 0.2) 0%, transparent 65%),
-    radial-gradient(ellipse 45% 40% at 60% 75%, rgba(175, 82, 222, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 35% at 15% 80%, rgba(52, 199, 89, 0.15) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 80%);
-  animation: androidWallpaperDrift 30s ease-in-out infinite alternate;
-}
-
-.android-wallpaper::after {
-  content: '';
-  position: absolute;
-  width: 130%;
-  height: 130%;
-  top: -15%;
-  left: -15%;
-  background:
-    radial-gradient(ellipse 30% 40% at 80% 60%, rgba(255, 149, 0, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 30% at 35% 55%, rgba(90, 200, 250, 0.1) 0%, transparent 55%),
-    radial-gradient(ellipse 25% 35% at 55% 15%, rgba(255, 45, 85, 0.08) 0%, transparent 50%);
-  animation: androidWallpaperDrift2 25s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes androidWallpaperDrift {
-  0% { transform: translate(0, 0) rotate(0deg); }
-  33% { transform: translate(3%, -2%) rotate(1deg); }
-  66% { transform: translate(-2%, 3%) rotate(-0.5deg); }
-  100% { transform: translate(1%, -1%) rotate(0.5deg); }
-}
-
-@keyframes androidWallpaperDrift2 {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  50% { transform: translate(-3%, 2%) rotate(-1deg) scale(1.02); }
-  100% { transform: translate(2%, -3%) rotate(0.5deg) scale(0.98); }
+  background: #0a0e1a url('/wallpapers/android.jpg') center/cover no-repeat;
 }
 
 /* === Shell Layout === */
@@ -555,18 +510,28 @@
   opacity: 1;
 }
 
+.shade-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
 .shade-content {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  max-height: 85vh;
-  background: var(--md-surface-dim);
+  max-height: 88vh;
+  background: rgba(20, 19, 22, 0.97);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
   border-radius: 0 0 var(--md-corner-xl) var(--md-corner-xl);
   overflow-y: auto;
-  padding: 8px 16px 20px;
+  padding: 4px 16px 24px;
   transform: translateY(-100%);
-  transition: transform 0.35s cubic-bezier(0.2, 0, 0, 1);
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
 }
 
 .shade-visible .shade-content {
@@ -576,26 +541,45 @@
 .shade-handle {
   display: flex;
   justify-content: center;
-  padding: 8px 0 12px;
+  padding: 10px 0 8px;
   cursor: pointer;
 }
 
 .shade-handle-bar {
-  width: 32px;
+  width: 36px;
   height: 4px;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.25);
   border-radius: 2px;
+}
+
+.shade-date-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 4px 12px;
+}
+
+.shade-date {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--md-on-surface);
+}
+
+.shade-brightness-icon {
+  display: flex;
+  align-items: center;
 }
 
 /* Quick Settings */
 .shade-quick-settings {
   display: grid;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .shade-quick-settings.qs-collapsed {
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 }
 
 .shade-quick-settings.qs-expanded {
@@ -607,25 +591,51 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px 4px;
+  padding: 14px 6px 10px;
   background: var(--md-surface-container-highest);
-  border-radius: var(--md-corner-xl);
+  border-radius: 20px;
   cursor: pointer;
-  transition: background 0.2s;
-  gap: 4px;
-  min-height: 48px;
+  transition: background 0.2s, transform 0.15s;
+  gap: 6px;
+  min-height: 56px;
+}
+
+.qs-tile:active {
+  transform: scale(0.95);
 }
 
 .qs-tile.qs-active {
   background: var(--md-primary-container);
 }
 
+.qs-tile.qs-active .qs-tile-icon {
+  color: var(--md-on-primary-container);
+}
+
 .qs-tile-icon {
-  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--md-on-surface-variant);
+}
+
+.qs-tile-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.qs-tile-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
 }
 
 .qs-tile-label {
   font-size: 11px;
+  font-weight: 500;
   color: var(--md-on-surface);
   text-align: center;
 }
@@ -634,43 +644,68 @@
   font-size: 9px;
   color: var(--md-on-surface-variant);
   text-align: center;
-  max-width: 72px;
+  max-width: 76px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 /* Shade Notifications */
+.shade-notifications {
+  margin-top: 4px;
+}
+
 .shade-notif-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 0 8px;
-  font-size: 13px;
-  color: var(--md-on-surface-variant);
+  padding: 8px 4px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--md-on-surface);
 }
 
 .shade-clear-all {
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--md-primary);
   background: none;
   border: none;
   cursor: pointer;
   font-family: var(--md-font);
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.shade-clear-all:active {
+  background: rgba(255,255,255,0.06);
 }
 
 .shade-notification {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
-  padding: 14px 16px;
+  gap: 14px;
+  padding: 16px;
   background: var(--md-surface-container);
   border-radius: var(--md-corner-lg);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  transition: transform 0.15s;
 }
 
-.shade-notif-icon {
-  font-size: 20px;
+.shade-notification:active {
+  transform: scale(0.98);
+}
+
+.shade-notif-icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--md-surface-container-highest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
   flex-shrink: 0;
 }
 
@@ -679,23 +714,29 @@
   min-width: 0;
 }
 
+.shade-notif-app-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
 .shade-notif-app {
   font-size: 12px;
   font-weight: 500;
   color: var(--md-on-surface);
-  margin-bottom: 2px;
 }
 
 .shade-notif-time {
+  font-size: 11px;
   font-weight: 400;
   color: var(--md-on-surface-variant);
-  margin-left: 8px;
 }
 
 .shade-notif-text {
   font-size: 13px;
   color: var(--md-on-surface-variant);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 /* === Power Menu (OS Switcher) === */

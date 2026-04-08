@@ -122,9 +122,11 @@ export async function openWindow(appId) {
   // Wire drag on title bar
   initDrag(win, wid)
 
-  // Animate in
+  // Animate in (double rAF to ensure CSS transition triggers)
   requestAnimationFrame(() => {
-    win.classList.add('ipados-stage-window-enter')
+    requestAnimationFrame(() => {
+      win.classList.add('ipados-stage-window-enter')
+    })
   })
 
   updateSidebar()

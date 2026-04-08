@@ -64,10 +64,12 @@ export async function openActivity(appId) {
     }
   }, { threshold: 40 })
 
-  // Animate in
+  // Animate in (double rAF for reliable CSS transition)
   activityContainer.appendChild(activity)
   requestAnimationFrame(() => {
-    activity.classList.add('activity-enter')
+    requestAnimationFrame(() => {
+      activity.classList.add('activity-enter')
+    })
   })
 
   // Push to stack
