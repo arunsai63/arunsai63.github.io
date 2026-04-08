@@ -2,96 +2,189 @@ import { createWindow } from '../macos/os/window-manager.js'
 import { experience } from '../shared/data.js'
 
 export function renderContent(el) {
-  el.style.padding = '0'
+  el.style.cssText = 'padding:0;font-family:"JetBrains Mono",monospace;font-size:13px;overflow-y:auto;'
+
   el.innerHTML = `
-        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;">
-          <!-- Header bars -->
-          <div style="padding:12px 16px;background:#0d0d1a;border-bottom:1px solid #222;">
-            <div style="display:flex;gap:24px;margin-bottom:8px;">
-              <div>
-                <span style="color:#666;">CPU:</span>
-                <span style="color:#10b981;">Solutions Architecture</span>
-                <div style="height:4px;background:rgba(255,255,255,0.04);border-radius:2px;margin-top:4px;width:200px;overflow:hidden;">
-                  <div style="height:100%;width:87%;background:linear-gradient(90deg,#10b981,#3b82f6);border-radius:2px;"></div>
+    <div class="exp-container">
+      <div class="exp-header">
+        <div class="exp-header-title">Career Timeline</div>
+        <div class="exp-header-sub">${experience.length} roles &middot; ${experience[0].dates.split(' - ')[1] === 'Present' ? 'Currently active' : ''}</div>
+      </div>
+      <div class="exp-timeline">
+        ${experience.map((exp, i) => `
+          <div class="exp-card" data-idx="${i}">
+            <div class="exp-card-dot" style="background:${i === 0 ? '#10b981' : i < 3 ? '#3b82f6' : '#666'};"></div>
+            <div class="exp-card-line"></div>
+            <div class="exp-card-body">
+              <div class="exp-card-top">
+                <div class="exp-card-role">${exp.title}</div>
+                <span class="exp-card-status" style="color:${exp.status.includes('CANNOT') || exp.status.includes('PRINTING') ? '#10b981' : exp.status === 'RUNNING' ? '#3b82f6' : '#666'};">${exp.status}</span>
+              </div>
+              <div class="exp-card-company">${exp.company} &middot; ${exp.dates}</div>
+              <div class="exp-card-metrics">
+                <span class="exp-metric"><span class="exp-metric-label">CPU</span> ${exp.cpu}</span>
+                <span class="exp-metric"><span class="exp-metric-label">MEM</span> ${exp.mem}</span>
+                <span class="exp-metric"><span class="exp-metric-label">PID</span> ${1000 + i}</span>
+              </div>
+              <div class="exp-card-detail" id="exp-detail-${i}" style="display:none;">
+                <ul class="exp-bullets">
+                  ${exp.bullets.map(b => `<li>${b}</li>`).join('')}
+                </ul>
+                <div class="exp-tech-tags">
+                  ${exp.tech.map(t => `<span class="exp-tech-tag">${t}</span>`).join('')}
                 </div>
-              </div>
-              <div>
-                <span style="color:#666;">MEM:</span>
-                <span style="color:#3b82f6;">Experience Cache</span>
-                <div style="height:4px;background:rgba(255,255,255,0.04);border-radius:2px;margin-top:4px;width:200px;overflow:hidden;">
-                  <div style="height:100%;width:65%;background:linear-gradient(90deg,#3b82f6,#8b5cf6);border-radius:2px;"></div>
-                </div>
+                <button class="exp-kill-btn" data-idx="${i}">Kill Process</button>
               </div>
             </div>
-            <div style="color:#555;font-size:11px;">Tasks: ${experience.length} | Running: 1 | Completed: ${experience.length - 1} | Coffee consumed: yes</div>
           </div>
+        `).join('')}
+      </div>
+    </div>
+    <style>
+      .exp-container { padding: 0; }
+      .exp-header {
+        padding: 16px 20px 12px;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        background: rgba(0,0,0,0.2);
+      }
+      .exp-header-title { font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+      .exp-header-sub { font-size: 11px; color: #666; }
+      .exp-timeline { padding: 8px 16px 20px; }
+      .exp-card {
+        display: flex;
+        gap: 14px;
+        position: relative;
+        padding: 14px 0;
+        cursor: pointer;
+        transition: background 0.15s;
+        border-radius: 8px;
+      }
+      .exp-card:hover { background: rgba(255,255,255,0.02); }
+      .exp-card-dot {
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        margin-top: 5px;
+        z-index: 1;
+      }
+      .exp-card-line {
+        position: absolute;
+        left: 4.5px;
+        top: 28px;
+        bottom: -14px;
+        width: 1px;
+        background: rgba(255,255,255,0.08);
+      }
+      .exp-card:last-child .exp-card-line { display: none; }
+      .exp-card-body { flex: 1; min-width: 0; }
+      .exp-card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 2px;
+      }
+      .exp-card-role {
+        font-size: 14px;
+        font-weight: 600;
+        color: #eee;
+      }
+      .exp-card-status {
+        font-size: 10px;
+        font-weight: 500;
+        white-space: nowrap;
+        padding: 2px 8px;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.04);
+        flex-shrink: 0;
+      }
+      .exp-card-company {
+        font-size: 12px;
+        color: #888;
+        margin-bottom: 6px;
+      }
+      .exp-card-metrics {
+        display: flex;
+        gap: 12px;
+        font-size: 11px;
+      }
+      .exp-metric { color: #666; }
+      .exp-metric-label { color: #10b981; margin-right: 3px; }
+      .exp-card-detail {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        animation: expDetailIn 0.25s ease;
+      }
+      @keyframes expDetailIn {
+        from { opacity: 0; transform: translateY(-6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .exp-bullets {
+        padding-left: 16px;
+        list-style: disc;
+        color: #aaa;
+        font-size: 12px;
+        line-height: 1.8;
+        margin-bottom: 10px;
+      }
+      .exp-tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 10px;
+      }
+      .exp-tech-tag {
+        padding: 2px 8px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 4px;
+        font-size: 10px;
+        color: #888;
+      }
+      .exp-kill-btn {
+        color: #ef4444;
+        border: 1px solid rgba(239,68,68,0.3);
+        border-radius: 4px;
+        padding: 3px 10px;
+        font-size: 11px;
+        cursor: pointer;
+        background: none;
+        font-family: inherit;
+        transition: background 0.15s;
+      }
+      .exp-kill-btn:hover { background: rgba(239,68,68,0.08); }
+    </style>
+  `
 
-          <!-- Process table header -->
-          <div style="display:grid;grid-template-columns:40px 1fr 180px 100px 70px 70px 120px;padding:8px 16px;background:rgba(0,0,0,0.25)128;color:#666;font-size:11px;border-bottom:1px solid #1a1a1a;position:sticky;top:0;">
-            <span>PID</span>
-            <span>PROCESS</span>
-            <span>COMPANY</span>
-            <span>DATES</span>
-            <span>CPU%</span>
-            <span>MEM</span>
-            <span>STATUS</span>
-          </div>
+  // Click to expand/collapse
+  el.querySelectorAll('.exp-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.exp-kill-btn')) return
+      const idx = card.dataset.idx
+      const detail = el.querySelector(`#exp-detail-${idx}`)
+      const isOpen = detail.style.display !== 'none'
 
-          <!-- Process rows -->
-          <div id="process-list">
-            ${experience.map((exp, i) => `
-              <div class="process-row" data-idx="${i}" style="display:grid;grid-template-columns:40px 1fr 180px 100px 70px 70px 120px;padding:10px 16px;border-bottom:1px solid #1a1a2a;cursor:pointer;transition:background 0.15s;align-items:center;">
-                <span style="color:#555;">${1000 + i}</span>
-                <span style="color:#ccc;">${exp.processName}</span>
-                <span style="color:#888;">${exp.company}</span>
-                <span style="color:#666;font-size:11px;">${exp.dates.split(' - ')[0]}</span>
-                <span style="color:${parseFloat(exp.cpu) > 80 ? '#ef4444' : parseFloat(exp.cpu) > 50 ? '#f59e0b' : '#10b981'};">${exp.cpu}</span>
-                <span style="color:#888;">${exp.mem}</span>
-                <span style="color:${exp.status.includes('CANNOT') || exp.status.includes('PRINTING') ? '#10b981' : exp.status === 'RUNNING' ? '#3b82f6' : '#666'};font-size:11px;">${exp.status}</span>
-              </div>
-            `).join('')}
-          </div>
+      // Close all
+      el.querySelectorAll('.exp-card-detail').forEach(d => d.style.display = 'none')
+      el.querySelectorAll('.exp-card').forEach(c => c.style.background = '')
 
-          <!-- Expanded detail -->
-          <div id="process-detail" style="display:none;padding:16px;background:#0d0d1a;border-top:2px solid #10b981;"></div>
-        </div>
-      `
+      if (!isOpen) {
+        detail.style.display = 'block'
+        card.style.background = 'rgba(16, 185, 129, 0.04)'
+      }
+    })
+  })
 
-      // Click to expand
-      el.querySelectorAll('.process-row').forEach(row => {
-        row.addEventListener('click', () => {
-          const idx = parseInt(row.dataset.idx)
-          const exp = experience[idx]
-          const detail = el.querySelector('#process-detail')
-
-          // Toggle highlight
-          el.querySelectorAll('.process-row').forEach(r => r.style.background = '')
-          row.style.background = 'rgba(16, 185, 129, 0.08)'
-
-          detail.style.display = 'block'
-          detail.innerHTML = `
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
-              <div>
-                <h3 style="color:#fff;font-size:15px;margin-bottom:2px;">${exp.title}</h3>
-                <p style="color:#10b981;font-size:13px;">${exp.company} | ${exp.dates}</p>
-              </div>
-              <button onclick="this.closest('#process-detail').style.display='none'" style="color:#666;font-size:16px;cursor:pointer;background:none;border:none;">✕</button>
-            </div>
-            <ul style="padding-left:16px;list-style:disc;margin-bottom:12px;color:#aaa;line-height:1.8;">
-              ${exp.bullets.map(b => `<li>${b}</li>`).join('')}
-            </ul>
-            <div style="display:flex;flex-wrap:wrap;gap:6px;">
-              ${exp.tech.map(t => `<span style="padding:2px 8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:4px;font-size:11px;color:#888;">${t}</span>`).join('')}
-            </div>
-            <div style="margin-top:12px;color:#555;font-size:11px;">
-              <button style="color:#ef4444;border:1px solid #ef444444;border-radius:4px;padding:3px 10px;font-size:11px;cursor:pointer;background:none;font-family:inherit;" onclick="this.textContent='Nice try. I\\'m still employed. 😏';">Kill Process</button>
-            </div>
-          `
-        })
-
-        row.addEventListener('mouseenter', () => { if (!row.style.background) row.style.background = 'rgba(255,255,255,0.03)' })
-        row.addEventListener('mouseleave', () => { if (row.style.background === 'rgba(255, 255, 255, 0.03)') row.style.background = '' })
-      })
+  // Kill process buttons
+  el.querySelectorAll('.exp-kill-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation()
+      btn.textContent = "Nice try. I'm still employed."
+      btn.style.borderColor = '#555'
+      btn.style.color = '#666'
+    })
+  })
 }
 
 export function open() {
@@ -99,8 +192,8 @@ export function open() {
     id: 'experience',
     title: 'System Monitor — Experience.exe',
     icon: '📊',
-    width: 750,
-    height: 550,
+    width: 600,
+    height: 520,
     content: (el) => renderContent(el),
   })
 }

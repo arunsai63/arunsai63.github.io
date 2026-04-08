@@ -8,7 +8,7 @@ export function androidBootSequence(root) {
       <div class="android-boot-logo">
         <img src="/wallpapers/android-logo.svg" alt="" class="android-boot-logo-img" />
       </div>
-      <div class="android-boot-text">Powered by mass caffeine</div>
+      <div class="android-boot-text">android</div>
     `
     root.appendChild(overlay)
 
