@@ -1,17 +1,10 @@
-import { createWindow } from '../os/window-manager.js'
+import { createWindow } from '../macos/os/window-manager.js'
 import { profile } from '../shared/data.js'
 
-export function open() {
-  createWindow({
-    id: 'contact',
-    title: 'Mail — New Message',
-    icon: '📧',
-    width: 550,
-    height: 420,
-    content: (el) => {
-      el.style.cssText = 'padding:0;font-size:13px;display:flex;flex-direction:column;'
+export function renderContent(el) {
+  el.style.cssText = 'padding:0;font-size:13px;display:flex;flex-direction:column;'
 
-      el.innerHTML = `
+  el.innerHTML = `
         <div style="padding:12px 16px;background:rgba(0,0,0,0.25);border-bottom:1px solid #222;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
             <span style="color:#666;width:40px;">To:</span>
@@ -39,19 +32,28 @@ export function open() {
         </div>
       `
 
-      // Subject suggestions
-      el.querySelectorAll('.subject-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          el.querySelector('#contact-subject').value = btn.textContent
-        })
-      })
+  // Subject suggestions
+  el.querySelectorAll('.subject-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      el.querySelector('#contact-subject').value = btn.textContent
+    })
+  })
 
-      // Send button
-      el.querySelector('#send-btn').addEventListener('click', () => {
-        const subject = el.querySelector('#contact-subject').value || 'Hello from ArunOS'
-        const body = el.querySelector('#contact-body').value || ''
-        window.open(`mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`)
-      })
-    }
+  // Send button
+  el.querySelector('#send-btn').addEventListener('click', () => {
+    const subject = el.querySelector('#contact-subject').value || 'Hello from ArunOS'
+    const body = el.querySelector('#contact-body').value || ''
+    window.open(`mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`)
+  })
+}
+
+export function open() {
+  createWindow({
+    id: 'contact',
+    title: 'Mail — New Message',
+    icon: '📧',
+    width: 550,
+    height: 420,
+    content: (el) => renderContent(el),
   })
 }

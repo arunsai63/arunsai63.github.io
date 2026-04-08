@@ -1,4 +1,4 @@
-import { createWindow } from '../os/window-manager.js'
+import { createWindow } from '../macos/os/window-manager.js'
 import { getYOE } from '../shared/data.js'
 
 const wallpapers = [
@@ -9,15 +9,8 @@ const wallpapers = [
   { name: 'Void', bg: '#000000', gradient: 'none' },
 ]
 
-export function open() {
-  createWindow({
-    id: 'settings',
-    title: 'Settings',
-    icon: '⚙️',
-    width: 480,
-    height: 380,
-    content: (el) => {
-      el.innerHTML = `
+export function renderContent(el) {
+  el.innerHTML = `
         <h3 style="color:#fff;font-size:15px;margin-bottom:16px;">🎨 Wallpaper</h3>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;">
           ${wallpapers.map((wp, i) => `
@@ -41,19 +34,28 @@ export function open() {
         </div>
       `
 
-      el.querySelectorAll('.wp-option').forEach(opt => {
-        opt.addEventListener('click', () => {
-          const wp = wallpapers[parseInt(opt.dataset.idx)]
-          const desktop = document.querySelector('.desktop')
-          if (desktop) {
-            desktop.style.background = wp.bg
-            desktop.style.backgroundImage = wp.gradient
-          }
-          // Highlight selected
-          el.querySelectorAll('.wp-option').forEach(o => o.style.borderColor = '#262626')
-          opt.style.borderColor = '#10b981'
-        })
-      })
-    }
+  el.querySelectorAll('.wp-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const wp = wallpapers[parseInt(opt.dataset.idx)]
+      const desktop = document.querySelector('.desktop')
+      if (desktop) {
+        desktop.style.background = wp.bg
+        desktop.style.backgroundImage = wp.gradient
+      }
+      // Highlight selected
+      el.querySelectorAll('.wp-option').forEach(o => o.style.borderColor = '#262626')
+      opt.style.borderColor = '#10b981'
+    })
+  })
+}
+
+export function open() {
+  createWindow({
+    id: 'settings',
+    title: 'Settings',
+    icon: '⚙️',
+    width: 480,
+    height: 380,
+    content: (el) => renderContent(el),
   })
 }

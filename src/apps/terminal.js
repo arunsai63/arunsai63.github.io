@@ -1,21 +1,15 @@
-import { createWindow } from '../os/window-manager.js'
+import { createWindow } from '../macos/os/window-manager.js'
 import { profile, experience, skills, filesys, getYOE } from '../shared/data.js'
 import { openApp } from './registry.js'
 
-export function open() {
-  createWindow({
-    id: 'terminal',
-    title: 'Terminal',
-    icon: '🖥️',
-    width: 700,
-    height: 480,
-    content: (el) => {
-      el.style.cssText = 'padding:0;background:#0d0d1a;font-family:"JetBrains Mono",monospace;font-size:13px;display:flex;flex-direction:column;'
+export function renderContent(el, opts = {}) {
+  const promptHost = opts.promptHost || 'portfolio'
+  el.style.cssText = 'padding:0;background:#0d0d1a;font-family:"JetBrains Mono",monospace;font-size:13px;display:flex;flex-direction:column;'
 
-      el.innerHTML = `
+  el.innerHTML = `
         <div id="term-output" style="flex:1;overflow-y:auto;padding:12px;line-height:1.7;"></div>
         <div style="display:flex;align-items:center;padding:8px 12px;border-top:1px solid #1a1a1a;flex-shrink:0;">
-          <span style="color:#10b981;margin-right:8px;white-space:nowrap;">arun@portfolio:~$</span>
+          <span style="color:#10b981;margin-right:8px;white-space:nowrap;">arun@${promptHost}:~$</span>
           <input id="term-input" type="text" autocomplete="off" spellcheck="false" style="flex:1;background:none;border:none;color:#ccc;font-family:inherit;font-size:13px;outline:none;" />
         </div>
       `
@@ -37,7 +31,7 @@ export function open() {
           if (!cmd) return
           history.unshift(cmd)
           histIdx = -1
-          appendOutput(output, `<span style="color:#10b981;">arun@portfolio:${cwd}$</span> ${escapeHtml(cmd)}`)
+          appendOutput(output, `<span style="color:#10b981;">arun@${promptHost}:${cwd}$</span> ${escapeHtml(cmd)}`)
           processCommand(cmd, output, cwd, (newCwd) => { cwd = newCwd })
           input.value = ''
           output.scrollTop = output.scrollHeight
@@ -58,10 +52,19 @@ export function open() {
         }
       })
 
-      // Focus input on click anywhere
-      el.addEventListener('click', () => input.focus())
-      setTimeout(() => input.focus(), 100)
-    }
+  // Focus input on click anywhere
+  el.addEventListener('click', () => input.focus())
+  setTimeout(() => input.focus(), 100)
+}
+
+export function open() {
+  createWindow({
+    id: 'terminal',
+    title: 'Terminal',
+    icon: '🖥️',
+    width: 700,
+    height: 480,
+    content: (el) => renderContent(el),
   })
 }
 

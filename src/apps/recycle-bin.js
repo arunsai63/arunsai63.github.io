@@ -1,6 +1,6 @@
-import { createWindow } from '../os/window-manager.js'
+import { createWindow } from '../macos/os/window-manager.js'
 
-const trash = [
+export const trash = [
   { name: 'jquery-spaghetti-2019.js', size: '847 KB', date: '2019-06-14', desc: 'My first production code. No one should see this.' },
   { name: 'my-first-blockchain.sol', size: '2.1 KB', date: '2020-03-22', desc: 'DO NOT DEPLOY. I repeat, DO NOT DEPLOY.' },
   { name: 'node_modules/', size: '∞', date: 'every single day', desc: 'It keeps coming back. Like a horror movie villain.' },
@@ -11,17 +11,10 @@ const trash = [
   { name: 'credentials.env', size: '1 KB', date: '2020-01-02', desc: 'Committed to git once. Once was enough.' },
 ]
 
-export function open() {
-  createWindow({
-    id: 'recycle-bin',
-    title: 'Recycle Bin — My Past Mistakes',
-    icon: '🗑️',
-    width: 550,
-    height: 400,
-    content: (el) => {
-      el.style.cssText = 'padding:0;font-family:"JetBrains Mono",monospace;font-size:12px;'
+export function renderContent(el) {
+  el.style.cssText = 'padding:0;font-family:"JetBrains Mono",monospace;font-size:12px;'
 
-      el.innerHTML = `
+  el.innerHTML = `
         <div style="padding:8px 16px;background:rgba(0,0,0,0.25);border-bottom:1px solid #222;color:#666;font-size:11px;">
           ⚠️ WARNING: Contents of this bin may cause secondhand embarrassment. Viewer discretion advised.
         </div>
@@ -46,11 +39,20 @@ export function open() {
         </div>
       `
 
-      el.querySelector('#empty-trash').addEventListener('click', function() {
-        this.textContent = 'Nice try. These mistakes are permanent. Like tattoos, but worse.'
-        this.style.borderColor = '#555'
-        this.style.color = '#666'
-      })
-    }
+  el.querySelector('#empty-trash').addEventListener('click', function() {
+    this.textContent = 'Nice try. These mistakes are permanent. Like tattoos, but worse.'
+    this.style.borderColor = '#555'
+    this.style.color = '#666'
+  })
+}
+
+export function open() {
+  createWindow({
+    id: 'recycle-bin',
+    title: 'Recycle Bin — My Past Mistakes',
+    icon: '🗑️',
+    width: 550,
+    height: 400,
+    content: (el) => renderContent(el),
   })
 }

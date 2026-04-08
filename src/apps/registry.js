@@ -1,5 +1,5 @@
 // App Registry — central registry of all apps
-import { createWindow } from '../os/window-manager.js'
+import { createWindow } from '../macos/os/window-manager.js'
 import { icon } from '../shared/icons.js'
 
 const apps = {

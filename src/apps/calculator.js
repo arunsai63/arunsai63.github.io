@@ -1,14 +1,7 @@
-import { createWindow } from '../os/window-manager.js'
+import { createWindow } from '../macos/os/window-manager.js'
 
-export function open() {
-  createWindow({
-    id: 'calculator',
-    title: 'Calculator (totally accurate)',
-    icon: '🔢',
-    width: 300,
-    height: 400,
-    content: (el) => {
-      el.style.cssText = 'padding:16px;display:flex;flex-direction:column;gap:8px;'
+export function renderContent(el) {
+  el.style.cssText = 'padding:16px;display:flex;flex-direction:column;gap:8px;'
       let display = '0'
       let prev = null
       let op = null
@@ -72,7 +65,16 @@ export function open() {
         render()
       }
 
-      render()
-    }
+  render()
+}
+
+export function open() {
+  createWindow({
+    id: 'calculator',
+    title: 'Calculator (totally accurate)',
+    icon: '🔢',
+    width: 300,
+    height: 400,
+    content: (el) => renderContent(el),
   })
 }

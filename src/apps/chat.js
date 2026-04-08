@@ -1,24 +1,17 @@
 // Chat App — MSN Messenger style, real-time with Firebase
-import { createWindow } from '../os/window-manager.js'
+import { createWindow } from '../macos/os/window-manager.js'
 import { getDb, getUserId } from '../multiplayer/firebase-config.js'
 import { ref, push, onValue, query, limitToLast } from 'firebase/database'
 
 const CHAT_COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899']
 
-export function open() {
+export function renderContent(el) {
   const myColor = CHAT_COLORS[Math.floor(Math.random() * CHAT_COLORS.length)]
   const myName = localStorage.getItem('arunos-chat-name') || 'Anonymous Visitor'
 
-  createWindow({
-    id: 'chat',
-    title: 'ArunOS Messenger',
-    icon: '💬',
-    width: 420,
-    height: 500,
-    content: (el) => {
-      el.style.cssText = 'padding:0;display:flex;flex-direction:column;font-size:13px;'
+  el.style.cssText = 'padding:0;display:flex;flex-direction:column;font-size:13px;'
 
-      el.innerHTML = `
+  el.innerHTML = `
         <div style="padding:8px 12px;background:rgba(0,0,0,0.25);border-bottom:1px solid #222;display:flex;align-items:center;gap:8px;">
           <span style="font-size:16px;">💬</span>
           <span style="color:#888;font-size:12px;">ArunOS Global Chat</span>
@@ -110,8 +103,17 @@ export function open() {
         if (e.key === 'Enter') sendMessage()
       })
 
-      inputEl.focus()
-    }
+  inputEl.focus()
+}
+
+export function open() {
+  createWindow({
+    id: 'chat',
+    title: 'ArunOS Messenger',
+    icon: '💬',
+    width: 420,
+    height: 500,
+    content: (el) => renderContent(el),
   })
 }
 

@@ -1,16 +1,9 @@
-import { createWindow } from '../os/window-manager.js'
+import { createWindow } from '../macos/os/window-manager.js'
 import { experience } from '../shared/data.js'
 
-export function open() {
-  createWindow({
-    id: 'experience',
-    title: 'System Monitor — Experience.exe',
-    icon: '📊',
-    width: 750,
-    height: 550,
-    content: (el) => {
-      el.style.padding = '0'
-      el.innerHTML = `
+export function renderContent(el) {
+  el.style.padding = '0'
+  el.innerHTML = `
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;">
           <!-- Header bars -->
           <div style="padding:12px 16px;background:#0d0d1a;border-bottom:1px solid #222;">
@@ -99,6 +92,15 @@ export function open() {
         row.addEventListener('mouseenter', () => { if (!row.style.background) row.style.background = 'rgba(255,255,255,0.03)' })
         row.addEventListener('mouseleave', () => { if (row.style.background === 'rgba(255, 255, 255, 0.03)') row.style.background = '' })
       })
-    }
+}
+
+export function open() {
+  createWindow({
+    id: 'experience',
+    title: 'System Monitor — Experience.exe',
+    icon: '📊',
+    width: 750,
+    height: 550,
+    content: (el) => renderContent(el),
   })
 }

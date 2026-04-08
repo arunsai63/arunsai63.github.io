@@ -1,16 +1,9 @@
-import { createWindow } from '../os/window-manager.js'
+import { createWindow } from '../macos/os/window-manager.js'
 import { filesys, profile } from '../shared/data.js'
 
-export function open() {
-  createWindow({
-    id: 'projects',
-    title: 'File Explorer — ~/projects',
-    icon: '📁',
-    width: 600,
-    height: 420,
-    content: (el) => {
-      el.style.cssText = 'padding:0;font-family:"JetBrains Mono",monospace;font-size:13px;display:flex;flex-direction:column;'
-      let currentPath = '~'
+export function renderContent(el) {
+  el.style.cssText = 'padding:0;font-family:"JetBrains Mono",monospace;font-size:13px;display:flex;flex-direction:column;'
+  let currentPath = '~'
 
       function render(path) {
         currentPath = path
@@ -90,8 +83,17 @@ export function open() {
         })
       }
 
-      render('~')
-    }
+  render('~')
+}
+
+export function open() {
+  createWindow({
+    id: 'projects',
+    title: 'File Explorer — ~/projects',
+    icon: '📁',
+    width: 600,
+    height: 420,
+    content: (el) => renderContent(el),
   })
 }
 

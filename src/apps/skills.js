@@ -1,18 +1,11 @@
-import { createWindow } from '../os/window-manager.js'
+import { createWindow } from '../macos/os/window-manager.js'
 import { skills } from '../shared/data.js'
 
-export function open() {
-  createWindow({
-    id: 'skills',
-    title: 'Skills.txt — Notepad',
-    icon: '⚡',
-    width: 600,
-    height: 480,
-    content: (el) => {
-      el.style.cssText = 'padding:0;display:flex;flex-direction:column;font-family:"JetBrains Mono",monospace;'
+export function renderContent(el) {
+  el.style.cssText = 'padding:0;display:flex;flex-direction:column;font-family:"JetBrains Mono",monospace;'
 
-      // Notepad-style toolbar
-      el.innerHTML = `
+  // Notepad-style toolbar
+  el.innerHTML = `
         <div style="padding:4px 12px;background:#121212;border-bottom:1px solid #222;font-size:11px;color:#666;display:flex;gap:16px;">
           <span>File</span><span>Edit</span><span>Format</span><span style="cursor:pointer;color:#10b981;" id="skills-view-toggle">View: 📝 Text → 📊 Visual</span>
         </div>
@@ -25,13 +18,22 @@ export function open() {
 
       renderText(content)
 
-      toggle.addEventListener('click', () => {
-        isVisual = !isVisual
-        toggle.textContent = isVisual ? 'View: 📊 Visual → 📝 Text' : 'View: 📝 Text → 📊 Visual'
-        if (isVisual) renderVisual(content)
-        else renderText(content)
-      })
-    }
+  toggle.addEventListener('click', () => {
+    isVisual = !isVisual
+    toggle.textContent = isVisual ? 'View: 📊 Visual → 📝 Text' : 'View: 📝 Text → 📊 Visual'
+    if (isVisual) renderVisual(content)
+    else renderText(content)
+  })
+}
+
+export function open() {
+  createWindow({
+    id: 'skills',
+    title: 'Skills.txt — Notepad',
+    icon: '⚡',
+    width: 600,
+    height: 480,
+    content: (el) => renderContent(el),
   })
 }
 

@@ -1,15 +1,8 @@
-import { createWindow } from '../os/window-manager.js'
+import { createWindow } from '../macos/os/window-manager.js'
 import { profile, getYOE } from '../shared/data.js'
 
-export function open() {
-  createWindow({
-    id: 'about',
-    title: 'About Me — README.md',
-    icon: '👤',
-    width: 620,
-    height: 520,
-    content: (el) => {
-      el.innerHTML = `
+export function renderContent(el) {
+  el.innerHTML = `
         <div style="font-family:'JetBrains Mono',monospace;">
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
             <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#10b981,#3b82f6);display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0;">🧑‍💻</div>
@@ -50,20 +43,29 @@ export function open() {
         </div>
       `
 
-      // Tab switching
-      el.querySelectorAll('.about-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-          el.querySelectorAll('.about-tab').forEach(t => t.style.background = '#1a1a1a')
-          tab.style.background = '#2a2a4e'
-          const tabContent = el.querySelector('#about-tab-content')
-          if (tab.dataset.tab === 'hot-takes') tabContent.innerHTML = hotTakes()
-          else if (tab.dataset.tab === 'unpopular-opinions') tabContent.innerHTML = unpopularOpinions()
-          else if (tab.dataset.tab === 'stats') tabContent.innerHTML = stats()
-        })
-      })
-      // Set first tab active
-      el.querySelector('.about-tab').style.background = '#2a2a4e'
-    }
+  // Tab switching
+  el.querySelectorAll('.about-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      el.querySelectorAll('.about-tab').forEach(t => t.style.background = '#1a1a1a')
+      tab.style.background = '#2a2a4e'
+      const tabContent = el.querySelector('#about-tab-content')
+      if (tab.dataset.tab === 'hot-takes') tabContent.innerHTML = hotTakes()
+      else if (tab.dataset.tab === 'unpopular-opinions') tabContent.innerHTML = unpopularOpinions()
+      else if (tab.dataset.tab === 'stats') tabContent.innerHTML = stats()
+    })
+  })
+  // Set first tab active
+  el.querySelector('.about-tab').style.background = '#2a2a4e'
+}
+
+export function open() {
+  createWindow({
+    id: 'about',
+    title: 'About Me — README.md',
+    icon: '👤',
+    width: 620,
+    height: 520,
+    content: (el) => renderContent(el),
   })
 }
 

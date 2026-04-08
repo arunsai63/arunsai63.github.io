@@ -1,0 +1,171 @@
+/* ===== Desktop ===== */
+.desktop {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #0a0e1a;
+  display: flex;
+  flex-direction: column;
+}
+
+.desktop-area {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  padding: 16px;
+}
+
+/* ===== macOS Dock ===== */
+.dock-wrapper {
+  position: absolute;
+  bottom: 54px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 8000;
+  padding: 0 0 4px;
+}
+
+.dock {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  padding: 3px 8px 4px;
+  background: rgba(50, 50, 58, 0.35);
+  backdrop-filter: blur(40px) saturate(170%);
+  -webkit-backdrop-filter: blur(40px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 0.5px rgba(0, 0, 0, 0.3),
+    0 4px 20px rgba(0, 0, 0, 0.25),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.12);
+}
+
+.dock-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: default;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  padding: 2px 1px 0;
+}
+
+.dock-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  /* NO transition on width/height — JS drives magnification instantly */
+  will-change: width, height;
+}
+
+.dock-item:active .dock-icon {
+  filter: brightness(0.85);
+}
+
+/* Tooltip — macOS style pill above icon */
+.dock-tooltip {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: rgba(40, 40, 45, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 5px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s ease, transform 0.12s ease;
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.dock-item:hover .dock-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
+/* Active app indicator dot */
+.dock-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.dock-item.running .dock-dot {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.context-menu-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ===== Context Menu ===== */
+.context-menu {
+  position: fixed;
+  background: rgba(30, 30, 35, 0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 4px 0;
+  min-width: 220px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 1px rgba(255,255,255,0.1);
+  z-index: 99999;
+  font-size: 13px;
+}
+
+.context-menu-item {
+  padding: 6px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.1s;
+  color: #ddd;
+  border-radius: 6px;
+  margin: 0 4px;
+}
+
+.context-menu-item:hover {
+  background: #3478f6;
+  color: #fff;
+}
+
+.context-menu-item:hover .context-menu-icon svg {
+  stroke: #fff;
+}
+
+.context-menu-separator {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 4px 8px;
+}
+
+.context-menu-item-disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.context-menu-shortcut {
+  margin-left: auto;
+  opacity: 0.4;
+  font-size: 11px;
+}
