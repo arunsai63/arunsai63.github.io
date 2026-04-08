@@ -88,18 +88,41 @@ export async function boot(root) {
     }
   }
 
-  // Swipe down from top-right corner -> control center
-  onSwipe(shell, {
-    down: (data) => {
-      // Only from the right third of the screen
-      if (data.dx !== undefined) {
-        // Use touch start position if available
-      }
-      if (!isControlCenterVisible()) {
-        showControlCenter()
-      }
-    },
-  }, { threshold: 30 })
+  // Pull down from top edge (mouse + touch) to open Control Center
+  let pullStartY = null
+  let pullStartX = null
+  const PULL_ZONE = 40 // px from top edge
+
+  shell.addEventListener('mousedown', (e) => {
+    if (e.clientY < PULL_ZONE) {
+      pullStartY = e.clientY
+      pullStartX = e.clientX
+    }
+  })
+  shell.addEventListener('mousemove', (e) => {
+    if (pullStartY !== null && e.clientY - pullStartY > 50) {
+      pullStartY = null
+      if (!isControlCenterVisible()) showControlCenter()
+    }
+  })
+  shell.addEventListener('mouseup', () => { pullStartY = null })
+
+  shell.addEventListener('touchstart', (e) => {
+    const t = e.touches[0]
+    if (t.clientY < PULL_ZONE) {
+      pullStartY = t.clientY
+      pullStartX = t.clientX
+    }
+  }, { passive: true })
+  shell.addEventListener('touchmove', (e) => {
+    if (pullStartY === null) return
+    const t = e.touches[0]
+    if (t.clientY - pullStartY > 50) {
+      pullStartY = null
+      if (!isControlCenterVisible()) showControlCenter()
+    }
+  }, { passive: true })
+  shell.addEventListener('touchend', () => { pullStartY = null }, { passive: true })
 
   // Phase 9: Firebase (non-blocking)
   initFirebase().catch(() => {})

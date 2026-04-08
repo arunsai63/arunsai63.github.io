@@ -86,7 +86,7 @@ export async function boot(root) {
     }
   })
 
-  // Status bar pull-down for notification shade
+  // Status bar click + pull-down from top for notification shade
   const statusBar = shell.querySelector('.android-status-bar')
   if (statusBar) {
     statusBar.addEventListener('click', () => {
@@ -95,6 +95,30 @@ export async function boot(root) {
     })
     statusBar.style.cursor = 'pointer'
   }
+
+  // Pull down from top edge (mouse + touch) to open notification shade
+  let pullStartY = null
+  const PULL_ZONE = 40
+  shell.addEventListener('mousedown', (e) => {
+    if (e.clientY < PULL_ZONE) pullStartY = e.clientY
+  })
+  shell.addEventListener('mousemove', (e) => {
+    if (pullStartY !== null && e.clientY - pullStartY > 50) {
+      pullStartY = null
+      if (!isShadeVisible()) showShade()
+    }
+  })
+  shell.addEventListener('mouseup', () => { pullStartY = null })
+  shell.addEventListener('touchstart', (e) => {
+    if (e.touches[0].clientY < PULL_ZONE) pullStartY = e.touches[0].clientY
+  }, { passive: true })
+  shell.addEventListener('touchmove', (e) => {
+    if (pullStartY !== null && e.touches[0].clientY - pullStartY > 50) {
+      pullStartY = null
+      if (!isShadeVisible()) showShade()
+    }
+  }, { passive: true })
+  shell.addEventListener('touchend', () => { pullStartY = null }, { passive: true })
 
   // Phase 9: Firebase (non-blocking)
   initFirebase().catch(() => {})
