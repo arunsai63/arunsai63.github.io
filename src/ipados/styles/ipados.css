@@ -194,13 +194,15 @@
   display: flex;
   align-items: center;
   gap: 0;
-  padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(40px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border-radius: 26px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(50px) saturate(200%);
+  -webkit-backdrop-filter: blur(50px) saturate(200%);
+  border-radius: 22px;
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.1);
 }
 
 .ipados-dock-icons {
@@ -235,12 +237,20 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.2s var(--ios-spring), box-shadow 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
   /* Superellipse approximation via SVG mask */
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100' height='100' rx='22' ry='22'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100' height='100' rx='22' ry='22'/%3E%3C/svg%3E");
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
+}
+
+/* Make dock SVG icons look bolder/filled like real SF Symbols */
+.ipados-dock-icon-bg svg {
+  stroke-width: 2;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
 }
 
 .ipados-dock-icon-bg.ipados-icon-pressed,
@@ -304,22 +314,30 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.2s var(--ios-spring);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
-  /* Superellipse mask */
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  /* Superellipse mask for real iOS squircle */
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100' height='100' rx='22' ry='22'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100' height='100' rx='22' ry='22'/%3E%3C/svg%3E");
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }
 
+/* Make SVG icons inside home icons look filled (iOS SF Symbols style) */
+.ipados-home-icon-bg svg {
+  stroke-width: 2;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
+}
+
 .ipados-home-app:active .ipados-home-icon-bg {
-  transform: scale(0.9);
+  transform: scale(0.88);
 }
 
 .ipados-home-app-label {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  color: #fff;
   text-align: center;
   max-width: 76px;
   overflow: hidden;
@@ -505,9 +523,9 @@
 }
 
 .ipados-stage-sidebar-thumb {
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
+  width: 56px;
+  height: 42px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -551,18 +569,19 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  background: rgba(28, 28, 30, 0.92);
-  backdrop-filter: blur(40px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border-radius: var(--ios-corner-window);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(30, 30, 32, 0.94);
+  backdrop-filter: blur(50px) saturate(190%);
+  -webkit-backdrop-filter: blur(50px) saturate(190%);
+  border-radius: 12px;
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
   box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.45),
-    0 2px 8px rgba(0, 0, 0, 0.2);
+    0 10px 50px rgba(0, 0, 0, 0.45),
+    0 2px 10px rgba(0, 0, 0, 0.25),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.05);
   overflow: hidden;
   opacity: 0;
-  transform: scale(0.92) translateY(20px);
-  transition: opacity 0.25s var(--ios-spring), transform 0.25s var(--ios-spring), box-shadow 0.2s ease;
+  transform: scale(0.88) translateY(30px);
+  transition: opacity 0.35s var(--ios-spring), transform 0.45s var(--ios-spring), box-shadow 0.25s ease;
 }
 
 .ipados-stage-window.ipados-stage-window-enter {
@@ -572,46 +591,129 @@
 
 .ipados-stage-window.ipados-stage-window-exit {
   opacity: 0;
-  transform: scale(0.92) translateY(20px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: scale(0.88) translateY(20px);
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.4, 0, 1, 1);
 }
 
 .ipados-stage-window.ipados-stage-focused {
   box-shadow:
-    0 12px 60px rgba(0, 0, 0, 0.5),
-    0 4px 16px rgba(0, 0, 0, 0.3);
+    0 16px 70px rgba(0, 0, 0, 0.55),
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .ipados-stage-window.ipados-stage-dragging {
-  opacity: 0.92;
+  opacity: 0.9;
   cursor: grabbing;
-  transition: none;
+  transition: opacity 0.15s ease;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.6),
+    0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
 /* Title bar */
 .ipados-stage-titlebar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 36px;
-  padding: 0 10px 0 12px;
-  background: rgba(255, 255, 255, 0.04);
+  height: 40px;
+  padding: 0 14px;
+  background: rgba(38, 38, 40, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   flex-shrink: 0;
   cursor: grab;
   -webkit-app-region: drag;
 }
 
-.ipados-stage-titlebar-left {
+/* Traffic light buttons (macOS-style) */
+.ipados-stage-traffic-lights {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
+  flex-shrink: 0;
+  -webkit-app-region: no-drag;
+}
+
+.ipados-tl-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: filter 0.15s, opacity 0.15s;
+  opacity: 0.85;
+  position: relative;
+}
+
+.ipados-tl-btn:hover {
+  opacity: 1;
+}
+
+.ipados-tl-close {
+  background: #ff5f57;
+}
+
+.ipados-tl-minimize {
+  background: #febc2e;
+}
+
+.ipados-tl-maximize {
+  background: #28c840;
+}
+
+/* Show icons on hover */
+.ipados-stage-titlebar:hover .ipados-tl-close::after {
+  content: '×';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.5);
+  line-height: 1;
+}
+
+.ipados-stage-titlebar:hover .ipados-tl-minimize::after {
+  content: '−';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.5);
+  line-height: 1;
+}
+
+.ipados-stage-titlebar:hover .ipados-tl-maximize::after {
+  content: '+';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.5);
+  line-height: 1;
+}
+
+.ipados-stage-titlebar-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
 }
 
 .ipados-stage-titlebar-icon {
-  width: 20px;
-  height: 20px;
-  border-radius: 5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -621,32 +723,15 @@
 .ipados-stage-titlebar-label {
   font-size: 13px;
   font-weight: 500;
-  color: var(--ios-label2);
+  color: rgba(255, 255, 255, 0.7);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.ipados-stage-close-btn {
-  width: 24px;
-  height: 24px;
-  border: none;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--ios-label3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 1;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-  -webkit-app-region: no-drag;
-}
-
-.ipados-stage-close-btn:hover {
-  background: var(--ios-red);
-  color: #fff;
+.ipados-stage-titlebar-spacer {
+  width: 55px; /* balance the traffic lights */
+  flex-shrink: 0;
 }
 
 /* Window content */

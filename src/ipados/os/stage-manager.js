@@ -78,13 +78,18 @@ export async function openWindow(appId) {
 
   win.innerHTML = `
     <div class="ipados-stage-titlebar" data-wid="${wid}">
-      <div class="ipados-stage-titlebar-left">
+      <div class="ipados-stage-traffic-lights">
+        <button class="ipados-tl-btn ipados-tl-close" data-wid="${wid}" aria-label="Close"></button>
+        <button class="ipados-tl-btn ipados-tl-minimize" aria-label="Minimize"></button>
+        <button class="ipados-tl-btn ipados-tl-maximize" aria-label="Maximize"></button>
+      </div>
+      <div class="ipados-stage-titlebar-center">
         <div class="ipados-stage-titlebar-icon" style="background:${appDef.iconBg}">
-          ${icon(appDef.iconName, 14, '#fff')}
+          ${icon(appDef.iconName, 12, '#fff')}
         </div>
         <span class="ipados-stage-titlebar-label">${label}</span>
       </div>
-      <button class="ipados-stage-close-btn" data-wid="${wid}" aria-label="Close">&times;</button>
+      <div class="ipados-stage-titlebar-spacer"></div>
     </div>
     <div class="ipados-stage-content" id="${wid}-content"></div>
   `
@@ -109,10 +114,14 @@ export async function openWindow(appId) {
     contentEl.innerHTML = `<div style="padding:24px;color:#FF3B30;font-family:Inter,sans-serif;">Failed to load ${label}</div>`
   }
 
-  // Wire close button
-  win.querySelector('.ipados-stage-close-btn').addEventListener('click', (e) => {
+  // Wire traffic light buttons
+  win.querySelector('.ipados-tl-close').addEventListener('click', (e) => {
     e.stopPropagation()
     closeWindow(wid)
+  })
+  win.querySelector('.ipados-tl-minimize').addEventListener('click', (e) => {
+    e.stopPropagation()
+    closeWindow(wid) // minimize = close for now
   })
 
   // Wire focus on click
@@ -139,8 +148,8 @@ function initDrag(win, wid) {
   let startX, startY, origLeft, origTop
 
   function onStart(e) {
-    // Don't drag from close button
-    if (e.target.closest('.ipados-stage-close-btn')) return
+    // Don't drag from traffic light buttons
+    if (e.target.closest('.ipados-tl-btn')) return
     isDragging = true
     const ev = e.touches ? e.touches[0] : e
     startX = ev.clientX
