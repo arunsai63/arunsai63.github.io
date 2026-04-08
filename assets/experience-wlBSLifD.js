@@ -1,4 +1,4 @@
-import{c as d,e as n}from"./index-BwLrzomA.js";function r(){d({id:"experience",title:"System Monitor — Experience.exe",icon:"📊",width:750,height:550,content:s=>{s.style.padding="0",s.innerHTML=`
+import{c as d}from"./window-manager-Cm3UCJuh.js";import{e as n}from"./data-CMMTyLTn.js";function p(s){s.style.padding="0",s.innerHTML=`
         <div style="font-family:'JetBrains Mono',monospace;font-size:12px;">
           <!-- Header bars -->
           <div style="padding:12px 16px;background:#0d0d1a;border-bottom:1px solid #222;">
@@ -67,4 +67,4 @@ import{c as d,e as n}from"./index-BwLrzomA.js";function r(){d({id:"experience",t
             <div style="margin-top:12px;color:#555;font-size:11px;">
               <button style="color:#ef4444;border:1px solid #ef444444;border-radius:4px;padding:3px 10px;font-size:11px;cursor:pointer;background:none;font-family:inherit;" onclick="this.textContent='Nice try. I\\'m still employed. 😏';">Kill Process</button>
             </div>
-          `}),e.addEventListener("mouseenter",()=>{e.style.background||(e.style.background="rgba(255,255,255,0.03)")}),e.addEventListener("mouseleave",()=>{e.style.background==="rgba(255, 255, 255, 0.03)"&&(e.style.background="")})})}})}export{r as open};
+          `}),e.addEventListener("mouseenter",()=>{e.style.background||(e.style.background="rgba(255,255,255,0.03)")}),e.addEventListener("mouseleave",()=>{e.style.background==="rgba(255, 255, 255, 0.03)"&&(e.style.background="")})})}function c(){d({id:"experience",title:"System Monitor — Experience.exe",icon:"📊",width:750,height:550,content:s=>p(s)})}export{c as open,p as renderContent};

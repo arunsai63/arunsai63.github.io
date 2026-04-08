@@ -1,11 +1,11 @@
-import{c as s,p as i,g as l}from"./index-BwLrzomA.js";function g(){s({id:"about",title:"About Me — README.md",icon:"👤",width:620,height:520,content:e=>{e.innerHTML=`
+import{c as s}from"./window-manager-Cm3UCJuh.js";import{p as t,g as l}from"./data-CMMTyLTn.js";function d(e){e.innerHTML=`
         <div style="font-family:'JetBrains Mono',monospace;">
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
             <div style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#10b981,#3b82f6);display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0;">🧑‍💻</div>
             <div>
-              <h1 style="color:#fff;font-size:22px;margin-bottom:2px;">${i.name}</h1>
-              <p style="color:#10b981;font-size:14px;">${i.title} @ ${i.company}</p>
-              <p style="color:#666;font-size:12px;">${i.yoe} years of mass caffeinated development</p>
+              <h1 style="color:#fff;font-size:22px;margin-bottom:2px;">${t.name}</h1>
+              <p style="color:#10b981;font-size:14px;">${t.title} @ ${t.company}</p>
+              <p style="color:#666;font-size:12px;">${t.yoe} years of mass caffeinated development</p>
             </div>
           </div>
 
@@ -22,22 +22,22 @@ import{c as s,p as i,g as l}from"./index-BwLrzomA.js";function g(){s({id:"about"
           </div>
 
           <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
-            ${a("🔥 Hot Takes")}
-            ${a("🤔 Unpopular Opinions")}
-            ${a("📊 Stats")}
+            ${r("🔥 Hot Takes")}
+            ${r("🤔 Unpopular Opinions")}
+            ${r("📊 Stats")}
           </div>
 
           <div id="about-tab-content" style="background:rgba(0,0,0,0.25);padding:14px;border-radius:8px;font-size:13px;line-height:1.7;color:#aaa;">
-            ${r()}
+            ${a()}
           </div>
 
           <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
-            <a href="${i.github}" target="_blank" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">🐙 GitHub</a>
-            <a href="${i.linkedin}" target="_blank" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">💼 LinkedIn</a>
-            <a href="${i.blog}" target="_blank" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">📝 Blog</a>
+            <a href="${t.github}" target="_blank" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">🐙 GitHub</a>
+            <a href="${t.linkedin}" target="_blank" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">💼 LinkedIn</a>
+            <a href="${t.blog}" target="_blank" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#aaa;transition:all 0.15s;">📝 Blog</a>
           </div>
         </div>
-      `,e.querySelectorAll(".about-tab").forEach(t=>{t.addEventListener("click",()=>{e.querySelectorAll(".about-tab").forEach(n=>n.style.background="#1a1a1a"),t.style.background="#2a2a4e";const o=e.querySelector("#about-tab-content");t.dataset.tab==="hot-takes"?o.innerHTML=r():t.dataset.tab==="unpopular-opinions"?o.innerHTML=d():t.dataset.tab==="stats"&&(o.innerHTML=p())})}),e.querySelector(".about-tab").style.background="#2a2a4e"}})}function a(e){return`<button class="about-tab" data-tab="${e.replace(/[^a-z]/gi,"-").toLowerCase().replace(/-+/g,"-").replace(/^-|-$/g,"")}" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#ccc;cursor:pointer;">${e}</button>`}function r(){return`
+      `,e.querySelectorAll(".about-tab").forEach(i=>{i.addEventListener("click",()=>{e.querySelectorAll(".about-tab").forEach(n=>n.style.background="#1a1a1a"),i.style.background="#2a2a4e";const o=e.querySelector("#about-tab-content");i.dataset.tab==="hot-takes"?o.innerHTML=a():i.dataset.tab==="unpopular-opinions"?o.innerHTML=p():i.dataset.tab==="stats"&&(o.innerHTML=c())})}),e.querySelector(".about-tab").style.background="#2a2a4e"}function b(){s({id:"about",title:"About Me — README.md",icon:"👤",width:620,height:520,content:e=>d(e)})}function r(e){return`<button class="about-tab" data-tab="${e.replace(/[^a-z]/gi,"-").toLowerCase().replace(/-+/g,"-").replace(/^-|-$/g,"")}" style="padding:6px 12px;background:rgba(255,255,255,0.04);border:1px solid #333;border-radius:6px;font-size:12px;color:#ccc;cursor:pointer;">${e}</button>`}function a(){return`
     <ul style="padding-left:16px;list-style:disc;">
       <li>Microservices are just distributed monoliths with extra anxiety</li>
       <li>The best code is code you mass-delete</li>
@@ -46,7 +46,7 @@ import{c as s,p as i,g as l}from"./index-BwLrzomA.js";function g(){s({id:"about"
       <li>Docker solves every problem except the one you actually have</li>
       <li>The cloud is just someone else's computer (that you mass-pay for)</li>
     </ul>
-  `}function d(){return`
+  `}function p(){return`
     <ul style="padding-left:16px;list-style:disc;">
       <li>JavaScript is actually... fine. There. I said it.</li>
       <li>Most "10x engineers" are just "1x engineers" who don't go to meetings</li>
@@ -55,7 +55,7 @@ import{c as s,p as i,g as l}from"./index-BwLrzomA.js";function g(){s({id:"about"
       <li>The best architecture diagram is a napkin sketch</li>
       <li>Rust's borrow checker is just a very aggressive code reviewer</li>
     </ul>
-  `}function p(){return`
+  `}function c(){return`
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
       <div style="text-align:center;padding:12px;background:rgba(255,255,255,0.04);border-radius:8px;">
         <div style="font-size:28px;color:#10b981;font-weight:700;">${l()}+</div>
@@ -82,4 +82,4 @@ import{c as s,p as i,g as l}from"./index-BwLrzomA.js";function g(){s({id:"about"
         <div style="font-size:11px;color:#666;">Bugs (allegedly)</div>
       </div>
     </div>
-  `}export{g as open};
+  `}export{b as open,d as renderContent};

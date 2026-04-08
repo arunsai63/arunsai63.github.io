@@ -1,4 +1,4 @@
-import{c as i,p as o}from"./index-BwLrzomA.js";function r(){i({id:"contact",title:"Mail — New Message",icon:"📧",width:550,height:420,content:e=>{e.style.cssText="padding:0;font-size:13px;display:flex;flex-direction:column;",e.innerHTML=`
+import{c as i}from"./window-manager-Cm3UCJuh.js";import{p as o}from"./data-CMMTyLTn.js";function r(e){e.style.cssText="padding:0;font-size:13px;display:flex;flex-direction:column;",e.innerHTML=`
         <div style="padding:12px 16px;background:rgba(0,0,0,0.25);border-bottom:1px solid #222;">
           <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
             <span style="color:#666;width:40px;">To:</span>
@@ -24,4 +24,4 @@ import{c as i,p as o}from"./index-BwLrzomA.js";function r(){i({id:"contact",titl
             <a href="/resume.pdf" target="_blank" style="color:#666;font-size:12px;">📄 Resume</a>
           </div>
         </div>
-      `,e.querySelectorAll(".subject-btn").forEach(t=>{t.addEventListener("click",()=>{e.querySelector("#contact-subject").value=t.textContent})}),e.querySelector("#send-btn").addEventListener("click",()=>{const t=e.querySelector("#contact-subject").value||"Hello from ArunOS",n=e.querySelector("#contact-body").value||"";window.open(`mailto:${o.email}?subject=${encodeURIComponent(t)}&body=${encodeURIComponent(n)}`)})}})}export{r as open};
+      `,e.querySelectorAll(".subject-btn").forEach(t=>{t.addEventListener("click",()=>{e.querySelector("#contact-subject").value=t.textContent})}),e.querySelector("#send-btn").addEventListener("click",()=>{const t=e.querySelector("#contact-subject").value||"Hello from ArunOS",n=e.querySelector("#contact-body").value||"";window.open(`mailto:${o.email}?subject=${encodeURIComponent(t)}&body=${encodeURIComponent(n)}`)})}function s(){i({id:"contact",title:"Mail — New Message",icon:"📧",width:550,height:420,content:e=>r(e)})}export{s as open,r as renderContent};

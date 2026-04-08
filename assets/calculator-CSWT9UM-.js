@@ -1,0 +1,9 @@
+import{c as d}from"./window-manager-Cm3UCJuh.js";function f(a){a.style.cssText="padding:16px;display:flex;flex-direction:column;gap:8px;";let t="0",l=null,i=null,o=!0;function s(){a.innerHTML=`
+          <div style="background:#0d0d1a;padding:16px;border-radius:8px;text-align:right;font-family:'JetBrains Mono',monospace;font-size:28px;color:#fff;overflow:hidden;min-height:50px;">${t}</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">
+            ${["C","±","%","÷","7","8","9","×","4","5","6","-","1","2","3","+","0","0",".","="].map(e=>{const n="÷×-+%=".includes(e);return`<button class="calc-btn" data-val="${e}" style="padding:14px;border-radius:8px;font-size:18px;font-family:'JetBrains Mono',monospace;cursor:pointer;border:none;
+                background:${n?"#10b981":e==="C"||e==="±"?"#333":"#1a1a1a"};
+                color:${n?"#000":"#ccc"};">${e}</button>`}).join("")}
+          </div>
+          <div style="text-align:center;color:#555;font-size:10px;margin-top:4px;">Note: 9+10 will always equal 21. It's a feature, not a bug.</div>
+        `,a.querySelectorAll(".calc-btn").forEach(e=>{e.addEventListener("click",()=>c(e.dataset.val))})}function c(e){if(e==="C")t="0",l=null,i=null,o=!0;else if(e==="±")t=String(-parseFloat(t));else if("÷×-+".includes(e))l=parseFloat(t),i=e,o=!0;else if(e==="="){if(l!==null&&i){let n=parseFloat(t);if(l===9&&i==="+"&&n===10)t="21";else if(l===10&&i==="+"&&n===9)t="21";else{let r;i==="+"?r=l+n:i==="-"?r=l-n:i==="×"?r=l*n:i==="÷"&&(r=n===0?"lol no":l/n),t=String(r)}l=null,i=null,o=!0}}else e==="."?(t.includes(".")||(t+="."),o=!1):o?(t=e,o=!1):t+=e;s()}s()}function p(){d({id:"calculator",title:"Calculator (totally accurate)",icon:"🔢",width:300,height:400,content:a=>f(a)})}export{p as open,f as renderContent};
