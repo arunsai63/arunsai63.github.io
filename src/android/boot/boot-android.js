@@ -1,25 +1,29 @@
-// Android Boot Animation — Material You style
-import { getYOE } from '../../shared/data.js'
+// Android Boot Animation — real Android-style with bugdroid logo
 
 export function androidBootSequence(root) {
   return new Promise((resolve) => {
     const overlay = document.createElement('div')
     overlay.className = 'android-boot-overlay'
     overlay.innerHTML = `
-      <div class="android-boot-logo">ArunOS</div>
-      <div class="android-boot-spinner">
-        <svg viewBox="0 0 50 50">
-          <circle cx="25" cy="25" r="20" fill="none" stroke="#10b981" stroke-width="3" stroke-dasharray="80 200" stroke-linecap="round">
-            <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1.2s" repeatCount="indefinite"/>
-          </circle>
-        </svg>
+      <div class="android-boot-logo">
+        <img src="/wallpapers/android-logo.svg" alt="" class="android-boot-logo-img" />
       </div>
-      <div class="android-boot-subtitle">Powered by mass caffeine</div>
+      <div class="android-boot-text">Powered by mass caffeine</div>
     `
     root.appendChild(overlay)
 
-    // Tap to skip
+    // Fade in the logo
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        overlay.querySelector('.android-boot-logo-img').classList.add('android-boot-visible')
+        overlay.querySelector('.android-boot-text').classList.add('android-boot-visible')
+      })
+    })
+
+    let done = false
     const skip = () => {
+      if (done) return
+      done = true
       overlay.style.opacity = '0'
       overlay.style.transition = 'opacity 0.4s ease'
       setTimeout(() => { overlay.remove(); resolve() }, 400)
@@ -27,7 +31,6 @@ export function androidBootSequence(root) {
     overlay.addEventListener('click', skip, { once: true })
     overlay.addEventListener('touchstart', skip, { once: true })
 
-    // Auto-proceed after 2.5s
     setTimeout(skip, 2500)
   })
 }

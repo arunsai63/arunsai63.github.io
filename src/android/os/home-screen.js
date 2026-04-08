@@ -64,6 +64,14 @@ export function renderHomeScreen(container) {
     </div>
   `
 
+  // Search bar opens drawer/menu
+  const searchPill = home.querySelector('.home-search-pill')
+  if (searchPill) {
+    searchPill.addEventListener('click', () => {
+      if (onDrawerOpen) onDrawerOpen()
+    })
+  }
+
   // App icon clicks
   home.querySelectorAll('.home-app-icon').forEach(iconEl => {
     iconEl.addEventListener('click', () => {

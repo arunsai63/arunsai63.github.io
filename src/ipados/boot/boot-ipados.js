@@ -1,15 +1,13 @@
-// iPadOS Boot Animation — Apple-style minimal boot
-import { icon } from '../../shared/icons.js'
+// iPadOS Boot Animation — Apple-style with real Apple logo
 
 export function ipadosBootSequence(root) {
   return new Promise((resolve) => {
     const overlay = document.createElement('div')
     overlay.className = 'ipados-boot-overlay'
 
-    // White Apple-esque logo (monitor icon as ArunOS logo) on black
     overlay.innerHTML = `
       <div class="ipados-boot-logo">
-        ${icon('monitor', 48, '#fff')}
+        <img src="/wallpapers/ios-logo.svg" alt="" class="ipados-boot-logo-img" />
       </div>
       <div class="ipados-boot-progress-track">
         <div class="ipados-boot-progress-fill"></div>
@@ -17,10 +15,11 @@ export function ipadosBootSequence(root) {
     `
     root.appendChild(overlay)
 
-    // Animate logo fade-in
+    // Fade in logo
     requestAnimationFrame(() => {
-      const logo = overlay.querySelector('.ipados-boot-logo')
-      logo.classList.add('ipados-boot-logo-visible')
+      requestAnimationFrame(() => {
+        overlay.querySelector('.ipados-boot-logo-img').classList.add('ipados-boot-logo-visible')
+      })
     })
 
     // Start progress bar after logo fade
@@ -29,21 +28,17 @@ export function ipadosBootSequence(root) {
       if (fill) fill.classList.add('ipados-boot-filling')
     }, 400)
 
+    let done = false
     const finish = () => {
-      // Brief white flash then remove
+      if (done) return
+      done = true
       overlay.classList.add('ipados-boot-flash')
-      setTimeout(() => {
-        overlay.remove()
-        resolve()
-      }, 300)
+      setTimeout(() => { overlay.remove(); resolve() }, 300)
     }
 
-    // Tap to skip
-    const skip = () => finish()
-    overlay.addEventListener('click', skip, { once: true })
-    overlay.addEventListener('touchstart', skip, { once: true, passive: true })
+    overlay.addEventListener('click', finish, { once: true })
+    overlay.addEventListener('touchstart', finish, { once: true, passive: true })
 
-    // Auto-proceed after ~2.5s
     setTimeout(finish, 2500)
   })
 }

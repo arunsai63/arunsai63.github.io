@@ -48,18 +48,23 @@
 }
 
 .ipados-boot-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ipados-boot-logo-img {
+  width: 56px;
+  height: auto;
+  filter: invert(1); /* Apple logo SVG is black, invert to white */
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 0.6s ease, transform 0.6s var(--ios-spring);
+  transition: opacity 0.7s ease, transform 0.7s var(--ios-spring);
 }
 
-.ipados-boot-logo-visible {
+.ipados-boot-logo-img.ipados-boot-logo-visible {
   opacity: 1;
   transform: scale(1);
-}
-
-.ipados-boot-logo svg {
-  filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));
 }
 
 .ipados-boot-progress-track {

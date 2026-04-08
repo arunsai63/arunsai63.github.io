@@ -5,7 +5,7 @@ let callbacks = {}
 // Real Android nav bar SVG icons (triangle, circle, square)
 const NAV_BACK = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="rgba(255,255,255,0.8)"/></svg>`
 const NAV_HOME = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2"/></svg>`
-const NAV_RECENTS = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="6" cy="6" r="2.5" fill="rgba(255,255,255,0.8)"/><circle cx="18" cy="6" r="2.5" fill="rgba(255,255,255,0.8)"/><circle cx="6" cy="18" r="2.5" fill="rgba(255,255,255,0.8)"/><circle cx="18" cy="18" r="2.5" fill="rgba(255,255,255,0.8)"/><circle cx="12" cy="6" r="2.5" fill="rgba(255,255,255,0.8)"/><circle cx="12" cy="18" r="2.5" fill="rgba(255,255,255,0.8)"/></svg>`
+const NAV_RECENTS = `<svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.8)"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="6" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="12" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="12" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>`
 
 export function renderNavigationBar(container) {
   const nav = document.createElement('div')
