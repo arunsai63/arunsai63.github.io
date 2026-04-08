@@ -91,7 +91,11 @@ export async function boot(root) {
       }
     },
     onRecents: () => {
-      // TODO: Recents screen
+      if (isDrawerVisible()) {
+        hideDrawer()
+      } else {
+        showDrawer()
+      }
     }
   })
 
