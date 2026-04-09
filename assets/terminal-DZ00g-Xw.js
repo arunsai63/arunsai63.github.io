@@ -1,4 +1,4 @@
-import{c as v}from"./window-manager-Cm3UCJuh.js";import{g as f,p,e as h,s as w,f as $}from"./data-CMMTyLTn.js";import"./registry-35ogkw64.js";import"./index-BPVmKUjw.js";import"./console-easter-egg-Ch-v8MMI.js";function k(s,e={}){const o=e.promptHost||"portfolio";s.style.cssText='padding:0;background:#0d0d1a;font-family:"JetBrains Mono",monospace;font-size:13px;display:flex;flex-direction:column;',s.innerHTML=`
+import{c as v}from"./window-manager-Cm3UCJuh.js";import{g as f,p,e as h,s as w,f as $}from"./data-CMMTyLTn.js";import"./registry-qmn67aww.js";import"./index-Dui7f6k8.js";import"./console-easter-egg-DB4rPIQL.js";function k(s,e={}){const o=e.promptHost||"portfolio";s.style.cssText='padding:0;background:#0d0d1a;font-family:"JetBrains Mono",monospace;font-size:13px;display:flex;flex-direction:column;',s.innerHTML=`
         <div id="term-output" style="flex:1;overflow-y:auto;padding:12px;line-height:1.7;"></div>
         <div style="display:flex;align-items:center;padding:8px 12px;border-top:1px solid #1a1a1a;flex-shrink:0;">
           <span style="color:#10b981;margin-right:8px;white-space:nowrap;">arun@${o}:~$</span>
