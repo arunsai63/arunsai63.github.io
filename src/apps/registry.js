@@ -15,6 +15,7 @@ const apps = {
   'recycle-bin': { id: 'recycle-bin', label: 'Recycle Bin', icon: icon('trash', 16), module: () => import('./recycle-bin.js') },
   portfolio: { id: 'portfolio', label: 'Portfolio', icon: icon('layout', 16), module: () => import('./iframe-app.js').then(m => ({ open: () => m.openIframeApp('portfolio', 'Portfolio', 'https://arunsai63.github.io/portfolio', 'layout') })) },
   blog: { id: 'blog', label: 'Blog', icon: icon('book', 16), module: () => import('./iframe-app.js').then(m => ({ open: () => m.openIframeApp('blog', 'Blog', 'https://arunsai63.github.io/blogs/', 'book') })) },
+  browser: { id: 'browser', label: 'Safari', icon: icon('safari', 16), module: () => import('./browser/browser-loader.js') },
 }
 
 export function appList() {

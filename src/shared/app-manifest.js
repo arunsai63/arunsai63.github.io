@@ -152,6 +152,18 @@ export const APP_MANIFEST = {
       ipados:  { enabled: true },
     },
   },
+  browser: {
+    id: 'browser',
+    label: 'Safari',
+    iconName: 'compass',
+    iconBg: 'linear-gradient(135deg, #007AFF, #5856D6)',
+    module: () => import('../apps/browser/browser-loader.js'),
+    platforms: {
+      macos:   { enabled: true, label: 'Safari' },
+      android: { enabled: true, label: 'Chrome', category: 'tools' },
+      ipados:  { enabled: true, label: 'Safari' },
+    },
+  },
   // Android-only apps
   phone: {
     id: 'phone',

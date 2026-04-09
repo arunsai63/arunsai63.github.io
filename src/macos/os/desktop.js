@@ -17,6 +17,7 @@ const desktopIcons = [
   { id: 'calculator', svg: 'calculator', label: 'Calculator', bg: 'linear-gradient(135deg, #f97316, #ea580c)' },
   { id: 'portfolio', svg: 'layout', label: 'Portfolio', bg: 'linear-gradient(135deg, #8b5cf6, #7c3aed)' },
   { id: 'blog', svg: 'book', label: 'Blog', bg: 'linear-gradient(135deg, #ec4899, #db2777)' },
+  { id: 'browser', svg: 'safari', label: 'Safari', bg: 'linear-gradient(135deg, #007AFF, #5856D6)' },
   { id: 'recycle-bin', svg: 'trash', label: 'Recycle Bin', bg: 'linear-gradient(135deg, #64748b, #475569)' },
 ]
 
