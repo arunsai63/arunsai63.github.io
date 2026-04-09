@@ -1,4 +1,4 @@
-import{g as N,b as W,a as P,A as X}from"./gestures-owX_xKfK.js";import{b,i as G,a as U}from"./console-easter-egg-DB4rPIQL.js";import{s as Z}from"./index-Dui7f6k8.js";function J(e){return new Promise(i=>{const s=document.createElement("div");s.className="ipados-boot-overlay",s.innerHTML=`
+import{g as N,b as W,a as P,A as X}from"./gestures-D4_EayYY.js";import{b,i as G,a as U}from"./console-easter-egg-DLHUFXsG.js";import{s as Z}from"./index-DwjHNIXK.js";function J(e){return new Promise(i=>{const s=document.createElement("div");s.className="ipados-boot-overlay",s.innerHTML=`
       <div class="ipados-boot-logo">
         <img src="/wallpapers/ios-logo.svg" alt="" class="ipados-boot-logo-img" />
       </div>

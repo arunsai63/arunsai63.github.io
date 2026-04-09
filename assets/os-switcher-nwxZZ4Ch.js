@@ -1,4 +1,4 @@
-import{V as s,s as a}from"./index-Dui7f6k8.js";const n={macos:{name:"macOS Desktop",icon:"🖥️",desc:"Full desktop experience with dock, windows, and widgets"},android:{name:"Android Mobile",icon:"📱",desc:"Material You phone experience with apps and notifications"},ipados:{name:"iPadOS Tablet",icon:"📲",desc:"Stage Manager, split view, and Apple-style multitasking"}};function l(e){const t=document.createElement("div");t.style.cssText=`
+import{V as s,s as a}from"./index-DwjHNIXK.js";const n={macos:{name:"macOS Desktop",icon:"🖥️",desc:"Full desktop experience with dock, windows, and widgets"},android:{name:"Android Mobile",icon:"📱",desc:"Material You phone experience with apps and notifications"},ipados:{name:"iPadOS Tablet",icon:"📲",desc:"Stage Manager, split view, and Apple-style multitasking"}};function l(e){const t=document.createElement("div");t.style.cssText=`
     position:fixed;inset:0;z-index:999999;
     display:flex;align-items:center;justify-content:center;
     background:rgba(0,0,0,0.7);backdrop-filter:blur(12px);
